@@ -49,27 +49,32 @@
                     <div class="col-md-1">
                         <img src="{% static 'core/img/Mareos.png' %}" style="margin-top: 2%;" width="50" height="50">
                     </div>
-                    <div class="col-md-10" id ="titulo"name="titulo"><h3 class="text-black mt-3">Home</h3></div>
+                    <div class="col-md-10" id="titulo" name="titulo">
+                        <h3 class="text-black mt-3">Home</h3>
+                    </div>
                 </div>
                 <div id="carrusel">
-                    <div id="carouselExampleControls" class="carousel slide" data-ride="carousel" data-interval="3000">
+                    <div id="carouselExampleControls" class="carousel slide" data-ride="carousel" data-interval="10">
                         <div class="carousel-inner">
                             <div class="carousel-item active">
-                                <img class="img-fluid" src="{% static 'core/img/hamburguesa.jpg' %}" width="100%">
+                                <img class="img-fluid" src="{% static 'core/img/hamburguesa.jpg' %}" width="100%"
+                                    alt="First slide">
                                 <div class="carousel-caption d-none d-md-block">
-                                    <a href="{% url 'catalogo' %}" id="btnCompra"class="btn btn-lg">Comprar aqui</a>
+                                    <a href="{% url 'catalogo' %}" id="btnCompra" class="btn btn-lg">Comprar aqui</a>
                                     <h3 class="text-black bg-warning mt-3">Compra aqui lo mejor de Ma're'os</h3>
                                 </div>
                             </div>
                             <div class="carousel-item ">
-                                <img class="img-fluid" src="{% static 'core/img/italiano.jpg' %}" width="100%">
+                                <img class="img-fluid" src="{% static 'core/img/italiano.jpg' %}" width="100%"
+                                    alt="Second slide">
                                 <div class="carousel-caption d-none d-md-block">
                                     <a href="{% url 'catalogo' %}" class="btn btn-dark" id="ver más">Comprar aqui</a>
                                     <h3 class="text-white bg-dark mt-3">Compra aqui lo mejor de Ma're'os</h3>
                                 </div>
                             </div>
                             <div class="carousel-item ">
-                                <img class="img-fluid" src="{% static 'core/img/papasfritas.jpg' %}" width="100%">
+                                <img class="img-fluid" src="{% static 'core/img/papasfritas.jpg' %}" width="100%"
+                                    alt="Third slide">
                                 <div class="carousel-caption d-none d-md-block">
                                     <a href="{% url 'catalogo' %}" class="btn btn-dark">Comprar aqui</a>
                                     <h3 class="text-white bg-dark mt-3">Compra aqui lo mejor de Ma're'os</h3>
@@ -89,7 +94,69 @@
                     </div>
                 </div>
             </div>
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-6  col-md-4    col-lg-3 px-4 py-5">
+                        <div class="card shadow" id="tarjetas1">
+                            <div>
+                                <img class="d-block w-100" src="{% static 'core/img/churrasco.jpg' %}" width="200"
+                                    height="200" alt="Card image cap">
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title">Sandwiches</h5>
+                                <p class="card-text">Todo tipo de Sandwiches, hamburguesa, churrascos y especiales de la
+                                    casa.</p>
+                                <a href="{% url 'catalogo' %}" class="btn btn-primary">Ver</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xs-12 col-sm-6  col-md-4    col-lg-3 px-4 py-5">
+                        <div class="card shadow" id="tarjetas2">
+                            <div>
+                                <img class="d-block w-100" src="{% static 'core/img/papasfritas.jpg' %}" width="200"
+                                    height="200" alt="Card image cap">
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title">Para Picar</h5>
+                                <p class="card-text">Las mejores papasfritas, aros de cebeolla, y otras cositas ricas para el picoteo.</p>
+                                <a href="{% url 'catalogo' %}" class="btn btn-primary">Ver</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xs-12 col-sm-6  col-md-4    col-lg-3 px-4 py-5" >
+                        <div class="card shadow" id="tarjetas3">
+                            <div>
+                                <img class="d-block w-100" src="{% static 'core/img/italiano.jpg' %}" width="200"
+                                    height="200" alt="Card image cap">
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title">Vienesas y As</h5>
+                                <p class="card-text">Un buen tocomple siempre te deja feliz, tambien puedes probar nuestros as, revisa!</p>
+                                <a href="{% url 'catalogo' %}" class="btn btn-primary">Ver</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xs-12 col-sm-6  col-md-4    col-lg-3 px-4 py-5">
+                        <div class="card shadow" id="tarjetas4">
+                            <div>
+                                <img class="d-block w-100" src="{% static 'core/img/salsas.jpg' %}" width="200"
+                                    height="200" alt="Card image cap">
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title">Agregados</h5>
+                                <p class="card-text">Las mejores salsas y sus bebidas bien heladitas para llevar.</p>
+                                <a href="{% url 'catalogo' %}" class="btn btn-primary">Ver</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
+    </div>
+    </div>
     </div>
 
 
