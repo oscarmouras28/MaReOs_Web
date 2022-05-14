@@ -31,6 +31,7 @@ p {
 
 
 #titulo{
+    display: flex;
     background: #F4DE52;
     width: 83%;
     text-align: center;
