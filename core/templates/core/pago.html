@@ -29,8 +29,10 @@
             <ul class="list-unstyled components">
                 <p>Inicia sesión y podras hacer tu pedido :)</p>
                 <li class="active">
-                    <a href="{% url 'login' %}" name="btnInicioSesion" id="btnInicioSesion" aria-expanded="false">Iniciar Sesion</a>
-                    <a href="{% url 'registro' %}" name="btnRegistrate" id="btnRegistrate" aria-expanded="false">o registrate aqui</a>
+                    <a href="{% url 'login' %}" name="btnInicioSesion" id="btnInicioSesion"
+                        aria-expanded="false">Iniciar Sesion</a>
+                    <a href="{% url 'registro' %}" name="btnRegistrate" id="btnRegistrate" aria-expanded="false">o
+                        registrate aqui</a>
                 </li>
         </nav>
 
@@ -40,20 +42,60 @@
                 <div class="row">
                     <div class="col-md-1">
                         <button type="button" id="sidebarCollapse">
-                            
+
                             <span class="navbar-toggler-icon"><i class="fa fa-bars"></i></span>
                         </button>
                     </div>
                     <div class="col-md-1">
-                        <img src="{% static 'core/img/Mareos.png' %}" style="margin-top: 2%;"width="50" height="50">
+                        <img src="{% static 'core/img/Mareos.png' %}" style="margin-top: 2%;" width="50" height="50">
                     </div>
-                    <div class="col-md-8" id ="titulo"name="titulo"><h3 class="text-black mt-3">Pago</h3></div>
+                    <div class="col-md-8" id="titulo" name="titulo">
+                        <h3 class="text-black mt-3">Pago</h3>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="text-center col-md-12 mt-3" style="margin-left: 10%;">
+                        <h5>Ya casi! solo te falta pagar :)</h5>
+                        <br>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="col-md-12">
+                            <label for="radioMedioPago" class="col-md-12">Selecciona tu medio de pago</label>
+                            <div class="btn-group col-md-12 pt-2" role="group"-aria-label="Basic radio toggle button group">
+                                <input type="radio" class="btn-check" name="radioMedioPago" id="radioEfectivo" autocomplete="off">
+                                <label class="btn btn-outline-warning" style="color: black;" for="radioEfectivo"><i class="fa-solid fa-money-bill-wave"></i> Efectivo</label>
+
+                                <input type="radio" class="btn-check" name="radioMedioPago" id="radioDebito" autocomplete="off">
+                                <label class="btn btn-outline-warning" style="color: black;" for="radioDebito"><i class="fa-solid fa-credit-card"></i> Debito</label>
+
+                                <input type="radio" class="btn-check" name="radioMedioPago" id="radioCredito" autocomplete="off">
+                                <label class="btn btn-outline-warning"  style="color: black;"for="radioCredito"><i class="fa-brands fa-cc-mastercard"></i> Credito</label>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="col-md-12">
+                            <label for="medioEntrega" class="col-md-12">Selecciona medio de entrega</label>
+                            <div class="btn-group col-md-12 pt-2" role="group"aria-label="Basic radio toggle button group">
+                                <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off">
+                                <label class="btn btn-outline-warning" style="color: black;" for="btnradio1"><i class="fa-solid fa-motorcycle"></i> Delivery</label>
+
+                                <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off">
+                                <label class="btn btn-outline-warning" style="color: black;" for="btnradio2"><i class="fa-solid fa-shop"></i> Retiro en Local</label>
+                            </div>
+                        </div>
+
+                        <button type="button" id="btnPedir" class="btn btn-warning mt-3">Pedir</button>
+                        <button type="button" id="btnCancelar" class="btn btn-danger mt-3" style="margin-left:2% ;">Cancelar</button>
+                    </div>
                 </div>
             </div>
 
+
         </div>
     </div>
-
 
     <!-- Pie de pagina  -->
     <footer>

@@ -71,6 +71,42 @@ p {
     margin-left: 0%;
 }
 
+#tarjetas1 {
+    width: 18rem; 
+    margin-left: 30%;
+}
+
+#tarjetas1.corridas {
+    width: 15rem; 
+    margin-left: -5%;
+}
+#tarjetas2 {
+    width: 18rem; 
+    margin-left: 30%;
+}
+
+#tarjetas2.corridas {
+    width: 15rem; 
+    margin-left: -5%;
+}
+#tarjetas3 {
+    width: 18rem; 
+    margin-left: 30%;
+}
+
+#tarjetas3.corridas {
+    width: 15rem; 
+    margin-left: -5%;
+}
+#tarjetas4 {
+    width: 18rem; 
+    margin-left: 30%;
+}
+
+#tarjetas4.corridas {
+    width: 15rem; 
+    margin-left: -5%;
+}
 #sidebar .sidebar-header {
     padding: 20px;
     background: #eed42f;
