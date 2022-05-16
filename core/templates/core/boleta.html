@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -29,8 +30,10 @@
             <ul class="list-unstyled components">
                 <p>Inicia sesión y podras hacer tu pedido :)</p>
                 <li class="active">
-                    <a href="{% url 'login' %}" name="btnInicioSesion" id="btnInicioSesion" aria-expanded="false">Iniciar Sesion</a>
-                    <a href="{% url 'registro' %}" name="btnRegistrate" id="btnRegistrate" aria-expanded="false">o registrate aqui</a>
+                    <a href="{% url 'login' %}" name="btnInicioSesion" id="btnInicioSesion"
+                        aria-expanded="false">Iniciar Sesion</a>
+                    <a href="{% url 'registro' %}" name="btnRegistrate" id="btnRegistrate" aria-expanded="false">o
+                        registrate aqui</a>
                 </li>
         </nav>
 
@@ -40,28 +43,120 @@
                 <div class="row">
                     <div class="col-md-1">
                         <button type="button" id="sidebarCollapse">
-                            
+
                             <span class="navbar-toggler-icon"><i class="fa fa-bars"></i></span>
                         </button>
                     </div>
                     <div class="col-md-1">
-                        <img src="{% static 'core/img/Mareos.png' %}" style="margin-top: 2%;"width="50" height="50">
+                        <img src="{% static 'core/img/Mareos.png' %}" style="margin-top: 2%;" width="50" height="50">
                     </div>
-                    <div class="col-md-8" id ="titulo"name="titulo"><h3 class="text-black mt-3">Boleta</h3></div>
+                    <div class="col-md-8" id="titulo" name="titulo">
+                        <h3 class="text-black mt-3">Boleta</h3>
+                    </div>
                 </div>
             </div>
+            <div id="centrard">
+                <h4>Tu pedido esta en proceso :)</h4>
+                <h6>y tranqui,enviaremos una copia del recibo a tu correo.</h6>
+            </div>
+            <div class="container">
+                <table class="col-12  " style="border: 10px solid #eed42f; margin: 0px auto;width: 85% ;height:85%;">
+                    <thead>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            
+                            <td class="d-flex justify-content-end"><img src="{% static 'core/img/Mareos.png' %}" width="50"></td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td >Numero del pedido:</td>
+                            <td>0092</td>
+                        </tr>
+                        <tr>
+                            <td >A nombre de:</td>
+                            <td > Pablo Torres Rodriguez</td>
+                        </tr>
+                        <tr>
+                            <td > Retiro en local:</td>
+                            <td>No</td>
+                        </tr>
+                        <tr>
+                            <td>Direccion:</td>
+                            <td > Nocedal 2234</td>
+                        </tr>
+                        <tr>
+                            <td>Detalle:</td>
+                        </tr>
+                        <tr>
+                            <td>-Chorrillana</td>
+                            <td>$5.000</td>
+                        </tr>
+                        <tr>
+                            <td >-Bebida Coca-Cola 2L</td>
+                            <td>$2.500</td>
+                        </tr>
+                        <tr>
+                            <td>-Propina</td>
+                            <td>$0</td>
+                        </tr>
+                        <tr>
+                            <td>-Delivery</td>
+                            <td>$1.000</td>
+                        </tr>
+                        <tr>
+                            <td>Total</td>
+                            <td>$8.500</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        <td  class="d-flex justify-content-end">
+                            <button type="button" class="btn btn-warning">Inicio</button>
+                        </td>
+                        </tr>
+                        
+                    </tbody>
+                </table>
+
+                </tbody>
+
+                
+                
+            </div>
         </div>
+
     </div>
 
 
+
     <!-- Pie de pagina  -->
-    <footer>
-        <div class="footer-copyright text-center py-3 ">© 2022 Copyright:
-            <a href="#"> www.Ma're'os.com</a>
-            <p>Correo: mareosweb@mareos.com</p>
-            <div class="dropdown-divider"></div>
-            <p>Telefono: 226977279</p>
+    <footer class="d-flex justify-content-between" style="background-color:#F4DE52 ;">
+        <div class="d-flex flex-column">
+            <h2>Contacto</h2>
+            <h5>Instagram</h5>
+            <h5>Facebook</h5>
+            <h5>Whatsapp</h5>
+
         </div>
+        <div class="d-flex justify-content-center flex-column  ">
+            <h2>trabaja con nosotros</h2>
+            <a href="MaReOs@gmail.com">Postula Aqui!</a>
+
+        </div>
+        
+        <div class="d-flex justify-content-end flex-column">
+            <h2>Nuestra Historia</h2>
+            <p></p>
+        </div>
+
 
     </footer>
 

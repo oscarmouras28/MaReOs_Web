@@ -129,6 +129,12 @@ p {
     min-height: 100vh;
     transition: all 0.3s;
 }
+#centrard{
+    width: 200px;
+    height: 200px;
+    margin: 0% auto;
+   
+}
 
 /* ---------------------------------------------------
     MEDIAQUERIES
