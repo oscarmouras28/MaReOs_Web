@@ -10,5 +10,6 @@ urlpatterns = [
     path('pago/', pago, name= "pago"),
     path('recuperar/', recuperar_contrasena, name= "recuperar"),
     path('registro/', registro, name="registro"),
-    path('ventas/', ventas, name="ventas"),
+    path('ventas/', ventas, name="ventas")
+    
 ]
