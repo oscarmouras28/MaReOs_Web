@@ -7,10 +7,9 @@ from django.db import models
 class Usuario (models.Model):
     correo=models.CharField(max_length=30)
     contraseña=models.CharField(max_length=30)
-
-    cliente_id=models.ForeignKey(Cliente,on_delete=models.CASCADE)
 class Cliente (models.Model):
     p_nombre=models.CharField(max_length=30)
+    a_paterno=models.CharField(max_length=20)
     num_contac=models.IntegerField()
     usuario_id=models.ForeignKey(Usuario,on_delete=models.CASCADE)
 
@@ -19,12 +18,12 @@ class Vendedor (models.Model):
      s_nombre=models.CharField(max_length=20)
      a_paterno=models.CharField(max_length=20)
      a_materno=models.CharField(max_length=20)
-     visualidad_pedido=models.CharField(max_length=1)
+     usuario_id=models.ForeignKey(Usuario,on_delete=models.CASCADE)
 class Carrito (models.Model):
     lista_prod=models.CharField(max_length=30)
 
 class Venta (models.Model):
-    #--<date=models.CharField(max_length=30)>--#   
+    #--<date=models.CharField(max_length=30) SE ARREGLA MÑA>--#   
     subtotal=models.IntegerField() 
     total=models.IntegerField() 
     cliente_id=models.ForeignKey(Cliente,on_delete=models.CASCADE)
@@ -42,10 +41,7 @@ class Delivery (models.Model):
     venta_id=models.ForeignKey(Venta,on_delete=models.CASCADE)
 
 class Medio_pago (models.Model):
-    debito=models.CharField(max_length=20)
-    transferencia=models.CharField(max_length=20)
-    flow=models.CharField(max_length=20)
-    efectivo=models.CharField(max_length=20)
+    tipo_pago=models.CharField(max_length=20)
     venta_id=models.ForeignKey(Venta,on_delete=models.CASCADE)
     
 
