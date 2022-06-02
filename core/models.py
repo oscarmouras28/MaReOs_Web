@@ -19,6 +19,10 @@ class Vendedor (models.Model):
      a_paterno=models.CharField(max_length=20)
      a_materno=models.CharField(max_length=20)
      usuario_id=models.ForeignKey(Usuario,on_delete=models.CASCADE)
+
+     class Meta:
+         verbose_name_plural = "Vendedores"
+         
 class Carrito (models.Model):
     lista_prod=models.CharField(max_length=30)
 

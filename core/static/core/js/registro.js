@@ -1,5 +1,6 @@
 $(document).ready(function () {
     activarMenu();
+	validarFormulario();
 
 });
 
@@ -47,4 +48,18 @@ function soloLetras(e) {
 	if (letras.indexOf(tecla) == -1 && !tecla_especial) {
 		return false;
 	}
+}
+
+function validarFormulario() {
+	$("#btnRegistrar").click(function (e) {
+		var telefono = $('#inputTelefono').val();
+		var errorValidacionDatos = false;
+		if (telefono == null || telefono == ""){
+			$("#spTelefono").addClass("has-error");
+			$("#spTelefono").show();
+			$("#spTelefono").html("Debe ingresar telefono valido");
+			$("#spTelefono").css("color", "#dc3545");
+			errorValidacionDatos = true;
+		} 
+});
 }
