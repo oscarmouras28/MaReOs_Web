@@ -63,11 +63,12 @@
                             <div class="col-md-8">
                                 <div class="card-body">
                                     <h5 class="card-title">Pedido Nro {{x.id}}</h5>
-                                    <p class="card-text">Subtotal {{x.subtotal}}</p>
-                                    <p class="card-text">Total {{x.total}}</p>
-                                    <p class="card-text">Cliente{{x.cliente}}</p>
-                                    <p class="card-text">Vendedor{{x.vendedor}}</p>
-                                    <p class="card-text">Pedido {{x.pedido}}</p>
+                                    <p class="card-text">Subtotal: ${{x.subtotal}}</p>
+                                    <p class="card-text">Total: ${{x.total}}</p>
+                                    <p class="card-text">Cliente: {{x.cliente_id.p_nombre}} {{x.cliente_id.a_paterno}}</p>
+                                    <p class="card-text">Vendedor: {{x.vendedor_id.p_nombre}} {{x.cliente_id.a_paterno}}</p>
+                                    <p class="card-text">Productos: {{x.carrito_id.lista_prod}}</p>
+                                    <p class="card-text">Pedido: {{x.pedido}}</p>
 
                                     <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
                                 </div>
