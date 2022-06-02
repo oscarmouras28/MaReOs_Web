@@ -1,6 +1,5 @@
 $(document).ready(function () {
     activarMenu();
-    verSandwiches();
 
 });
 
@@ -16,14 +15,4 @@ function activarMenu() {
         $('#tarjetas4').toggleClass('corridas');
 
     });
-}
-
-function verSandwiches(){
-    $('#btnVerSandwich').on('click', function () {
-        $('#flush-collapseOne').click();
-        alert("holaaaaaa");
-        console.log("aaaaa");
-    
-});
-
 }
