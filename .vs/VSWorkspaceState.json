@@ -1,7 +1,10 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\core",
+    "\\core\\templates",
+    "\\core\\templates\\core"
   ],
-  "SelectedNode": "\\C:\\Users\\CIIT\\Desktop\\Ma're'os",
+  "SelectedNode": "\\core\\templates\\core\\registro.html",
   "PreviewInSolutionExplorer": false
 }
