@@ -35,6 +35,10 @@
                                 <label class="form-label" for="nombreCli">Nombre</label>
                             </div>
                             <div class="form-outline mb-4">
+                                <input type="string" id="rutCli" placeholder="Ingrese RUT" class="form-control" maxlength="10" onkeypress="return soloNumerosDatos(event)"">
+                                <label class="form-label" for="rutCli">Rut</label>
+                            </div>
+                            <div class="form-outline mb-4">
                                 <input type="string" id="apellidoCli" placeholder="Ingrese Apellido" class="form-control" onkeypress="return soloLetras(event)">
                                 <label class="form-label" for="apellidoCli">Apellido</label>
                             </div>
