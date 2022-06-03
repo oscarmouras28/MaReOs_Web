@@ -2,7 +2,10 @@
   "ExpandedNodes": [
     "",
     "\\core",
+    "\\core\\templates",
+    "\\core\\templates\\core",
     "\\MaReOs"
   ],
+  "SelectedNode": "\\core\\templates\\core\\catalogo.html",
   "PreviewInSolutionExplorer": false
 }
