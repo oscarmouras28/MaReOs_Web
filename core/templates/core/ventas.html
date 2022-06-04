@@ -21,11 +21,11 @@
         <!-- Sidebar  -->
         <nav id="sidebar">
             <div class="sidebar-header">
-                <h3>Men�</h3>
+                <h3>Menú</h3>
             </div>
             <ul class="list-unstyled components">
                 <p>
-                    Inicia sesi�n y podras hacer tu pedido :
+                    Inicia sesión y podras hacer tu pedido :
                 </p>
                 <li class="active">
                     <a href="{% url 'login' %}" name="btnInicioSesion" id="btnInicioSesion"
@@ -72,8 +72,8 @@
                                     <p class="card-text">Subtotal: ${{x.subtotal}}</p>
                                     <p class="card-text">Total: ${{x.total}}</p>
                                     <p class="card-text">Cliente: {{x.cliente_id.p_nombre}} {{x.cliente_id.a_paterno}}</p>
-                                    <p class="card-text">Vendedor: {{x.vendedor_id.p_nombre}} {{x.cliente_id.a_paterno}}</p>
-                                    <p class="card-text">Productos: {{x.carrito_id.lista_prod}}</p>
+                                    <p class="card-text">Vendedor: {{x.vendedor_id.p_nombre}} {{x.vendedor_id.a_paterno}}</p>
+                                    <p class="card-text">Productos: {{x.carrito_id.producto_id.nombre}}</p>
                                     <p class="card-text">Pedido: {{x.pedido}}</p>
 
                                     <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>

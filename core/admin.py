@@ -1,9 +1,8 @@
 from django.contrib import admin
-from .models import Usuario,Cliente,Vendedor,Carrito,Venta,Producto,Delivery,Medio_pago
+from .models import Cliente,Vendedor,Carrito,Venta,Producto,Delivery,Medio_pago
 
 # Register your models here.
 
-admin.site.register(Usuario)
 admin.site.register(Cliente)
 admin.site.register(Vendedor)
 admin.site.register(Carrito)
