@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from .models import Producto, Venta
 
 def home (request):
     return render(request, 'core/home.html')
@@ -7,7 +8,9 @@ def boleta(request):
     return render (request,'core/boleta.html')
 
 def catalogo(request):
-    return render (request,'core/catalogo.html')
+    listado_prod = Producto.objects.all()
+    data = {"lista" : listado_prod}
+    return render (request,'core/catalogo.html',data)
 
 def login(request):
     return render (request,'core/login.html')
@@ -22,4 +25,9 @@ def registro(request):
     return render (request,'core/registro.html')
 
 def ventas(request):
-    return render (request,'core/ventas.html')
+    listado_ventas = Venta.objects.all()
+    data = {"listaVentas" : listado_ventas}
+    return render (request,'core/ventas.html', data)
+
+def carrito(request):
+    return render (request,'core/carrito.html')

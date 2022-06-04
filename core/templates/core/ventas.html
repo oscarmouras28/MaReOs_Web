@@ -1,120 +1,112 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Ma're'os Web</title>
-        {% load static %}
-        <!-- cargamos css bootstrap 5.1.3 -->
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
-              rel="stylesheet"
-              integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
-              crossorigin="anonymous">
-        <!-- cargamos style.css -->
-        <link rel="stylesheet"
-              href="{% static 'core/css/style-venta.css' %}"
-              type="text/css">
-        <!-- font awesome -->
-        <script src="https://kit.fontawesome.com/84cef5c1c7.js" crossorigin="anonymous"></script>
-    </head>
-    <body>
-        <div class="wrapper">
-            <!-- Sidebar  -->
-            <nav id="sidebar">
-                <div class="sidebar-header">
-                    <h3>Men�</h3>
-                </div>
-                <ul class="list-unstyled components">
-                    <p>
-                        Inicia sesi�n y podras hacer tu pedido :)
-                    </p>
-                    <li class="active">
-                        <a href="{% url 'login' %}"
-                           name="btnInicioSesion"
-                           id="btnInicioSesion"
-                           aria-expanded="false">Iniciar Sesion</a>
-                        <a href="{% url 'registro' %}"
-                           name="btnRegistrate"
-                           id="btnRegistrate"
-                           aria-expanded="false">o registrate aqui</a>
-                    </li>
-                </nav>
-                <!-- Contenido  -->
-                <div id="content">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-md-1">
-                                <button type="button" id="sidebarCollapse">
-                                    <span class="navbar-toggler-icon"><i class="fa fa-bars"></i></span>
-                                </button>
-                            </div>
-                            <div class="col-md-1">
-                                <img src="{% static 'core/img/Mareos.png' %}"
-                                     style="margin-top: 2%;"
-                                     width="50"
-                                     height="50">
-                            </div>
-                            <div class="col-md-8" id ="titulo"name="titulo">
-                                <h3 class="text-black mt-3">Ventas</h3>
-                            </div>
 
-                        </div>
-                        <br>
-                        <div class=row>
-                            <div class="card mb-3" style="max-width: 540px;">
-                                <div class="row g-0">
-                                    <div class="col-md-4">
-                                    <img src="https://www.eluniverso.com/resizer/XDCSRrWf-mQVhi9fw2igV2hzPg8=/1005x670/smart/filters:quality(70)/cloudfront-us-east-1.images.arcpublishing.com/eluniverso/6O3SHHDC55GTHHHGY4HAWTVD5A.jpg" class="img-fluid rounded-start" alt="...">
-                                    </div>
-                                    <div class="col-md-8">
-                                    <div class="card-body">
-                                        <h5 class="card-title">Pedido nro 1</h5>
-                                        <p class="card-text">Esto lo recorrera un for para los pedidos</p>
-                                        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                                    </div>
-                                    </div>
-                                </div>
-                                </div>
-                                <br>
-                                <div class="card mb-3 mx-3" style="max-width: 540px;">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ma're'os Web</title>
+    {% load static %}
+    <!-- cargamos css bootstrap 5.1.3 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <!-- cargamos style.css -->
+    <link rel="stylesheet" href="{% static 'core/css/style-venta.css' %}" type="text/css">
+    <!-- font awesome -->
+    <script src="https://kit.fontawesome.com/84cef5c1c7.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div class="wrapper">
+        <!-- Sidebar  -->
+        <nav id="sidebar">
+            <div class="sidebar-header">
+                <h3>Men�</h3>
+            </div>
+            <ul class="list-unstyled components">
+                <p>
+                    Inicia sesi�n y podras hacer tu pedido :
+                </p>
+                <li class="active">
+                    <a href="{% url 'login' %}" name="btnInicioSesion" id="btnInicioSesion"
+                        aria-expanded="false">Iniciar Sesion</a>
+                    <a href="{% url 'registro' %}" name="btnRegistrate" id="btnRegistrate" aria-expanded="false">o
+                        registrate aqui</a>
+                </li>
+        </nav>
+        <!-- Contenido  -->
+        <div id="content">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-1">
+                        <button type="button" id="sidebarCollapse">
+                            <span class="navbar-toggler-icon"><i class="fa fa-bars"></i></span>
+                        </button>
+                    </div>
+                    <div class="col-md-1">
+                        <img src="{% static 'core/img/Mareos.png' %}" style="margin-top: 2%;" width="50" height="50">
+                    </div>
+                    <div class="col-md-8" id="titulo" name="titulo">
+                        <h3 class="text-black mt-3">Ventas</h3>
+                    </div>
+
+                </div>
+                <br>
+                <div class=row>
+                    {% for x in listaVentas %}
+                    <div class="card mb-3" style="max-width: 540px;">
                         <div class="row g-0">
                             <div class="col-md-4">
-                            <img src="data:image/jpeg;base64,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" class="img-fluid rounded-start" alt="...">
+                                <img src="https://www.eluniverso.com/resizer/XDCSRrWf-mQVhi9fw2igV2hzPg8=/1005x670/smart/filters:quality(70)/cloudfront-us-east-1.images.arcpublishing.com/eluniverso/6O3SHHDC55GTHHHGY4HAWTVD5A.jpg"
+                                    class="img-fluid rounded-start" alt="...">
                             </div>
                             <div class="col-md-8">
+<<<<<<< HEAD
                             <div class="card-body">
                                 <h5 class="card-title">Pedido nro 2</h5>
                                 <p class="card-text"> {{nombre}} </p>
                                 <p class="card-text"><small class="text-muted">detalles</small></p>
+=======
+                                <div class="card-body">
+                                    <h5 class="card-title">Pedido Nro {{x.id}}</h5>
+                                    <p class="card-text">Subtotal: ${{x.subtotal}}</p>
+                                    <p class="card-text">Total: ${{x.total}}</p>
+                                    <p class="card-text">Cliente: {{x.cliente_id.p_nombre}} {{x.cliente_id.a_paterno}}</p>
+                                    <p class="card-text">Vendedor: {{x.vendedor_id.p_nombre}} {{x.cliente_id.a_paterno}}</p>
+                                    <p class="card-text">Productos: {{x.carrito_id.lista_prod}}</p>
+                                    <p class="card-text">Pedido: {{x.pedido}}</p>
+
+                                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                                </div>
+>>>>>>> 26358f49bbf1c74759a38c8056358d1d2def04ab
                             </div>
-                            </div>
-                        </div>
-                        </div>
                         </div>
                     </div>
+                    {% endfor %}
                 </div>
             </div>
-            <!-- Pie de pagina  -->
-            <footer>
-                <div class="footer-copyright text-center py-3 ">
-                    � 2022 Copyright:
-                    <a href="#">www.Ma're'os.com</a>
-                    <p>
-                        Correo: mareosweb@mareos.com
-                    </p>
-                    <div class="dropdown-divider"></div>
-                    <p>
-                        Telefono: 226977279
-                    </p>
-                </div>
-            </footer>
-            <script src="https://code.jquery.com/jquery-3.6.0.js"
-                    integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
-                    crossorigin="anonymous"></script>
-            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-                    integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
-                    crossorigin="anonymous"></script>
-            <script src="{% static 'core/js/ventas.js' %}"></script>
-        </body>
-    </html>
+        </div>
+    </div>
+    <!-- Pie de pagina  -->
+    <footer>
+        <div class="footer-copyright text-center py-3 ">
+            � 2022 Copyright:
+            <a href="#">www.Ma're'os.com</a>
+            <p>
+                Correo: mareosweb@mareos.com
+            </p>
+            <div class="dropdown-divider"></div>
+            <p>
+                Telefono: 226977279
+            </p>
+        </div>
+    </footer>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"
+        integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
+    <script src="{% static 'core/js/ventas.js' %}"></script>
+</body>
+
+</html>

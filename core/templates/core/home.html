@@ -48,7 +48,7 @@
                         </button>
                     </div>
                     <div class="col-md-1">
-                        <img src="{% static 'core/img/Mareos.png' %}" style="margin-top: 2%;" width="50" height="50">
+                        <img src="{% static 'core/img/Mareos.png' %}" href="{% url 'home' %}" style="margin-top: 2%;" width="50" height="50">
                     </div>
                     <div class="col-md-10" id="titulo" name="titulo">
                         <h3 class="text-black mt-3">Home</h3>
@@ -105,7 +105,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-xs-12 col-sm-6  col-md-4    col-lg-3 px-4 py-5">
-                <div class="card shadow" id="tarjetas1">
+                <div class="card shadow" style="width: 90%; margin-left: 30%;" id="tarjetas1">
                     <div>
                         <img class="d-block w-100" src="{% static 'core/img/churrasco.jpg' %}" width="200" height="200"
                             alt="Card image cap">
@@ -114,13 +114,13 @@
                         <h5 class="card-title">Sandwiches</h5>
                         <p class="card-text">Todo tipo de Sandwiches, hamburguesa, churrascos y especiales de la
                             casa.</p>
-                        <a href="{% url 'catalogo' %}" class="btn btn-primary">Ver</a>
+                        <button href="{% url 'catalogo' %}" class="btn btn-primary" id="btnVerSandwich">Ver</button>
                     </div>
                 </div>
             </div>
 
             <div class="col-xs-12 col-sm-6  col-md-4    col-lg-3 px-4 py-5">
-                <div class="card shadow" id="tarjetas2">
+                <div class="card shadow" style="width: 90%; margin-left: 20%;" id="tarjetas2">
                     <div>
                         <img class="d-block w-100" src="{% static 'core/img/papasfritas.jpg' %}" width="200"
                             height="200" alt="Card image cap">
@@ -135,7 +135,7 @@
             </div>
 
             <div class="col-xs-12 col-sm-6  col-md-4    col-lg-3 px-4 py-5">
-                <div class="card shadow" id="tarjetas3">
+                <div class="card shadow" style="width: 90%; margin-left: 10%;" id="tarjetas3">
                     <div>
                         <img class="d-block w-100" src="{% static 'core/img/italiano.jpg' %}" width="200" height="200"
                             alt="Card image cap">
@@ -150,7 +150,7 @@
             </div>
 
             <div class="col-xs-12 col-sm-6  col-md-4    col-lg-3 px-4 py-5">
-                <div class="card shadow" id="tarjetas4">
+                <div class="card shadow" style="width: 90%; margin-left: 0%;" id="tarjetas4">
                     <div>
                         <img class="d-block w-100" src="{% static 'core/img/salsas.jpg' %}" width="200" height="200"
                             alt="Card image cap">

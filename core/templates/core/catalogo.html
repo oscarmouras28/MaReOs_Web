@@ -29,8 +29,10 @@
             <ul class="list-unstyled components">
                 <p>Inicia sesión y podras hacer tu pedido :)</p>
                 <li class="active">
-                    <a href="{% url 'login' %}" name="btnInicioSesion" id="btnInicioSesion" aria-expanded="false">Iniciar Sesion</a>
-                    <a href="{% url 'registro' %}" name="btnRegistrate" id="btnRegistrate" aria-expanded="false">o registrate aqui</a>
+                    <a href="{% url 'login' %}" name="btnInicioSesion" id="btnInicioSesion"
+                        aria-expanded="false">Iniciar Sesion</a>
+                    <a href="{% url 'registro' %}" name="btnRegistrate" id="btnRegistrate" aria-expanded="false">o
+                        registrate aqui</a>
                 </li>
         </nav>
 
@@ -40,24 +42,165 @@
                 <div class="row">
                     <div class="col-md-1">
                         <button type="button" id="sidebarCollapse">
-                            
+
                             <span class="navbar-toggler-icon"><i class="fa fa-bars"></i></span>
                         </button>
                     </div>
                     <div class="col-md-1">
-                        <img src="{% static 'core/img/Mareos.png' %}" style="margin-top: 2%;"width="50" height="50">
+                        <img src="{% static 'core/img/Mareos.png' %}" style="margin-top: 2%;" width="50" height="50">
                     </div>
-                    <div class="col-md-8" id ="titulo"name="titulo"><h3 class="text-black mt-3">Catalogo</h3></div>
+                    <div class="col-md-8" id="titulo" name="titulo">
+                        <h3 class="text-black mt-3">Catalogo</h3>
+                    </div>
+                </div>
+                <div class="accordion accordion-flush mt-3" id="accordionFlushExample">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="flush-headingOne">
+                            <button class="accordion-button collapsed btn-warning" type="button"
+                                data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false"
+                                aria-controls="flush-collapseOne">
+                                Sandwiches
+                            </button>
+                        </h2>
+                        <div id="flush-collapseOne" class="accordion-collapse collapse"
+                            aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+                            <div class="row">
+                                {% for x in lista %}
+                                <div class="col-xs-3 col-sm-3  col-md-3    col-lg-3 px-4 py-5">
+                                    <div class="card shadow" id="tarjetas1">
+                                        <div>
+                                            <img class="d-block w-100" src="{% static 'core/img/churrasco.jpg' %}"
+                                                width="200" height="200" alt="Card image cap">
+                                        </div>
+                                        <div class="card-body">
+                                            <h5 class="card-title">{{x.nombre}}</h5>
+                                            <br>
+                                            <h3 class="card-title">${{x.precio}}</h3>
+                                            <p class="card-text">Uno de los mejores recomendado por el famoso futbolista
+                                                Ben
+                                                Brereton</p>
+                                            <a href="{% url 'catalogo' %}" class="btn btn-primary">Añadir al Carrito</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="flush-headingTwo">
+                            <button class="accordion-button collapsed btn-warning" type="button"
+                                data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false"
+                                aria-controls="flush-collapseTwo">
+                                Para Picar
+                            </button>
+                        </h2>
+                        <div id="flush-collapseTwo" class="accordion-collapse collapse"
+                            aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
+                            <div class="row">
+                                {% for x in lista %}
+                                <div class="col-xs-3 col-sm-3  col-md-3    col-lg-3 px-4 py-5">
+                                    <div class="card shadow" id="tarjetas1">
+                                        <div>
+                                            <img class="d-block w-100" src="{% static 'core/img/churrasco.jpg' %}"
+                                                width="200" height="200" alt="Card image cap">
+                                        </div>
+                                        <div class="card-body">
+                                            <h5 class="card-title">{{x.nombre}}</h5>
+                                            <br>
+                                            <h3 class="card-title">${{x.precio}}</h3>
+                                            <p class="card-text">Uno de los mejores recomendado por el famoso futbolista
+                                                Ben
+                                                Brereton</p>
+                                            <a href="{% url 'catalogo' %}" class="btn btn-primary">Añadir al Carrito</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="flush-headingThree">
+                            <button class="accordion-button collapsed btn-warning" type="button"
+                                data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false"
+                                aria-controls="flush-collapseThree">
+                                Completos y As
+                            </button>
+                        </h2>
+                        <div id="flush-collapseThree" class="accordion-collapse collapse"
+                            aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
+                            <div class="row">
+                                {% for x in lista %}
+                                <div class="col-xs-3 col-sm-3  col-md-3    col-lg-3 px-4 py-5">
+                                    <div class="card shadow" id="tarjetas1">
+                                        <div>
+                                            <img class="d-block w-100" src="{% static 'core/img/churrasco.jpg' %}"
+                                                width="200" height="200" alt="Card image cap">
+                                        </div>
+                                        <div class="card-body">
+                                            <h5 class="card-title">{{x.nombre}}</h5>
+                                            <br>
+                                            <h3 class="card-title">${{x.precio}}</h3>
+                                            <p class="card-text">Uno de los mejores recomendado por el famoso futbolista
+                                                Ben
+                                                Brereton</p>
+                                            <a href="{% url 'catalogo' %}" class="btn btn-primary">Añadir al Carrito</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="flush-headingOne">
+                            <button class="accordion-button collapsed btn-warning" type="button"
+                                data-bs-toggle="collapse" data-bs-target="#flush-collapseFour" aria-expanded="false"
+                                aria-controls="flush-collapseFour">
+                                Agregados
+                            </button>
+                        </h2>
+
+                        <div id="flush-collapseFour" class="accordion-collapse collapse"
+                            aria-labelledby="flush-headingFour" data-bs-parent="#accordionFlushExample">
+                            <div class="row">
+                                
+                                {% for x in lista %}
+                                <div class="col-xs-3 col-sm-3  col-md-3    col-lg-3 px-4 py-5">
+                                    <div class="card shadow" id="tarjetas1">
+                                        <div>
+                                            <img class="d-block w-100" src="{% static 'core/img/churrasco.jpg' %}"
+                                                width="200" height="200" alt="Card image cap">
+                                        </div>
+                                        <div class="card-body">
+                                            <h5 class="card-title">{{x.nombre}}</h5>
+                                            <br>
+                                            <h3 class="card-title">${{x.precio}}</h3>
+                                            <p class="card-text">Uno de los mejores recomendado por el famoso futbolista
+                                                Ben
+                                                Brereton</p>
+                                            <a href="{% url 'catalogo' %}" class="btn btn-primary">Añadir al Carrito</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
         </div>
+
     </div>
+
 
 
     <!-- Pie de pagina  -->
     <footer>
-        <div class="footer-copyright text-center py-3 ">© 2022 Copyright:
+        <div class="footer-copyright text-center py-3 ">
+            © 2022 Copyright:
             <a href="#"> www.Ma're'os.com</a>
             <p>Correo: mareosweb@mareos.com</p>
             <div class="dropdown-divider"></div>
