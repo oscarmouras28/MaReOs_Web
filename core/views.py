@@ -81,3 +81,16 @@ def ver_productos(request):
             "listaCompleto": listado_completo,
             "listaAgregados": listado_agregados}
     return render(request, 'core/ver_productos.html', data)
+
+def eliminar (request,id):
+    paquete = Producto.objects.get(id = id)
+
+    try:
+        paquete.delete()
+        mensaje = "eliminado"
+        messages.success(request, mensaje)
+    except:
+        mensaje = "no se pudo eliminar"
+        messages.Error(request, mensaje)
+
+    return redirect('listado')

@@ -76,7 +76,8 @@
                                 <td>{{x.num_contac}}</td>
                                 <td>{{x.rut}}</td>
                                 <td><button class="btn btn-warning"><i class="fa fa-pen"></i></i></button></td>
-                                <td><button class="btn btn-danger"><i class="fa-regular fa-trash-can"></i></button></td>
+                                <td><button class="btn btn-danger" href="#" onclick="eliminar({{x.id}})"><i class="fa-regular fa-trash-can"></i></button></td>
+
                             </tr>
                             {% endfor %}
                         </tbody>
