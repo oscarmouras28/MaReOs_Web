@@ -61,15 +61,22 @@
                     <div class="col-md-6">
                         <div class="col-md-12">
                             <label for="radioMedioPago" class="col-md-12">Selecciona tu medio de pago</label>
-                            <div class="btn-group col-md-12 pt-2" role="group"-aria-label="Basic radio toggle button group">
-                                <input type="radio" class="btn-check" name="radioMedioPago" id="radioEfectivo" autocomplete="off">
-                                <label class="btn btn-outline-warning" style="color: black;" for="radioEfectivo"><i class="fa-solid fa-money-bill-wave"></i> Efectivo</label>
+                            <div class="btn-group col-md-12 pt-2" role="group"
+                                -aria-label="Basic radio toggle button group">
+                                <input type="radio" class="btn-check" name="radioMedioPago" id="radioEfectivo"
+                                    autocomplete="off">
+                                <label class="btn btn-outline-warning" style="color: black;" for="radioEfectivo"><i
+                                        class="fa-solid fa-money-bill-wave"></i> Efectivo</label>
 
-                                <input type="radio" class="btn-check" name="radioMedioPago" id="radioDebito" autocomplete="off">
-                                <label class="btn btn-outline-warning" style="color: black;" for="radioDebito"><i class="fa-solid fa-credit-card"></i> Debito</label>
+                                <input type="radio" class="btn-check" name="radioMedioPago" id="radioDebito"
+                                    autocomplete="off">
+                                <label class="btn btn-outline-warning" style="color: black;" for="radioDebito"><i
+                                        class="fa-solid fa-credit-card"></i> Debito</label>
 
-                                <input type="radio" class="btn-check" name="radioMedioPago" id="radioCredito" autocomplete="off">
-                                <label class="btn btn-outline-warning"  style="color: black;"for="radioCredito"><i class="fa-brands fa-cc-mastercard"></i> Credito</label>
+                                <input type="radio" class="btn-check" name="radioMedioPago" id="radioCredito"
+                                    autocomplete="off">
+                                <label class="btn btn-outline-warning" style="color: black;" for="radioCredito"><i
+                                        class="fa-brands fa-cc-mastercard"></i> Credito</label>
                             </div>
                         </div>
 
@@ -78,17 +85,39 @@
                     <div class="col-md-6">
                         <div class="col-md-12">
                             <label for="medioEntrega" class="col-md-12">Selecciona medio de entrega</label>
-                            <div class="btn-group col-md-12 pt-2" role="group"aria-label="Basic radio toggle button group">
+                            <div class="btn-group col-md-12 pt-2" role="group"
+                                aria-label="Basic radio toggle button group">
                                 <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off">
-                                <label class="btn btn-outline-warning" style="color: black;" for="btnradio1"><i class="fa-solid fa-motorcycle"></i> Delivery</label>
+                                <label class="btn btn-outline-warning" style="color: black;" for="btnradio1"><i
+                                        class="fa-solid fa-motorcycle"></i> Delivery</label>
 
                                 <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off">
-                                <label class="btn btn-outline-warning" style="color: black;" for="btnradio2"><i class="fa-solid fa-shop"></i> Retiro en Local</label>
+                                <label class="btn btn-outline-warning" style="color: black;" for="btnradio2"><i
+                                        class="fa-solid fa-shop"></i> Retiro en Local</label>
+                            </div>
+                        </div>
+                        <br>
+                        <p>
+                            <a class="btn btn-warning" data-bs-toggle="collapse" href="#collapseExample" role="button"
+                                aria-expanded="false" aria-controls="collapseExample">
+                                Mis Datos de Delivery Guardados
+                            </a>
+                        </p>
+                        <div class="collapse" id="collapseExample">
+                            <div class="card card-body">
+                                {% for x in listaMediosPagos %}
+
+                                {% endfor %}
                             </div>
                         </div>
 
+
+
+
+
                         <button type="button" id="btnPedir" class="btn btn-warning mt-3">Pedir</button>
-                        <button type="button" id="btnCancelar" class="btn btn-danger mt-3" style="margin-left:2% ;">Cancelar</button>
+                        <button type="button" id="btnCancelar" class="btn btn-danger mt-3"
+                            style="margin-left:2% ;">Cancelar</button>
                     </div>
                 </div>
             </div>

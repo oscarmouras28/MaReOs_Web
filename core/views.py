@@ -1,4 +1,5 @@
-from django.shortcuts import render
+from django.core.checks import messages
+from django.shortcuts import render, redirect
 from .models import Producto, Venta, Vendedor, Cliente, Delivery, Medio_pago
 
 
@@ -49,8 +50,8 @@ def ventas(request):
     delivery = Delivery.objects.all()
     medioPago = Medio_pago.objects.all()
     data = {"listaVentas": listado_ventas,
-            "delivery" : delivery,
-            "medioPago" : medioPago}
+            "delivery": delivery,
+            "medioPago": medioPago}
     return render(request, 'core/ventas.html', data)
 
 
@@ -82,15 +83,76 @@ def ver_productos(request):
             "listaAgregados": listado_agregados}
     return render(request, 'core/ver_productos.html', data)
 
-def eliminar (request,id):
-    paquete = Producto.objects.get(id = id)
+
+def ver_pagos(request):
+    listaPagos = Medio_pago.objects.all()
+    data = {"listaMediosPagos": listaPagos}
+    return render(request, 'core/ver_tipos_pago.html', data)
+
+def eliminarCli(request, id):
+    cliente = Cliente.objects.get(id=id)
 
     try:
-        paquete.delete()
-        mensaje = "eliminado"
+        cliente.delete()
+        mensaje = "Cliente eliminado"
         messages.success(request, mensaje)
     except:
-        mensaje = "no se pudo eliminar"
+        mensaje = "No se pudo eliminar al Cliente"
         messages.Error(request, mensaje)
 
-    return redirect('listado')
+    return redirect('ver_clientes')
+
+
+def eliminarVen(request, id):
+    vendedor = Vendedor.objects.get(id=id)
+
+    try:
+        vendedor.delete()
+        mensaje = "Vendedor eliminado"
+        messages.success(request, mensaje)
+    except:
+        mensaje = "No se pudo eliminar al Vendedor"
+        messages.Error(request, mensaje)
+
+    return redirect('ver_vendedores')
+
+
+def eliminarProd(request, id):
+    producto = Producto.objects.get(id=id)
+
+    try:
+        producto.delete()
+        mensaje = "Producto eliminado"
+        messages.success(request, mensaje)
+    except:
+        mensaje = "No se pudo eliminar el Producto"
+        messages.Error(request, mensaje)
+
+    return redirect('ver_productos')
+
+
+def eliminarVenta(request, id):
+    venta = Venta.objects.get(id=id)
+
+    try:
+        venta.delete()
+        mensaje = "Venta eliminada"
+        messages.success(request, mensaje)
+    except:
+        mensaje = "No se pudo eliminar la Venta"
+        messages.Error(request, mensaje)
+
+    return redirect('ventas')
+
+def eliminarMedioPago(request, id):
+    medioPago = Medio_pago.objects.get(id=id)
+
+    try:
+        medioPago.delete()
+        mensaje = "Medio de Pago eliminado"
+        messages.success(request, mensaje)
+    except:
+        mensaje = "No se pudo eliminar medio de pago"
+        messages.Error(request, mensaje)
+
+    return redirect('ver_medios_pago')

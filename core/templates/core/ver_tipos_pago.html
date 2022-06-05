@@ -52,7 +52,7 @@
                         <img src="{% static 'core/img/Mareos.png' %}" style="margin-top: 2%;" width="50" height="50">
                     </div>
                     <div class="col-md-8" id="titulo" name="titulo">
-                        <h3 class="text-black mt-3">Ver Clientes</h3>
+                        <h3 class="text-black mt-3">Lista Medios de pago</h3>
                     </div>
                 </div>
                 <div class="row">
@@ -60,33 +60,26 @@
                         <thead>
                             <tr>
                                 <th scope="col">Id</th>
-                                <th scope="col">Nombre</th>
-                                <th scope="col">Apellido</th>
-                                <th scope="col">Telefono</th>
-                                <th scope="col">Rut</th>
+                                <th scope="col">Tipo de Pago</th>
                                 <th scope="col">Editar</th>
                                 <th scope="col">Eliminar</th>
                             </tr>
                         <tbody>
-                            {% for x in listaClientes %}
+                            {% for x in listaMediosPagos %}
                             <tr>
                                 <th scope="row"> {{x.id}}</th>
-                                <td>{{x.p_nombre}}</td>
-                                <td>{{x.a_paterno}}</td>
-                                <td>{{x.num_contac}}</td>
-                                <td>{{x.rut}}</td>
+                                <td>{{x.tipo_pago}}</td>
                                 <td><a class="btn btn-warning" style="margin-left:4px;"><i class="fa fa-pen"></i></i></a></td>
-                                <td><a class="btn btn-danger" style="margin-left:13px;" href="{% url 'eliminarCli' x.id %}"><i class="fa-regular fa-trash-can"></i></a></td>
-
+                                <td><a class="btn btn-danger" style="margin-left:13px;" href="{% url 'eliminarMedioPago' x.id %}"><i class="fa-regular fa-trash-can"></i></a></td>                             
                             </tr>
                             {% endfor %}
                         </tbody>
                         </thead>
                     </table>
+                    <button class="btn btn-success">Añadir Nuevo</button>
                 </div>
             </div>
 
-            <button class="btn btn-success">Añadir Nuevo</button>
 
         </div>
     </div>
