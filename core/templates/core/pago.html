@@ -104,19 +104,56 @@
                             </a>
                         </p>
                         <div class="collapse" id="collapseExample">
-                            <div class="card card-body">
-                                {% for x in listaMediosPagos %}
+                            <div class="">
+                                {% for x in listaDelivery %}
+                                <div class="col-md-6">
+                                    <div class="card" style="border-radius: 20px;">
+                                        <div class="m-3">
+                                            <p>Direccion: {{x.direccion}}</p>
+                                            <p>Telefono Delivery: {{x.telefono}}</p>
+                                            <p>Valor: ${{x.valor}}</p>
+                                            <p>Cliente: {{x.cliente_id.p_nombre}} {{x.cliente_id.a_paterno}}</p>
+                                            <a class="btn btn-warning m-1" style="display: inline;" id="" name=""><i
+                                                    class="fa fa-pen"></i></i></a>
+                                            <a class="btn btn-danger m-1" href="{% url 'eliminarMiDelivery' x.id %}"><i
+                                                    class="fa-regular fa-trash-can"></i></a>
+                                            <a class="btn btn-success md-1 m-1" href="#">Pedir</a>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
 
                                 {% endfor %}
                             </div>
                         </div>
 
-
-
-
-
-                        <button type="button" id="btnPedir" class="btn btn-warning mt-3">Pedir</button>
-                        <button type="button" id="btnCancelar" class="btn btn-danger mt-3"
+                        <p>
+                            <a class="btn btn-success" data-bs-toggle="collapse" href="#collapseExample" role="button"
+                                aria-expanded="false" aria-controls="collapseExample">
+                            Agregar Nuevo Delivery                               
+                            </a>
+                        </p>
+                        <div class="collapse" id="collapseExample">
+                            <div class="">
+                                <div class="col-md-6">
+                                    <div class="card" style="border-radius: 20px;">
+                                        <div class="m-3">
+                                            <label for="direccionDelivery">Direccion Delivery:</label>
+                                            <input type="text" name="direccionDelivery" id="direccionDelivery">
+                                            <label for="telefonoDelivery">Telefono Delivery:</label>
+                                            <input type="number" name="telefonoDelivery" id="telefonoDelivery">
+                                            <label for="valorDelivery">Valor: </label>
+                                            <input type="numeric" name="valorDelivery" id="valorDelivery" readonly>
+                                            <a class="btn btn-success md-1 m-1" href="#" id="btnAgregarDelivery"
+                                                name="btnAgregarDelivery">Pedir</a>
+                                        </div>
+                                    </div>
+                                </div>                              
+                            </div>
+                        </div>
+                        <button type="button" id="btnCancelar" class="btn btn-danger m-3"
                             style="margin-left:2% ;">Cancelar</button>
                     </div>
                 </div>

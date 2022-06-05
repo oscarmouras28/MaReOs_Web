@@ -34,7 +34,9 @@ def login(request):
 
 
 def pago(request):
-    return render(request, 'core/pago.html')
+    delivery = Delivery.objects.all()
+    data = {"listaDelivery" : delivery}
+    return render(request, 'core/pago.html', data)
 
 
 def recuperar_contrasena(request):
@@ -156,3 +158,16 @@ def eliminarMedioPago(request, id):
         messages.Error(request, mensaje)
 
     return redirect('ver_medios_pago')
+
+def eliminarMiDelivery(request, id):
+    miDelivery = Delivery.objects.get(id=id)
+
+    try:
+        miDelivery.delete()
+        mensaje = "Delivery eliminado"
+        messages.success(request, mensaje)
+    except:
+        mensaje = "No se pudo eliminar Delivery"
+        messages.Error(request, mensaje)
+
+    return redirect('pago')
