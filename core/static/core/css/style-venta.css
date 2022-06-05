@@ -14,7 +14,9 @@ p {
     color: rgb(32, 32, 32);
 }
 
-#sidebarCollapse{
+
+
+#sidebarCollapse {
     background-color: #F4DE52;
     color: #000000;
 }
@@ -30,18 +32,18 @@ p {
 }
 
 
-#titulo{
+#titulo {
     background: #F4DE52;
     width: 83%;
     text-align: center;
     transition: all 0.3s;
 }
-#titulo.corrido{
-    background: #F4DE52;
-    width: 75%;
-    text-align: center;
-    
-}
+
+    #titulo.corrido {
+        background: #F4DE52;
+        width: 75%;
+        text-align: center;
+    }
 
 #sidebar {
     min-width: 250px;
@@ -52,9 +54,10 @@ p {
     transition: all 0.3s;
 }
 
-#sidebar.active {
-    margin-left: 0px;
-}
+    #sidebar.active {
+        margin-left: 0px;
+    }
+
 #carrusel {
     margin-top: 2%;
     width: 100%;
@@ -63,10 +66,10 @@ p {
 }
 
 
-#carrusel.activo {
-    width: 100%;
-    margin-left: 0%;
-}
+    #carrusel.activo {
+        width: 100%;
+        margin-left: 0%;
+    }
 
 #sidebar .sidebar-header {
     padding: 20px;
@@ -83,7 +86,7 @@ p {
     padding: 10px;
 }
 
-#btnCompra{
+#btnCompra {
     background: black;
     color: #eed42f;
 }
@@ -138,9 +141,11 @@ p {
     #sidebar {
         margin-left: -350px;
     }
-    #sidebar.active {
-        margin-left: 0;
-    }
+
+        #sidebar.active {
+            margin-left: 0;
+        }
+
     #sidebarCollapse span {
         display: none;
     }

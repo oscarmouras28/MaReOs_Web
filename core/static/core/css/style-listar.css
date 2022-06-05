@@ -19,6 +19,9 @@ p {
     color: #000000;
 }
 
+td {
+    text-transform: capitalize;
+}
 /* ---------------------------------------------------
     SIDEBAR ESTILO
 ----------------------------------------------------- */
@@ -37,15 +40,11 @@ p {
     transition: all 0.3s;
 }
 
-#contenido {
-    text-align: center;
-}
-
-#titulo.corrido {
-    background: #F4DE52;
-    width: 75%;
-    text-align: center;
-}
+    #titulo.corrido {
+        background: #F4DE52;
+        width: 75%;
+        text-align: center;
+    }
 
 #sidebar {
     min-width: 250px;
@@ -133,12 +132,6 @@ p {
     padding: 20px;
     min-height: 100vh;
     transition: all 0.3s;
-}
-
-#centrard {
-    width: 200px;
-    height: 200px;
-    margin: 0% auto;
 }
 
 /* ---------------------------------------------------
