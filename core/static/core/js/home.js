@@ -21,7 +21,6 @@ function activarMenu() {
 function verSandwiches(){
     $('#btnVerSandwich').on('click', function () {
         $('#flush-collapseOne').click();
-        alert("holaaaaaa");
         console.log("aaaaa");
     
 });

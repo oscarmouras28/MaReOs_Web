@@ -60,6 +60,8 @@ def ventas(request):
 def carrito(request):
     return render(request, 'core/carrito.html')
 
+def agregar_vendedor(request):
+    return render(request, 'core/agregar_vendedor.html')
 
 def ver_vendedores(request):
     listado_Vendedores = Vendedor.objects.all()
