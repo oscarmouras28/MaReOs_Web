@@ -12,9 +12,6 @@ def catalogo(request):
     data = {"lista" : listado_prod}
     return render (request,'core/catalogo.html',data)
 
-def login(request):
-    return render (request,'core/login.html')
-
 def pago(request):
     return render (request,'core/pago.html')
 

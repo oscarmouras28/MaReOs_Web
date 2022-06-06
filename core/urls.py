@@ -1,12 +1,11 @@
 from django.urls import path
-from .views import home,boleta,catalogo,login,pago,recuperar_contrasena,registro,ventas,carrito
+from .views import home,boleta,catalogo,pago,recuperar_contrasena,registro,ventas,carrito
 
 urlpatterns = [
     path('', home),
     path('home/', home, name= "home"),
     path('boleta/', boleta, name= "boleta"),
     path('catalogo/', catalogo, name= "catalogo"),
-    path('login/', login, name= "login"),
     path('pago/', pago, name= "pago"),
     path('recuperar/', recuperar_contrasena, name= "recuperar"),
     path('registro/', registro, name="registro"),
