@@ -65,6 +65,7 @@ function habilitarDelivery(){
             $('#contenidoDelivery').css("display", "inline");
         } else {
             $('#contenidoDelivery').css("display", "none");
+            $('#btnPedir').css("display", "inline");
         }
       });
 }
