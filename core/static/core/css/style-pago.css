@@ -29,6 +29,10 @@ p {
     align-items: stretch;
 }
 
+#map {
+    height: 300px;
+    width: 95%;
+}
 
 #titulo{
     background: #F4DE52;

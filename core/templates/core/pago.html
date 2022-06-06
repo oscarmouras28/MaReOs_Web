@@ -130,32 +130,49 @@
                         </div>
 
                         <p>
-                            <a class="btn btn-success" data-bs-toggle="collapse" href="#collapseExample" role="button"
-                                aria-expanded="false" aria-controls="collapseExample">
-                            Agregar Nuevo Delivery                               
+                            <a class="btn btn-success" data-bs-toggle="collapse" href="#agregarDelivery" role="button"
+                                aria-expanded="false" aria-controls="agregarDelivery">
+                                Agregar Nuevo Delivery
                             </a>
                         </p>
-                        <div class="collapse" id="collapseExample">
+                        <div class="collapse" id="agregarDelivery">
                             <div class="">
-                                <div class="col-md-6">
+                                <div class="col-md-12">
                                     <div class="card" style="border-radius: 20px;">
-                                        <div class="m-3">
-                                            <label for="direccionDelivery">Direccion Delivery:</label>
-                                            <input type="text" name="direccionDelivery" id="direccionDelivery">
-                                            <label for="telefonoDelivery">Telefono Delivery:</label>
-                                            <input type="number" name="telefonoDelivery" id="telefonoDelivery">
-                                            <label for="valorDelivery">Valor: </label>
-                                            <input type="numeric" name="valorDelivery" id="valorDelivery" readonly>
-                                            <a class="btn btn-success md-1 m-1" href="#" id="btnAgregarDelivery"
-                                                name="btnAgregarDelivery">Pedir</a>
+                                        <div class="m-12">
+                                            <div class="col m-2">
+                                                <label for="direccionDelivery">Dirección:</label>
+                                                <div style="display:none;"><p id="coordenadas"></p></div>
+                                                <input type="text" style="width: 95%" name="direccionDelivery" id="direccionDelivery">
+                                                <button class="btn btn-warning m-2" id="buscarDireccion" name="buscarDirecicon">Buscar</button>
+                                                <button class="btn btn-success m-2" style="display:none;" id="confirmarDireccion" name="confirmarDirecicon">Confirmar Dirección</button>
+                                            </div>
+                                            <div class="col mt-2">
+                                                <div id="map" style="display: none;" class="m-1"></div>
+                                                
+                                            </div>
+                                            <div class="col m-2">
+                                                <label for="telefonoDelivery">Telefono:</label>
+                                                <input type="number" name="telefonoDelivery" id="telefonoDelivery">
+                                            </div>
+                                            <div class="col m-2">
+                                                <label for="valorDelivery">Valor:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </label>
+                                                <input type="number" name="valorDelivery" id="valorDelivery" readonly>
+                                            </div>
+                                            <div class="col m-2">
+                                                <a class="btn btn-success md-1 ml-1 mt-2" href="#" id="btnAgregarDelivery"
+                                                name="btnAgregarDelivery">Agregar Delivery</a>   
+                                            </div>
+                                            
                                         </div>
                                     </div>
-                                </div>                              
+                                </div>
                             </div>
                         </div>
                         <button type="button" id="btnCancelar" class="btn btn-danger m-3"
                             style="margin-left:2% ;">Cancelar</button>
                     </div>
+
                 </div>
             </div>
 
@@ -181,6 +198,8 @@
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
         crossorigin="anonymous"></script>
 
+    <script
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBpmFm34mI8fRZz1wp2hrViuE9NFpodrzs&callback=iniciarMap"></script>
     <script src="{% static 'core/js/pago.js' %}"></script>
 </body>
 
