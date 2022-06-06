@@ -23,18 +23,34 @@
         <!-- Sidebar  -->
         <nav id="sidebar">
             <div class="sidebar-header">
-                <h3>Men�</h3>
+                <h3>Menú</h3>
             </div>
 
             <ul class="list-unstyled components">
-                <p>Inicia sesi�n y podras hacer tu pedido :)</p>
+                <p>Inicia sesión y podras hacer tu pedido :)</p>
                 <li class="active">
-                    <a href="{% url 'login' %}" name="btnInicioSesion" id="btnInicioSesion"
-                       aria-expanded="false">Iniciar Sesion</a>
+                    <a href="http://127.0.0.1:8000/login/" name="btnInicioSesion" id="btnInicioSesion"
+                        aria-expanded="false">Iniciar Sesion</a>
+                    <a href="{% url 'registro' %}" name="btnRegistrate" id="btnRegistrate" aria-expanded="false">o
+                        registrate aqui</a>
                     <a href="{% url 'registro' %}" name="btnRegistrate" id="btnRegistrate" aria-expanded="false">
-                        o
-                        registrate aqui
-                    </a>
+                        Cerrar Sesión</a>
+                    <hr class="mt-2 mb-3" />
+                    <a href="{% url 'catalogo' %}" name="btnRegistrate" id="btnRegistrate" aria-expanded="false">
+                        Catalogo</a>
+                    <a href="{% url 'carrito' %}" name="btnRegistrate" id="btnRegistrate" aria-expanded="false">
+                        Carrito</a>
+                    <a href="{% url 'ventas' %}" name="btnRegistrate" id="btnRegistrate" aria-expanded="false">
+                        Lista Ventas</a>
+                    <a href="{% url 'ver_vendedores' %}" name="btnRegistrate" id="btnRegistrate" aria-expanded="false">
+                        Lista Vendedores</a>
+                    <a href="{% url 'ver_clientes' %}" name="btnRegistrate" id="btnRegistrate" aria-expanded="false">
+                        Lista Clientes</a>
+                    <a href="{% url 'ver_productos' %}" name="btnRegistrate" id="btnRegistrate" aria-expanded="false">
+                        Lista Productos</a>
+                    <a href="{% url 'ver_medios_pago' %}" name="btnRegistrate" id="btnRegistrate" aria-expanded="false">
+                        Lista Medios de Pago</a>
+
                 </li>
         </nav>
 
@@ -58,13 +74,13 @@
                 <div class="row">
                     <div class="content mt-5">
                         <h5>Sandwiches</h5>
-                        <table class="table mt-3 tabla" style="margin-left:10px ;">
+                        <table class="table mt-3 tabla font-weight-light text-capitalize" style="margin-left:10px;">
                             <thead>
                                 <tr>
                                     <th scope="col">Id</th>
                                     <th scope="col">Nombre</th>
                                     <th scope="col">Precio</th>
-                                    <th scope="col">Descripci�n</th>
+                                    <th scope="col">Descripción</th>
                                     <th scope="col">Tipo Producto</th>
                                     <th scope="col">Imagen</th>
                                     <th scope="col">Editar</th>
@@ -82,14 +98,125 @@
                                         <img src="/media/{{x.img}}"
                                              width="100" height="70">
                                     </td>
-                                    <td><button class="btn btn-warning"><i class="fa fa-pen"></i></i></button></td>
-                                    <td><button class="btn btn-danger"><i class="fa-regular fa-trash-can"></i></button></td>
+                                    <td><a class="btn btn-warning" style="margin-left:4px;"><i class="fa fa-pen"></i></i></a></td>
+                                    <td><a class="btn btn-danger" style="margin-left:13px;" href="{% url 'eliminarProd' x.id %}"><i class="fa-regular fa-trash-can"></i></a></td>
                                 </tr>
                                 {% endfor %}
                             </tbody>
                             </thead>
                         </table>
 
+                    </div>
+
+                    <div class="content mt-5">
+                        <h5>Para Picar</h5>
+                        <table class="table mt-3 tabla font-weight-light text-capitalize" style="margin-left:10px ;">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Id</th>
+                                    <th scope="col">Nombre</th>
+                                    <th scope="col">Precio</th>
+                                    <th scope="col">Descripción</th>
+                                    <th scope="col">Tipo Producto</th>
+                                    <th scope="col">Imagen</th>
+                                    <th scope="col">Editar</th>
+                                    <th scope="col">Eliminar</th>
+                                </tr>
+                            <tbody>
+                                {% for y in listaParaPicar %}
+                                <tr>
+                                    <th scope="row"> {{y.id}}</th>
+                                    <td>{{y.nombre}}</td>
+                                    <td>${{y.precio}}</td>
+                                    <td>{{y.desc}}</td>
+                                    <td>{{y.tip_producto}}</td>
+                                    <td>
+                                        <img src="/media/{{y.img}}"
+                                             width="100" height="70">
+                                    </td>
+                                    <td><a class="btn btn-warning" style="margin-left:4px;"><i class="fa fa-pen"></i></i></a></td>
+                                    <td><a class="btn btn-danger" style="margin-left:13px;" href="{% url 'eliminarProd' y.id %}"><i class="fa-regular fa-trash-can"></i></a></td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                            </thead>
+                        </table>
+
+                    </div>
+
+                    <div class="content mt-5">
+                        <h5>Completos y As</h5>
+                        <table class="table mt-3 tabla font-weight-light text-capitalize" style="margin-left:10px ;">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Id</th>
+                                    <th scope="col">Nombre</th>
+                                    <th scope="col">Precio</th>
+                                    <th scope="col">Descripción</th>
+                                    <th scope="col">Tipo Producto</th>
+                                    <th scope="col">Imagen</th>
+                                    <th scope="col">Editar</th>
+                                    <th scope="col">Eliminar</th>
+                                </tr>
+                            <tbody>
+                                {% for z in listaCompleto %}
+                                <tr>
+                                    <th scope="row"> {{z.id}}</th>
+                                    <td>{{z.nombre}}</td>
+                                    <td>${{z.precio}}</td>
+                                    <td>{{z.desc}}</td>
+                                    <td>{{z.tip_producto}}</td>
+                                    <td>
+                                        <img src="/media/{{z.img}}"
+                                             width="100" height="70">
+                                    </td>
+                                    <td><a class="btn btn-warning" style="margin-left:4px;"><i class="fa fa-pen"></i></i></a></td>
+                                    <td><a class="btn btn-danger" style="margin-left:13px;" href="{% url 'eliminarProd' z.id %}"><i class="fa-regular fa-trash-can"></i></a></td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                            </thead>
+                        </table>
+
+                    </div>
+
+                    <div class="content mt-5">
+                        <h5>Agregados</h5>
+                        <table class="table mt-3 tabla font-weight-light text-capitalize" style="margin-left:10px ;">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Id</th>
+                                    <th scope="col">Nombre</th>
+                                    <th scope="col">Precio</th>
+                                    <th scope="col">Descripción</th>
+                                    <th scope="col">Tipo Producto</th>
+                                    <th scope="col">Imagen</th>
+                                    <th scope="col">Editar</th>
+                                    <th scope="col">Eliminar</th>
+                                </tr>
+                            <tbody>
+                                {% for n in listaAgregados %}
+                                <tr>
+                                    <th scope="row"> {{n.id}}</th>
+                                    <td>{{n.nombre}}</td>
+                                    <td>${{n.precio}}</td>
+                                    <td>{{n.desc}}</td>
+                                    <td>{{n.tip_producto}}</td>
+                                    <td>
+                                        <img src="/media/{{n.img}}"
+                                             width="100" height="70">
+                                    </td>
+                                    <td><a class="btn btn-warning" style="margin-left:4px;"><i class="fa fa-pen"></i></i></a></td>
+                                    <td><a class="btn btn-danger" style="margin-left:13px;" href="{% url 'eliminarProd' n.id %}"><i class="fa-regular fa-trash-can"></i></a></td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                            </thead>
+                        </table>
+                        <div class="col-12">
+                            <a href="{% url 'agregarProducto' %}" class="btn btn-success col-12">Añadir Nuevo Producto</a> 
+                        </div>
+                        
                     </div>
                 </div>
             </div>
@@ -101,7 +228,7 @@
     <!-- Pie de pagina  -->
     <footer>
         <div class="footer-copyright text-center py-3 ">
-            � 2022 Copyright:
+            © 2022 Copyright:
             <a href="#"> www.Ma're'os.com</a>
             <p>Correo: mareosweb@mareos.com</p>
             <div class="dropdown-divider"></div>

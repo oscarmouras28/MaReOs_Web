@@ -35,6 +35,24 @@
                         aria-expanded="false">Iniciar Sesion</a>
                     <a href="{% url 'registro' %}" name="btnRegistrate" id="btnRegistrate" aria-expanded="false">o
                         registrate aqui</a>
+                    <a href="{% url 'registro' %}" name="btnRegistrate" id="btnRegistrate" aria-expanded="false">
+                        Cerrar Sesión</a>
+                    <hr class="mt-2 mb-3" />
+                    <a href="{% url 'catalogo' %}" name="btnRegistrate" id="btnRegistrate" aria-expanded="false">
+                        Catalogo</a>
+                    <a href="{% url 'carrito' %}" name="btnRegistrate" id="btnRegistrate" aria-expanded="false">
+                        Carrito</a>
+                    <a href="{% url 'ventas' %}" name="btnRegistrate" id="btnRegistrate" aria-expanded="false">
+                        Lista Ventas</a>
+                    <a href="{% url 'ver_vendedores' %}" name="btnRegistrate" id="btnRegistrate" aria-expanded="false">
+                        Lista Vendedores</a>
+                    <a href="{% url 'ver_clientes' %}" name="btnRegistrate" id="btnRegistrate" aria-expanded="false">
+                        Lista Clientes</a>
+                    <a href="{% url 'ver_productos' %}" name="btnRegistrate" id="btnRegistrate" aria-expanded="false">
+                        Lista Productos</a>
+                    <a href="{% url 'ver_medios_pago' %}" name="btnRegistrate" id="btnRegistrate" aria-expanded="false">
+                        Lista Medios de Pago</a>
+
                 </li>
         </nav>
         <!-- Contenido  -->
@@ -55,12 +73,36 @@
                     </div>
                 </div>
                 <div class="row">
-                    {% for x in lista %}
-                    <div class="col-md-12">
-                        <button class="btn btn-warning"><i class="fa-solid fa-plus"></i></button>
-                        <button class="btn btn-danger"><i class="fa-solid fa-minus"></i></i></button>
+                    <div class="col-6">
+                        {% for x in listaCarrito %}
+                        <div class="col-12 mt-3">
+                            {{x.producto_id.nombre}}
+                            <input type="number" value="{{x.producto_id.precio}}">
+                            <a class="btn btn-warning"><i class="fa-solid fa-plus"></i></a>
+                            <a class="btn btn-danger"><i class="fa-solid fa-minus"></i></i></a>
+                        </div>
+                        <div class="col-12 mt-3">
+                            <button style="width: 100%;" type="button" class="btn btn-warning m-2" id="calcularTotal"
+                                name="CalcularTotal">Confirmar</button>
+                        </div>
                     </div>
-                    {% endfor %}  
+
+                    {% endfor %}
+                    <div class="col-6 mt-3">
+                        <div class="col-12 m-3">
+                            <label for="subTotal">Sub Total</label>
+                            <input type="text" id="subTotal" name="subTotal" readonly>
+                        </div>
+                        <div class="col-12 m-3">
+                            <label for="Total">Total &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                            <input type="text" id="Total" name="Total" readonly>
+                        </div>
+                        <div class="col-12 m-3 ">
+                            <a style="width: 100%;" href="{% url 'pago' %}" class="btn btn-success">Pedir</a>
+                        </div>
+
+                    </div>
+
                 </div>
             </div>
         </div>

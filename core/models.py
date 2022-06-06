@@ -58,17 +58,16 @@ class Delivery (models.Model):
     direccion = models.CharField(max_length=30)
     telefono = models.IntegerField()
     valor = models.IntegerField()
-    class Meta:
-        verbose_name_plural = "Delivery"
-    def __str__(self):
-        return self.direccion 
+    cliente_id = models.ForeignKey(Cliente, on_delete=models.CASCADE)
+    
+
 class Venta (models.Model):
     #--<date=models.CharField(max_length=30) SE ARREGLA MÑA>--#
     subtotal = models.IntegerField()
     total = models.IntegerField()
     cliente_id = models.ForeignKey(Cliente, on_delete=models.CASCADE)
-    vendedor_id = models.ForeignKey(Vendedor, on_delete=models.CASCADE)
-    carrito_id = models.ForeignKey(Carrito, on_delete=models.CASCADE)
+    vendedor_id = models.ForeignKey(Vendedor, on_delete=models.CASCADE, null=True)
+    carrito_id = models.ForeignKey(Carrito, on_delete=models.CASCADE, null=True)
     pedido = models.CharField(max_length=30)
     producto_id = models.ForeignKey(Producto, on_delete=models.CASCADE)
     pago_id = models.ForeignKey(Medio_pago, on_delete=models.CASCADE)

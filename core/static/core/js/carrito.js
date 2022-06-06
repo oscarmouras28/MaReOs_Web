@@ -16,3 +16,7 @@ function activarMenu() {
 
     });
 }
+
+function calcularPorProducto(){
+    
+}
