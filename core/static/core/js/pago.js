@@ -2,6 +2,7 @@ $(document).ready(function () {
     activarMenu();
     iniciarMap();
     calcularDelivery();
+    habilitarDelivery();
 });
 
 
@@ -56,4 +57,14 @@ function calcularDelivery(){
     $('#confirmarDireccion').on('click', function () {
         $('#valorDelivery').val(2000);
     });
+}
+
+function habilitarDelivery(){
+    $("input[type=radio][name=btnradio]").change(function () {
+		if (this.value == 'delivery') {  
+            $('#contenidoDelivery').css("display", "inline");
+        } else {
+            $('#contenidoDelivery').css("display", "none");
+        }
+      });
 }
