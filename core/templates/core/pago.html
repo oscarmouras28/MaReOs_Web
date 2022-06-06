@@ -29,10 +29,28 @@
             <ul class="list-unstyled components">
                 <p>Inicia sesión y podras hacer tu pedido :)</p>
                 <li class="active">
-                    <a href="{% url 'login' %}" name="btnInicioSesion" id="btnInicioSesion"
+                    <a href="http://127.0.0.1:8000/login/" name="btnInicioSesion" id="btnInicioSesion"
                         aria-expanded="false">Iniciar Sesion</a>
                     <a href="{% url 'registro' %}" name="btnRegistrate" id="btnRegistrate" aria-expanded="false">o
                         registrate aqui</a>
+                    <a href="{% url 'registro' %}" name="btnRegistrate" id="btnRegistrate" aria-expanded="false">
+                        Cerrar Sesión</a>
+                    <hr class="mt-2 mb-3" />
+                    <a href="{% url 'catalogo' %}" name="btnRegistrate" id="btnRegistrate" aria-expanded="false">
+                        Catalogo</a>
+                    <a href="{% url 'carrito' %}" name="btnRegistrate" id="btnRegistrate" aria-expanded="false">
+                        Carrito</a>
+                    <a href="{% url 'ventas' %}" name="btnRegistrate" id="btnRegistrate" aria-expanded="false">
+                        Lista Ventas</a>
+                    <a href="{% url 'ver_vendedores' %}" name="btnRegistrate" id="btnRegistrate" aria-expanded="false">
+                        Lista Vendedores</a>
+                    <a href="{% url 'ver_clientes' %}" name="btnRegistrate" id="btnRegistrate" aria-expanded="false">
+                        Lista Clientes</a>
+                    <a href="{% url 'ver_productos' %}" name="btnRegistrate" id="btnRegistrate" aria-expanded="false">
+                        Lista Productos</a>
+                    <a href="{% url 'ver_medios_pago' %}" name="btnRegistrate" id="btnRegistrate" aria-expanded="false">
+                        Lista Medios de Pago</a>
+
                 </li>
         </nav>
 
@@ -61,15 +79,22 @@
                     <div class="col-md-6">
                         <div class="col-md-12">
                             <label for="radioMedioPago" class="col-md-12">Selecciona tu medio de pago</label>
-                            <div class="btn-group col-md-12 pt-2" role="group"-aria-label="Basic radio toggle button group">
-                                <input type="radio" class="btn-check" name="radioMedioPago" id="radioEfectivo" autocomplete="off">
-                                <label class="btn btn-outline-warning" style="color: black;" for="radioEfectivo"><i class="fa-solid fa-money-bill-wave"></i> Efectivo</label>
+                            <div class="btn-group col-md-12 pt-2" role="group"
+                                -aria-label="Basic radio toggle button group">
+                                <input type="radio" class="btn-check" name="radioMedioPago" id="radioEfectivo"
+                                    autocomplete="off">
+                                <label class="btn btn-outline-warning" style="color: black;" for="radioEfectivo"><i
+                                        class="fa-solid fa-money-bill-wave"></i> Efectivo</label>
 
-                                <input type="radio" class="btn-check" name="radioMedioPago" id="radioDebito" autocomplete="off">
-                                <label class="btn btn-outline-warning" style="color: black;" for="radioDebito"><i class="fa-solid fa-credit-card"></i> Debito</label>
+                                <input type="radio" class="btn-check" name="radioMedioPago" id="radioDebito"
+                                    autocomplete="off">
+                                <label class="btn btn-outline-warning" style="color: black;" for="radioDebito"><i
+                                        class="fa-solid fa-credit-card"></i> Debito</label>
 
-                                <input type="radio" class="btn-check" name="radioMedioPago" id="radioCredito" autocomplete="off">
-                                <label class="btn btn-outline-warning"  style="color: black;"for="radioCredito"><i class="fa-brands fa-cc-mastercard"></i> Credito</label>
+                                <input type="radio" class="btn-check" name="radioMedioPago" id="radioCredito"
+                                    autocomplete="off">
+                                <label class="btn btn-outline-warning" style="color: black;" for="radioCredito"><i
+                                        class="fa-brands fa-cc-mastercard"></i> Credito</label>
                             </div>
                         </div>
 
@@ -78,18 +103,120 @@
                     <div class="col-md-6">
                         <div class="col-md-12">
                             <label for="medioEntrega" class="col-md-12">Selecciona medio de entrega</label>
-                            <div class="btn-group col-md-12 pt-2" role="group"aria-label="Basic radio toggle button group">
-                                <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off">
-                                <label class="btn btn-outline-warning" style="color: black;" for="btnradio1"><i class="fa-solid fa-motorcycle"></i> Delivery</label>
+                            <div class="btn-group col-md-12 pt-2" role="group"
+                                aria-label="Basic radio toggle button group">
+                                <input type="radio" class="btn-check" name="btnradio" id="btnradio1"  value="delivery" autocomplete="off">
+                                <label class="btn btn-outline-warning" style="color: black;" for="btnradio1"><i
+                                        class="fa-solid fa-motorcycle"></i> Delivery</label>
 
-                                <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off">
-                                <label class="btn btn-outline-warning" style="color: black;" for="btnradio2"><i class="fa-solid fa-shop"></i> Retiro en Local</label>
+                                <input type="radio" class="btn-check" name="btnradio" id="btnradio2" value="local" autocomplete="off">
+                                <label class="btn btn-outline-warning" style="color: black;" for="btnradio2"><i
+                                        class="fa-solid fa-shop"></i> Retiro en Local</label>
                             </div>
                         </div>
+                        <br>
+                        <div id="contenidoDelivery" name="contenidoDelivery" style="display: none;">
+                            <div>
+                                <p>
+                                    <a class="btn btn-warning" data-bs-toggle="collapse" href="#collapseExample"
+                                        role="button" aria-expanded="false" aria-controls="collapseExample">
+                                        Mis Datos de Delivery Guardados
+                                    </a>
+                                </p>
+                            </div>
+                            <div class="collapse" id="collapseExample">
+                                <div class="">
+                                    {% for x in listaDelivery %}
+                                    <div class="col-md-6">
+                                        <div class="card" style="border-radius: 20px;">
+                                            <div class="m-3">
+                                                <p>Direccion: {{x.direccion}}</p>
+                                                <p>Telefono Delivery: {{x.telefono}}</p>
+                                                <p>Valor: ${{x.valor}}</p>
+                                                <p>Cliente: {{x.cliente_id.p_nombre}} {{x.cliente_id.a_paterno}}</p>
+                                                <a class="btn btn-warning m-1" style="display: inline;" id="" name=""><i
+                                                        class="fa fa-pen"></i></i></a>
+                                                <a class="btn btn-danger m-1"
+                                                    href="{% url 'eliminarMiDelivery' x.id %}"><i
+                                                        class="fa-regular fa-trash-can"></i></a>
+                                                <a class="btn btn-success md-1 m-1" href="{% url 'boleta' %}">Pedir</a>
+                                            </div>
 
-                        <button type="button" id="btnPedir" class="btn btn-warning mt-3">Pedir</button>
-                        <button type="button" id="btnCancelar" class="btn btn-danger mt-3" style="margin-left:2% ;">Cancelar</button>
+                                        </div>
+
+                                    </div>
+
+
+                                    {% endfor %}
+                                </div>
+                            </div>
+                            <div class="mt-3">
+                                <p>
+                                    <a class="btn btn-success" data-bs-toggle="collapse" href="#agregarDelivery"
+                                        role="button" aria-expanded="false" aria-controls="agregarDelivery">
+                                        Agregar Nuevo Delivery
+                                    </a>
+                                </p>
+                            </div>
+                            <div class="collapse" id="agregarDelivery">
+                                <div class="">
+                                    <div class="col-md-12">
+                                        <div class="card" style="border-radius: 20px;">
+                                            <div class="m-12">
+                                                <form method="POST">
+                                                    {% csrf_token %}
+                                                    <div class="col m-2">
+                                                        <label for="direccionDelivery">Dirección:</label>
+                                                        <div style="display:none;">
+                                                            <p name="coordenadas" id="coordenadas"></p>
+                                                        </div>
+                                                        <input type="text" style="width: 95%" name="direccionDelivery"
+                                                            id="direccionDelivery">
+                                                        <button type="button" class="btn btn-warning m-2"
+                                                            id="buscarDireccion" name="buscarDirecicon">Buscar</button>
+                                                        <button type="button" class="btn btn-success m-2"
+                                                            style="display:none;" id="confirmarDireccion"
+                                                            name="confirmarDirecicon">Confirmar
+                                                            Dirección</button>
+                                                    </div>
+                                                    <div class="col mt-2">
+                                                        <div name="map" id="map" style="display: none;" class="m-1">
+                                                        </div>
+
+                                                    </div>
+                                                    <div class="col m-2">
+                                                        <label for="telefonoDelivery">Telefono:</label>
+                                                        <input type="number" name="telefonoDelivery"
+                                                            id="telefonoDelivery">
+                                                    </div>
+                                                    <div class="col m-2">
+                                                        <label
+                                                            for="idCli">Id:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                                                        <input type="text" name="idCli" id="idCli">
+                                                    </div>
+                                                    <div class="col m-2">
+                                                        <label
+                                                            for="valorDelivery">Valor:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                        </label>
+                                                        <input type="number" name="valorDelivery" id="valorDelivery"
+                                                            readonly>
+                                                    </div>
+                                                    <div class="col mt-2">
+                                                        <input type="submit" style="width: 100%;"
+                                                            class="btn btn-success mt-2" id="btnAgregarDelivery"
+                                                            name="btnAgregarDelivery" value="Agregar Delivery">
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="{% url 'home' %}" class="btn btn-danger">Cancelar</a>
+                        <a href="{% url 'boleta' %}" class="btn btn-success" style="display: none;"id="btnPedir" name="btnPedir">Pedir</a>
                     </div>
+
                 </div>
             </div>
 
@@ -115,6 +242,8 @@
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
         crossorigin="anonymous"></script>
 
+    <script
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBpmFm34mI8fRZz1wp2hrViuE9NFpodrzs&callback=iniciarMap"></script>
     <script src="{% static 'core/js/pago.js' %}"></script>
 </body>
 

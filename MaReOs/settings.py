@@ -31,6 +31,8 @@ ALLOWED_HOSTS = []
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
 
+MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
+
 # Application definition
 
 INSTALLED_APPS = [

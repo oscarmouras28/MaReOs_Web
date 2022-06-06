@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import home,boleta,catalogo,pago,recuperar_contrasena,registro,ventas,carrito
+from .views import eliminarVenta, home,boleta,catalogo,pago,recuperar_contrasena,registro,ventas,carrito,ver_vendedores,ver_clientes, ver_productos, eliminarCli, eliminarVen, eliminarProd, ver_pagos, eliminarMedioPago,eliminarMiDelivery, agregar_vendedor, agregarProducto, agregarmedioPago
 
 urlpatterns = [
     path('', home),
@@ -11,5 +11,17 @@ urlpatterns = [
     path('registro/', registro, name="registro"),
     path('ventas/', ventas, name="ventas"),
     path('carrito/', carrito, name="carrito"),
-
+    path('ver_vendedores/', ver_vendedores, name="ver_vendedores"),
+    path('ver_clientes/', ver_clientes, name="ver_clientes"),
+    path('ver_productos/', ver_productos, name="ver_productos"),
+    path('ver_medios_pago/', ver_pagos, name="ver_medios_pago"),
+    path('eliminarCli/<id>/', eliminarCli, name="eliminarCli"),
+    path('eliminarVen/<id>/', eliminarVen, name="eliminarVen"),
+    path('eliminarProd/<id>/', eliminarProd, name="eliminarProd"),
+    path('eliminarVenta/<id>/', eliminarVenta, name="eliminarVenta"),
+    path('eliminarMedioPago/<id>/', eliminarMedioPago, name="eliminarMedioPago"),
+    path('eliminarMiDelivery/<id>/', eliminarMiDelivery, name="eliminarMiDelivery"),
+    path('agregarVendedor/', agregar_vendedor, name="agregarVendedor"),
+    path('agregarProducto/', agregarProducto, name="agregarProducto"),
+    path('agregarmedioPago/', agregarmedioPago, name="agregarmedioPago"),
 ]
