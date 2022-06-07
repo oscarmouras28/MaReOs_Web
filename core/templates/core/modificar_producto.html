@@ -21,7 +21,7 @@
 <body>
     <div class="wrapper">
         <!-- Sidebar  -->
-               <nav id="sidebar">
+        <nav id="sidebar">
             <div class="sidebar-header">
                 <h3>Menú</h3>
             </div>
@@ -46,38 +46,37 @@
                         aria-expanded="false">Lista Productos</a>
                     <a href="{% url 'ver_medios_pago' %}" name="btnRegistrate" id="btnRegistrate" aria-expanded="false">
                         Lista Medios de Pago</a>
-                    <a href="{% url 'logout' %}" name="btnRegistrate" id="btnRegistrate"
-                        aria-expanded="false">Cerrar Sesión</a>
-                    </ul>
-                </li>
-                {% else %}
-                <ul class="list-unstyled components">
-                    <p>
-                        inicia sesion para que puedas ordenar algo hoy :)
-                    </p>
-                    <li class="active">
-                        <a href="{% url 'login' %}" name="btnInicioSesion" id="btnInicioSesion"
-                            aria-expanded="false">Iniciar Sesion</a>
-                        <a href="{% url 'registro' %}" name="btnRegistrate" id="btnRegistrate" aria-expanded="false">o
-                            registrate aqui</a>
-                        <hr class="mt-2 mb-3" />
-                        <a href="{% url 'catalogo' %}" name="btnRegistrate" id="btnRegistrate"
-                            aria-expanded="false">Catalogo</a>
-                        <a href="{% url 'carrito' %}" name="btnRegistrate" id="btnRegistrate"
-                            aria-expanded="false">Carrito</a>
-                        <a href="{% url 'ventas' %}" name="btnRegistrate" id="btnRegistrate" aria-expanded="false">Lista
-                            Ventas</a>
-                        <a href="{% url 'ver_vendedores' %}" name="btnRegistrate" id="btnRegistrate"
-                            aria-expanded="false">Lista Vendedores</a>
-                        <a href="{% url 'ver_clientes' %}" name="btnRegistrate" id="btnRegistrate"
-                            aria-expanded="false">Lista Clientes</a>
-                        <a href="{% url 'ver_productos' %}" name="btnRegistrate" id="btnRegistrate"
-                            aria-expanded="false">Lista Productos</a>
-                        <a href="{% url 'ver_medios_pago' %}" name="btnRegistrate" id="btnRegistrate"
-                            aria-expanded="false">
-                            Lista Medios de Pago</a>
-                    </ul>
-                        {% endif %}
+                    <a href="{% url 'logout' %}" name="btnRegistrate" id="btnRegistrate" aria-expanded="false">Cerrar
+                        Sesión</a>
+            </ul>
+            </li>
+            {% else %}
+            <ul class="list-unstyled components">
+                <p>
+                    inicia sesion para que puedas ordenar algo hoy :)
+                </p>
+                <li class="active">
+                    <a href="{% url 'login' %}" name="btnInicioSesion" id="btnInicioSesion"
+                        aria-expanded="false">Iniciar Sesion</a>
+                    <a href="{% url 'registro' %}" name="btnRegistrate" id="btnRegistrate" aria-expanded="false">o
+                        registrate aqui</a>
+                    <hr class="mt-2 mb-3" />
+                    <a href="{% url 'catalogo' %}" name="btnRegistrate" id="btnRegistrate"
+                        aria-expanded="false">Catalogo</a>
+                    <a href="{% url 'carrito' %}" name="btnRegistrate" id="btnRegistrate"
+                        aria-expanded="false">Carrito</a>
+                    <a href="{% url 'ventas' %}" name="btnRegistrate" id="btnRegistrate" aria-expanded="false">Lista
+                        Ventas</a>
+                    <a href="{% url 'ver_vendedores' %}" name="btnRegistrate" id="btnRegistrate"
+                        aria-expanded="false">Lista Vendedores</a>
+                    <a href="{% url 'ver_clientes' %}" name="btnRegistrate" id="btnRegistrate"
+                        aria-expanded="false">Lista Clientes</a>
+                    <a href="{% url 'ver_productos' %}" name="btnRegistrate" id="btnRegistrate"
+                        aria-expanded="false">Lista Productos</a>
+                    <a href="{% url 'ver_medios_pago' %}" name="btnRegistrate" id="btnRegistrate" aria-expanded="false">
+                        Lista Medios de Pago</a>
+            </ul>
+            {% endif %}
         </nav>
 
         <!-- Contenido  -->
@@ -107,44 +106,50 @@
 
                         <div class="col-8 py-2">
                             <label class="col-md-12" style="font-weight: bold;" for="prodNombre">Nombre</label>
-                            <input type="text" id="prodNombre" name="prodNombre" placeholder="Ingrese nombre">
+                            <input type="text" id="prodNombre" name="prodNombre" placeholder="Ingrese nombre"
+                                value="{{producto.nombre}}">
                         </div>
                         <div class="col-8 py-2">
                             <label class="col-md-12" style="font-weight: bold;" for="precioProd">Precio</label>
-                            <input type="number" id="precioProd" name="precioProd" placeholder="Ingrese precio">
+                            <input type="number" id="precioProd" name="precioProd" placeholder="Ingrese precio"
+                                value="{{producto.precio}}">
                         </div>
                         <div class="col-8 py-2">
-                            <label class="col-md-12" style="font-weight: bold;" for="txtImagen">Imagen</label>                    
-                                <input type="file" id="txtImagen" name="txtImagen">
+                            <label class="col-md-12" style="font-weight: bold;" for="txtImagen">Imagen</label>
+                            <div class="mt-2"><img src="/media/{{producto.img}}" width="150" height="100"></div>
+                            <input style="margin-top: 15px;" type="file" id="txtImagen" name="txtImagen" value="{{producto.img}}">
                         </div>
                         <div class="col-8 py-2">
                             <label class="col-md-12" style="font-weight: bold;" for="descProd">Descripción</label>
                             <textarea style="height: 100px; width: 90%;" id="descProd" name="descProd"
-                                placeholder="Ingrese descripción del producto"></textarea>
+                                placeholder="Ingrese descripción del producto">{{producto.desc}}</textarea>
                         </div>
                         <div class="col-8 py-2">
                             <label class="col-md-12" style="font-weight: bold;" for="tipoProd">Tipo de Producto</label>
                             <select name="tipoProd" id="tipoProd">
-                                <option value="0" selected hidden>Seleccione</option>
-                                <option value="1">Sandwich</option>
-                                <option value="2">Para Picar</option>
-                                <option value="3">Completo o As</option>
-                                <option value="4">Agregado</option>
+                                <option value="{{producto.tip_producto}}" hidden>{{producto.tip_producto}}</option>
+                                <option value="1">1 (Sandwich)</option>
+                                <option value="2">2 (Para Picar) </option>
+                                <option value="3">3 (Completo o As)</option>
+                                <option value="4">4 (Agregado)</option>
                             </select>
                         </div>
 
                         <div class="col-8 ">
                             <input type="submit" style="width: 90%;" class="btn btn-success mt-2"
-                                id="btnAgregarVendedor" name="btnAgregarVendedor" value="Agregar producto">
+                                id="btnAgregarVendedor" name="btnAgregarVendedor" value="Modificar Producto">
                         </div>
                         <div class="col-8 mt-3">
-                            <a href="{% url 'ver_productos' %}" style="width: 90%;"class="btn btn-warning">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Lista Productos&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+                            <a href="{% url 'ver_productos' %}" style="width: 90%;"
+                                class="btn btn-warning">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Lista
+                                Productos&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
                         </div>
                     </form>
 
 
                     <div class="col-4">
-                        <img src="{% static 'core/img/papasfondo.png' %}" style="margin-top: 25%;" width="450" height="300">
+                        <img src="{% static 'core/img/papasfondo.png' %}" style="margin-top: 25%;" width="450"
+                            height="300">
                     </div>
                 </div>
 

@@ -119,7 +119,7 @@
                                 <td>{{x.a_paterno}}</td>
                                 <td>{{x.a_materno}}</td>
                                 <td>{{x.rut}}</td>
-                                <td><a class="btn btn-warning" style="margin-left:4px;"><i class="fa fa-pen"></i></i></a></td>
+                                <td><a class="btn btn-warning" style="margin-left:4px;" href="{% url 'modificarVendedor' x.id %}"><i class="fa fa-pen"></i></i></a></td>
                                 <td><a class="btn btn-danger" style="margin-left:13px;" href="{% url 'eliminarVen' x.id %}"><i class="fa-regular fa-trash-can"></i></a></td>
                             </tr>
                             {% endfor %}
