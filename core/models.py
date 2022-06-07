@@ -16,8 +16,6 @@ class Cliente (models.Model):
 
     class Meta:
         verbose_name_plural = "Clientes"
-
-
 class Vendedor (models.Model):
     p_nombre = models.CharField(max_length=20)
     s_nombre = models.CharField(max_length=20)
@@ -29,7 +27,6 @@ class Vendedor (models.Model):
 
     def __str__(self)-> str:
         return self.p_nombre + " " + self.a_paterno
-
 class Producto (models.Model):
     nombre = models.CharField(max_length=30)
     precio = models.IntegerField()
@@ -46,7 +43,6 @@ class Carrito (models.Model):
         verbose_name_plural = "Carrito"
     def __str__(self)-> str:
         return self.producto_id.nombre
-
 class Medio_pago (models.Model):
     tipo_pago = models.CharField(max_length=20)
 
@@ -54,7 +50,6 @@ class Medio_pago (models.Model):
         verbose_name_plural = "Medios de pago"
     def __str__(self)-> str:
         return self.tipo_pago
-
 class Delivery (models.Model):
     direccion = models.CharField(max_length=30)
     telefono = models.IntegerField()
@@ -63,8 +58,6 @@ class Delivery (models.Model):
     
     def __str__(self)-> str:
         return self.direccion
-    
-
 class Venta (models.Model):
     #--<date=models.CharField(max_length=30) SE ARREGLA MÑA>--#
     subtotal = models.IntegerField()

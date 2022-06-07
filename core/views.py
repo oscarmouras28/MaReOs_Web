@@ -2,10 +2,8 @@ from django.contrib import messages
 from django.shortcuts import render, redirect
 from .models import Producto, Venta, Vendedor, Cliente, Delivery, Medio_pago, Carrito
 
-
 def home(request):
     return render(request, 'core/home.html')
-
 
 def boleta(request):
     listado_ventas = Venta.objects.all()
@@ -13,7 +11,6 @@ def boleta(request):
     data = {"listaVentas": listado_ventas,
             "delivery": delivery}
     return render(request, 'core/boleta.html', data)
-
 
 def catalogo(request):
     listado_sandwich = Producto.objects.filter(tip_producto='1')
@@ -27,7 +24,6 @@ def catalogo(request):
             "listaAgregados": listado_agregados}
 
     return render(request, 'core/catalogo.html', data)
-
 
 def pago(request):
     delivery = Delivery.objects.all()
@@ -53,12 +49,10 @@ def pago(request):
 
     return render(request, 'core/pago.html', data)
 
-
 def recuperar_contrasena(request):
     return render(request, 'core/recuperar_contrasena.html')
 
-
-def registro(request):
+def registro_cliente(request):
     if request.POST:
         cliente = Cliente()
         cliente.p_nombre = request.POST.get("nombreCli")
@@ -74,6 +68,23 @@ def registro(request):
             messages.error(request, mensaje)
     return render(request, 'core/registro.html')
 
+def registro_vendedor(request):
+    if request.POST:
+        vendedor = Vendedor()
+        vendedor.p_nombre = request.POST.get("primNombre")
+        vendedor.s_nombre = request.POST.get("segNombre")
+        vendedor.a_paterno = request.POST.get("apPaterno")
+        vendedor.a_materno = request.POST.get("apMaterno")
+        vendedor.rut = request.POST.get("txtRut")
+
+        try:
+            vendedor.save()
+            mensaje = "Vendedor agregado"
+            messages.success(request, mensaje)
+        except:
+            mensaje = "No se pudo agregar al vendedor"
+            messages.error(request, mensaje)
+    return render(request, 'core/registro_vendedor.html')
 
 def ventas(request):
     listado_ventas = Venta.objects.all()
@@ -84,12 +95,10 @@ def ventas(request):
             "medioPago": medioPago}
     return render(request, 'core/ventas.html', data)
 
-
 def carrito(request):
     lista_carrito = Carrito.objects.all()
     data = {"listaCarrito": lista_carrito}
     return render(request, 'core/carrito.html', data)
-
 
 def agregar_vendedor(request):
     # guardar
@@ -209,18 +218,15 @@ def modificarProducto(request, id):
 
     return render(request, 'core/modificar_producto.html',data)
 
-
 def ver_vendedores(request):
     listado_Vendedores = Vendedor.objects.all()
     data = {"listaVendedores": listado_Vendedores}
     return render(request, 'core/ver_vendedores.html', data)
 
-
 def ver_clientes(request):
     listado_clientes = Cliente.objects.all()
     data = {"listaClientes": listado_clientes}
     return render(request, 'core/ver_clientes.html', data)
-
 
 def agregarProducto(request):
     if request.POST:
@@ -239,7 +245,6 @@ def agregarProducto(request):
             messages.error(request, mensaje)
     return render(request, 'core/agregar_producto.html')
 
-
 def ver_productos(request):
     listado_sandwich = Producto.objects.filter(tip_producto='1')
     listado_para_picar = Producto.objects.filter(tip_producto='2')
@@ -252,12 +257,10 @@ def ver_productos(request):
             "listaAgregados": listado_agregados}
     return render(request, 'core/ver_productos.html', data)
 
-
 def ver_pagos(request):
     listaPagos = Medio_pago.objects.all()
     data = {"listaMediosPagos": listaPagos}
     return render(request, 'core/ver_tipos_pago.html', data)
-
 
 def agregarmedioPago(request):
     if request.POST:
@@ -273,7 +276,6 @@ def agregarmedioPago(request):
             messages.error(request, mensaje)
     return render(request, 'core/agregar_medioPago.html')
 
-
 def eliminarCli(request, id):
     cliente = Cliente.objects.get(id=id)
 
@@ -286,7 +288,6 @@ def eliminarCli(request, id):
         messages.error(request, mensaje)
 
     return redirect('ver_clientes')
-
 
 def eliminarVen(request, id):
     vendedor = Vendedor.objects.get(id=id)
@@ -301,7 +302,6 @@ def eliminarVen(request, id):
 
     return redirect('ver_vendedores')
 
-
 def eliminarProd(request, id):
     producto = Producto.objects.get(id=id)
 
@@ -314,7 +314,6 @@ def eliminarProd(request, id):
         messages.error(request, mensaje)
 
     return redirect('ver_productos')
-
 
 def eliminarVenta(request, id):
     venta = Venta.objects.get(id=id)
@@ -329,7 +328,6 @@ def eliminarVenta(request, id):
 
     return redirect('ventas')
 
-
 def eliminarMedioPago(request, id):
     medioPago = Medio_pago.objects.get(id=id)
 
@@ -342,7 +340,6 @@ def eliminarMedioPago(request, id):
         messages.error(request, mensaje)
 
     return redirect('ver_medios_pago')
-
 
 def eliminarMiDelivery(request, id):
     miDelivery = Delivery.objects.get(id=id)
