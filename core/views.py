@@ -1,4 +1,4 @@
-from django.core.checks import messages
+from django.contrib import messages
 from django.shortcuts import render, redirect
 from .models import Producto, Venta, Vendedor, Cliente, Delivery, Medio_pago, Carrito
 
@@ -49,7 +49,7 @@ def pago(request):
             messages.success(request, mensaje)
         except:
             mensaje = "No se pudo agregar al Delivery"
-            messages.Error(request, mensaje)
+            messages.error(request, mensaje)
 
     return render(request, 'core/pago.html', data)
 
@@ -71,7 +71,7 @@ def registro(request):
             messages.success(request, mensaje)
         except:
             mensaje = "No se pudo agregar al Cliente"
-            messages.Error(request, mensaje)
+            messages.error(request, mensaje)
     return render(request, 'core/registro.html')
 
 
@@ -107,9 +107,107 @@ def agregar_vendedor(request):
             messages.success(request, mensaje)
         except:
             mensaje = "No se pudo agregar al vendedor"
-            messages.Error(request, mensaje)
+            messages.error(request, mensaje)
 
     return render(request, 'core/agregar_vendedor.html')
+
+def modificarVendedor(request, id):
+
+    vendedor = Vendedor.objects.get(id=id)
+
+    data = {
+        "vendedor" : vendedor
+    }
+
+    # modificar
+    if request.POST:
+        vendedor.p_nombre = request.POST.get("primNombre")
+        vendedor.s_nombre = request.POST.get("segNombre")
+        vendedor.a_paterno = request.POST.get("apPaterno")
+        vendedor.a_materno = request.POST.get("apMaterno")
+        vendedor.rut = request.POST.get("txtRut")
+
+        try:
+            vendedor.save()
+            mensaje = "Vendedor modificado"
+            messages.success(request, mensaje)
+        except:
+            mensaje = "No se pudo modificar al vendedor"
+            messages.error(request, mensaje)
+
+    return render(request, 'core/modificar_vendedor.html',data)
+
+def modificarVenta(request, id):
+
+    venta = Venta.objects.get(id=id)
+
+    data = {
+        "venta" : venta
+    }
+    
+    # modificar
+    if request.POST:
+        venta.pedido = request.POST.get("selectPedido") 
+        try:
+            venta.save()
+            mensaje = "Venta modificada"
+            messages.success(request, mensaje)
+        except:
+            mensaje = "No se pudo modificar la venta"
+            messages.error(request, mensaje)
+
+    return render(request, 'core/modificar_venta.html',data)
+
+def modificarCliente(request, id):
+
+    cliente = Cliente.objects.get(id=id)
+
+    data = {
+        "cliente" : cliente
+    }
+
+    # modificar
+    if request.POST:
+        cliente.p_nombre = request.POST.get("nombreCli")
+        cliente.a_paterno = request.POST.get("apellidoCli")
+        cliente.num_contact = request.POST.get("inputTelefono")
+        cliente.rut = request.POST.get("rutCli")
+
+        try:
+            cliente.save()
+            mensaje = "Cliente modificado"
+            messages.success(request, mensaje)
+        except:
+            mensaje = "No se pudo modificar al Cliente"
+            messages.error(request, mensaje)
+
+    return render(request, 'core/modificar_clientes.html',data)
+
+def modificarProducto(request, id):
+
+    producto = Producto.objects.get(id=id)
+
+    data = {
+        "producto" : producto
+    }
+
+    # modificar
+    if request.POST:
+        producto.nombre = request.POST.get("prodNombre")
+        producto.precio = request.POST.get("precioProd")
+        producto.img = request.POST.get("txtImagen")
+        producto.desc = request.POST.get("descProd")
+        producto.tip_producto = request.POST.get("tipoProd")
+
+        try:
+            producto.save()
+            mensaje = "Producto modificado"
+            messages.success(request, mensaje)
+        except:
+            mensaje = "No se pudo modificar al Producto"
+            messages.error(request, mensaje)
+
+    return render(request, 'core/modificar_producto.html',data)
 
 
 def ver_vendedores(request):
@@ -138,7 +236,7 @@ def agregarProducto(request):
             messages.success(request, mensaje)
         except:
             mensaje = "No se pudo agregar el Producto"
-            messages.Error(request, mensaje)
+            messages.error(request, mensaje)
     return render(request, 'core/agregar_producto.html')
 
 
@@ -172,7 +270,7 @@ def agregarmedioPago(request):
             messages.success(request, mensaje)
         except:
             mensaje = "No se pudo agregar el Medio de pago"
-            messages.Error(request, mensaje)
+            messages.error(request, mensaje)
     return render(request, 'core/agregar_medioPago.html')
 
 
@@ -185,7 +283,7 @@ def eliminarCli(request, id):
         messages.success(request, mensaje)
     except:
         mensaje = "No se pudo eliminar al Cliente"
-        messages.Error(request, mensaje)
+        messages.error(request, mensaje)
 
     return redirect('ver_clientes')
 
@@ -199,7 +297,7 @@ def eliminarVen(request, id):
         messages.success(request, mensaje)
     except:
         mensaje = "No se pudo eliminar al Vendedor"
-        messages.Error(request, mensaje)
+        messages.error(request, mensaje)
 
     return redirect('ver_vendedores')
 
@@ -213,7 +311,7 @@ def eliminarProd(request, id):
         messages.success(request, mensaje)
     except:
         mensaje = "No se pudo eliminar el Producto"
-        messages.Error(request, mensaje)
+        messages.error(request, mensaje)
 
     return redirect('ver_productos')
 
@@ -227,7 +325,7 @@ def eliminarVenta(request, id):
         messages.success(request, mensaje)
     except:
         mensaje = "No se pudo eliminar la Venta"
-        messages.Error(request, mensaje)
+        messages.error(request, mensaje)
 
     return redirect('ventas')
 
@@ -241,7 +339,7 @@ def eliminarMedioPago(request, id):
         messages.success(request, mensaje)
     except:
         mensaje = "No se pudo eliminar medio de pago"
-        messages.Error(request, mensaje)
+        messages.error(request, mensaje)
 
     return redirect('ver_medios_pago')
 
@@ -255,6 +353,6 @@ def eliminarMiDelivery(request, id):
         messages.success(request, mensaje)
     except:
         mensaje = "No se pudo eliminar Delivery"
-        messages.Error(request, mensaje)
+        messages.error(request, mensaje)
 
     return redirect('pago')

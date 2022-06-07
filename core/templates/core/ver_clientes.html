@@ -116,7 +116,7 @@
                                 <td>{{x.a_paterno}}</td>
                                 <td>{{x.num_contac}}</td>
                                 <td>{{x.rut}}</td>
-                                <td><a class="btn btn-warning" style="margin-left:4px;"><i class="fa fa-pen"></i></i></a></td>
+                                <td><a class="btn btn-warning" style="margin-left:4px;" href="{% url 'modificarCliente' x.id %}"><i class="fa fa-pen"></i></i></a></td>
                                 <td><a class="btn btn-danger" style="margin-left:13px;" href="{% url 'eliminarCli' x.id %}"><i class="fa-regular fa-trash-can"></i></a></td>
 
                             </tr>
