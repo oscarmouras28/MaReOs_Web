@@ -1,5 +1,9 @@
 from django.urls import path
+<<<<<<< HEAD
 from .views import eliminarVenta, home,boleta,catalogo,pago,recuperar_contrasena,registro_cliente,registro_vendedor,ventas,carrito,ver_vendedores,ver_clientes, ver_productos, eliminarCli, eliminarVen, eliminarProd, ver_pagos, eliminarMedioPago,eliminarMiDelivery, agregar_vendedor, agregarProducto, agregarmedioPago,modificarVendedor,modificarCliente, modificarProducto, modificarVenta
+=======
+from .views import eliminarVenta, home,boleta,catalogo,pago,recuperar_contrasena,registro,ventas,carrito,ver_vendedores,ver_clientes, ver_productos, eliminarCli, eliminarVen, eliminarProd, ver_pagos, eliminarMedioPago,eliminarMiDelivery, agregar_vendedor, agregarProducto, agregarmedioPago,modificarVendedor,modificarCliente, modificarProducto, modificarVenta, modificarDelivery, modificarmedioPago
+>>>>>>> 5004a7e7feadcb6ac1ac9b334380051bd4df3f6e
 
 urlpatterns = [
     path('', home),
@@ -28,5 +32,7 @@ urlpatterns = [
     path('modificarVendedor/<id>/', modificarVendedor, name="modificarVendedor"),
     path('modificarCliente/<id>/', modificarCliente, name="modificarCliente"),
     path('modificarProducto/<id>/', modificarProducto, name="modificarProducto"),
-    path('modificarVenta/<id>/', modificarVenta, name="modificarVenta"),   
+    path('modificarVenta/<id>/', modificarVenta, name="modificarVenta"),
+    path('modificarDelivery/<id>/', modificarDelivery, name="modificarDelivery"),
+    path('modificarmedioPago/<id>/', modificarmedioPago, name="modificarmedioPago"),    
 ]

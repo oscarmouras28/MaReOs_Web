@@ -34,11 +34,11 @@ def pago(request):
         deliveryAdd.direccion = request.POST.get("direccionDelivery")
         deliveryAdd.telefono = request.POST.get("telefonoDelivery")
         deliveryAdd.valor = request.POST.get("valorDelivery")
-        
+
         cliente = Cliente()
         cliente.id = request.POST.get("idCli")
 
-        deliveryAdd.cliente_id = cliente 
+        deliveryAdd.cliente_id = cliente
         try:
             deliveryAdd.save()
             mensaje = "Delivery agregado"
@@ -100,6 +100,7 @@ def carrito(request):
     data = {"listaCarrito": lista_carrito}
     return render(request, 'core/carrito.html', data)
 
+<<<<<<< HEAD
 def agregar_vendedor(request):
     # guardar
     if request.POST:
@@ -217,6 +218,8 @@ def modificarProducto(request, id):
             messages.error(request, mensaje)
 
     return render(request, 'core/modificar_producto.html',data)
+=======
+>>>>>>> 5004a7e7feadcb6ac1ac9b334380051bd4df3f6e
 
 def ver_vendedores(request):
     listado_Vendedores = Vendedor.objects.all()
@@ -228,6 +231,7 @@ def ver_clientes(request):
     data = {"listaClientes": listado_clientes}
     return render(request, 'core/ver_clientes.html', data)
 
+<<<<<<< HEAD
 def agregarProducto(request):
     if request.POST:
         producto = Producto()
@@ -244,6 +248,8 @@ def agregarProducto(request):
             mensaje = "No se pudo agregar el Producto"
             messages.error(request, mensaje)
     return render(request, 'core/agregar_producto.html')
+=======
+>>>>>>> 5004a7e7feadcb6ac1ac9b334380051bd4df3f6e
 
 def ver_productos(request):
     listado_sandwich = Producto.objects.filter(tip_producto='1')
@@ -262,6 +268,49 @@ def ver_pagos(request):
     data = {"listaMediosPagos": listaPagos}
     return render(request, 'core/ver_tipos_pago.html', data)
 
+<<<<<<< HEAD
+=======
+
+def agregar_vendedor(request):
+    # guardar
+    if request.POST:
+        vendedor = Vendedor()
+        vendedor.p_nombre = request.POST.get("primNombre")
+        vendedor.s_nombre = request.POST.get("segNombre")
+        vendedor.a_paterno = request.POST.get("apPaterno")
+        vendedor.a_materno = request.POST.get("apMaterno")
+        vendedor.rut = request.POST.get("txtRut")
+
+        try:
+            vendedor.save()
+            mensaje = "Vendedor agregado"
+            messages.success(request, mensaje)
+        except:
+            mensaje = "No se pudo agregar al vendedor"
+            messages.error(request, mensaje)
+
+    return render(request, 'core/agregar_vendedor.html')
+
+
+def agregarProducto(request):
+    if request.POST:
+        producto = Producto()
+        producto.nombre = request.POST.get("prodNombre")
+        producto.precio = request.POST.get("precioProd")
+        producto.img = request.POST.get("txtImagen")
+        producto.desc = request.POST.get("descProd")
+        producto.tip_producto = request.POST.get("tipoProd")
+        try:
+            producto.save()
+            mensaje = "Producto agregado"
+            messages.success(request, mensaje)
+        except:
+            mensaje = "No se pudo agregar el Producto"
+            messages.error(request, mensaje)
+    return render(request, 'core/agregar_producto.html')
+
+
+>>>>>>> 5004a7e7feadcb6ac1ac9b334380051bd4df3f6e
 def agregarmedioPago(request):
     if request.POST:
         medio_pago = Medio_pago()
@@ -276,6 +325,157 @@ def agregarmedioPago(request):
             messages.error(request, mensaje)
     return render(request, 'core/agregar_medioPago.html')
 
+<<<<<<< HEAD
+=======
+
+def modificarVendedor(request, id):
+
+    vendedor = Vendedor.objects.get(id=id)
+
+    data = {
+        "vendedor": vendedor
+    }
+
+    # modificar
+    if request.POST:
+        vendedor.p_nombre = request.POST.get("primNombre")
+        vendedor.s_nombre = request.POST.get("segNombre")
+        vendedor.a_paterno = request.POST.get("apPaterno")
+        vendedor.a_materno = request.POST.get("apMaterno")
+        vendedor.rut = request.POST.get("txtRut")
+
+        try:
+            vendedor.save()
+            mensaje = "Vendedor modificado"
+            messages.success(request, mensaje)
+        except:
+            mensaje = "No se pudo modificar al vendedor"
+            messages.error(request, mensaje)
+
+    return render(request, 'core/modificar_vendedor.html', data)
+
+
+def modificarVenta(request, id):
+
+    venta = Venta.objects.get(id=id)
+
+    data = {
+        "venta": venta
+    }
+
+    # modificar
+    if request.POST:
+        venta.pedido = request.POST.get("selectPedido")
+        try:
+            venta.save()
+            mensaje = "Venta modificada"
+            messages.success(request, mensaje)
+        except:
+            mensaje = "No se pudo modificar la venta"
+            messages.error(request, mensaje)
+
+    return render(request, 'core/modificar_venta.html', data)
+
+
+def modificarCliente(request, id):
+
+    cliente = Cliente.objects.get(id=id)
+
+    data = {
+        "cliente": cliente
+    }
+
+    # modificar
+    if request.POST:
+        cliente.p_nombre = request.POST.get("nombreCli")
+        cliente.a_paterno = request.POST.get("apellidoCli")
+        cliente.num_contact = request.POST.get("inputTelefono")
+        cliente.rut = request.POST.get("rutCli")
+
+        try:
+            cliente.save()
+            mensaje = "Cliente modificado"
+            messages.success(request, mensaje)
+        except:
+            mensaje = "No se pudo modificar al Cliente"
+            messages.error(request, mensaje)
+
+    return render(request, 'core/modificar_clientes.html', data)
+
+
+def modificarDelivery(request, id):
+
+    delivery = Delivery.objects.get(id=id)
+
+    data = {
+        "delivery": delivery
+    }
+
+    # modificar
+    if request.POST:
+        delivery.direccion = request.POST.get("direccionDelivery")
+        delivery.telefono = request.POST.get("telefonoDelivery")
+        delivery.valor = request.POST.get("valorDelivery")
+
+        try:
+            delivery.save()
+            mensaje = "Delivery modificado"
+            messages.success(request, mensaje)
+        except:
+            mensaje = "No se pudo modificar el Delivery"
+            messages.error(request, mensaje)
+
+    return render(request, 'core/modificar_delivery.html', data)
+
+def modificarProducto(request, id):
+
+    producto = Producto.objects.get(id=id)
+
+    data = {
+        "producto": producto
+    }
+
+    # modificar
+    if request.POST:
+        producto.nombre = request.POST.get("prodNombre")
+        producto.precio = request.POST.get("precioProd")
+        producto.img = request.POST.get("txtImagen")
+        producto.desc = request.POST.get("descProd")
+        producto.tip_producto = request.POST.get("tipoProd")
+
+        try:
+            producto.save()
+            mensaje = "Producto modificado"
+            messages.success(request, mensaje)
+        except:
+            mensaje = "No se pudo modificar al Producto"
+            messages.error(request, mensaje)
+
+    return render(request, 'core/modificar_producto.html', data)
+
+def modificarmedioPago(request, id):
+
+    medioPago = Medio_pago.objects.get(id=id)
+
+    data = {
+        "medioPago": medioPago
+    }
+
+    # modificar
+    if request.POST:
+        medioPago.tipo_pago = request.POST.get("medioPago")
+        try:
+            medioPago.save()
+            mensaje = "Medio de Pago modificado"
+            messages.success(request, mensaje)
+        except:
+            mensaje = "No se pudo modificar el Medio de Pago"
+            messages.error(request, mensaje)
+
+    return render(request, 'core/modificar_medioPago.html', data)
+
+
+>>>>>>> 5004a7e7feadcb6ac1ac9b334380051bd4df3f6e
 def eliminarCli(request, id):
     cliente = Cliente.objects.get(id=id)
 
