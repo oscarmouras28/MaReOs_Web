@@ -100,7 +100,6 @@ def carrito(request):
     data = {"listaCarrito": lista_carrito}
     return render(request, 'core/carrito.html', data)
 
-<<<<<<< HEAD
 def agregar_vendedor(request):
     # guardar
     if request.POST:
@@ -218,8 +217,6 @@ def modificarProducto(request, id):
             messages.error(request, mensaje)
 
     return render(request, 'core/modificar_producto.html',data)
-=======
->>>>>>> 5004a7e7feadcb6ac1ac9b334380051bd4df3f6e
 
 def ver_vendedores(request):
     listado_Vendedores = Vendedor.objects.all()
@@ -231,7 +228,6 @@ def ver_clientes(request):
     data = {"listaClientes": listado_clientes}
     return render(request, 'core/ver_clientes.html', data)
 
-<<<<<<< HEAD
 def agregarProducto(request):
     if request.POST:
         producto = Producto()
@@ -248,8 +244,6 @@ def agregarProducto(request):
             mensaje = "No se pudo agregar el Producto"
             messages.error(request, mensaje)
     return render(request, 'core/agregar_producto.html')
-=======
->>>>>>> 5004a7e7feadcb6ac1ac9b334380051bd4df3f6e
 
 def ver_productos(request):
     listado_sandwich = Producto.objects.filter(tip_producto='1')
@@ -268,8 +262,6 @@ def ver_pagos(request):
     data = {"listaMediosPagos": listaPagos}
     return render(request, 'core/ver_tipos_pago.html', data)
 
-<<<<<<< HEAD
-=======
 
 def agregar_vendedor(request):
     # guardar
@@ -310,7 +302,6 @@ def agregarProducto(request):
     return render(request, 'core/agregar_producto.html')
 
 
->>>>>>> 5004a7e7feadcb6ac1ac9b334380051bd4df3f6e
 def agregarmedioPago(request):
     if request.POST:
         medio_pago = Medio_pago()
@@ -325,8 +316,6 @@ def agregarmedioPago(request):
             messages.error(request, mensaje)
     return render(request, 'core/agregar_medioPago.html')
 
-<<<<<<< HEAD
-=======
 
 def modificarVendedor(request, id):
 
@@ -475,7 +464,6 @@ def modificarmedioPago(request, id):
     return render(request, 'core/modificar_medioPago.html', data)
 
 
->>>>>>> 5004a7e7feadcb6ac1ac9b334380051bd4df3f6e
 def eliminarCli(request, id):
     cliente = Cliente.objects.get(id=id)
 
