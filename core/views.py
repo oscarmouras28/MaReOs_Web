@@ -1,6 +1,8 @@
 from django.contrib import messages
 from django.shortcuts import render, redirect
+from django.contrib.auth import login, authenticate 
 from .models import Producto, Venta, Vendedor, Cliente, Delivery, Medio_pago, Carrito
+from .forms import CustomUserCreationForm
 
 def home(request):
     return render(request, 'core/home.html')
@@ -67,6 +69,24 @@ def registro_cliente(request):
             mensaje = "No se pudo agregar al Cliente"
             messages.error(request, mensaje)
     return render(request, 'core/registro.html')
+
+def registro(request): 
+    data ={
+        'form': CustomUserCreationForm
+    }
+
+    if request.POST:
+        formulario=CustomUserCreationForm(data=request.POST)
+
+        if formulario.is_valid():
+            formulario.save()
+            user = authenticate(username=formulario.cleaned_data["username"],
+                                password = formulario.cleaned_data["password1"])
+            login(request, user)
+            return redirect("home")
+        
+        data["form"] = formulario
+    return render(request, 'registration/registro_user.html', data)
 
 def registro_vendedor(request):
     if request.POST:
