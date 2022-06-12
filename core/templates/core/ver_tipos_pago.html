@@ -21,39 +21,64 @@
 <body>
     <div class="wrapper">
         <!-- Sidebar  -->
-        <nav id="sidebar">
+                <nav id="sidebar">
             <div class="sidebar-header">
                 <h3>Menú</h3>
             </div>
-
+            {% if user.is_authenticated %}
             <ul class="list-unstyled components">
-                <p>Inicia sesión y podras hacer tu pedido :)</p>
+                <p>
+                    Hola {{ user.username }} ¿Que deseas comer hoy? :)
+                </p>
+                <hr class="mt-2 mb-3" />
                 <li class="active">
-                    <a href="http://127.0.0.1:8000/login/" name="btnInicioSesion" id="btnInicioSesion"
-                        aria-expanded="false">Iniciar Sesion</a>
-                    <a href="{% url 'registro' %}" name="btnRegistrate" id="btnRegistrate" aria-expanded="false">o
-                        registrate aqui</a>
-                    <a href="{% url 'registro' %}" name="btnRegistrate" id="btnRegistrate" aria-expanded="false">
-                        Cerrar Sesión</a>
-                    <hr class="mt-2 mb-3" />
-                    <a href="{% url 'catalogo' %}" name="btnRegistrate" id="btnRegistrate" aria-expanded="false">
-                        Catalogo</a>
-                    <a href="{% url 'carrito' %}" name="btnRegistrate" id="btnRegistrate" aria-expanded="false">
-                        Carrito</a>
-                    <a href="{% url 'ventas' %}" name="btnRegistrate" id="btnRegistrate" aria-expanded="false">
-                        Lista Ventas</a>
-                    <a href="{% url 'ver_vendedores' %}" name="btnRegistrate" id="btnRegistrate" aria-expanded="false">
-                        Lista Vendedores</a>
-                    <a href="{% url 'ver_clientes' %}" name="btnRegistrate" id="btnRegistrate" aria-expanded="false">
-                        Lista Clientes</a>
-                    <a href="{% url 'ver_productos' %}" name="btnRegistrate" id="btnRegistrate" aria-expanded="false">
-                        Lista Productos</a>
+                    <a href="{% url 'catalogo' %}" name="btnRegistrate" id="btnRegistrate"
+                        aria-expanded="false">Catalogo</a>
+                    <a href="{% url 'carrito' %}" name="btnRegistrate" id="btnRegistrate"
+                        aria-expanded="false">Carrito</a>
+                    <a href="{% url 'ventas' %}" name="btnRegistrate" id="btnRegistrate" aria-expanded="false">Lista
+                        Ventas</a>
+                    <a href="{% url 'ver_vendedores' %}" name="btnRegistrate" id="btnRegistrate"
+                        aria-expanded="false">Lista Vendedores</a>
+                    <a href="{% url 'ver_clientes' %}" name="btnRegistrate" id="btnRegistrate"
+                        aria-expanded="false">Lista Clientes</a>
+                    <a href="{% url 'ver_productos' %}" name="btnRegistrate" id="btnRegistrate"
+                        aria-expanded="false">Lista Productos</a>
                     <a href="{% url 'ver_medios_pago' %}" name="btnRegistrate" id="btnRegistrate" aria-expanded="false">
                         Lista Medios de Pago</a>
-
+                    <a href="{% url 'logout' %}" name="btnRegistrate" id="btnRegistrate"
+                        aria-expanded="false">Cerrar Sesión</a>
+                    </ul>
                 </li>
+                {% else %}
+                <ul class="list-unstyled components">
+                    <p>
+                        inicia sesion para que puedas ordenar algo hoy :)
+                    </p>
+                    <li class="active">
+                        <a href="{% url 'login' %}" name="btnInicioSesion" id="btnInicioSesion"
+                            aria-expanded="false">Iniciar Sesion</a>
+                        <a href="{% url 'registro' %}" name="btnRegistrate" id="btnRegistrate" aria-expanded="false">o
+                            registrate aqui</a>
+                        <hr class="mt-2 mb-3" />
+                        <a href="{% url 'catalogo' %}" name="btnRegistrate" id="btnRegistrate"
+                            aria-expanded="false">Catalogo</a>
+                        <a href="{% url 'carrito' %}" name="btnRegistrate" id="btnRegistrate"
+                            aria-expanded="false">Carrito</a>
+                        <a href="{% url 'ventas' %}" name="btnRegistrate" id="btnRegistrate" aria-expanded="false">Lista
+                            Ventas</a>
+                        <a href="{% url 'ver_vendedores' %}" name="btnRegistrate" id="btnRegistrate"
+                            aria-expanded="false">Lista Vendedores</a>
+                        <a href="{% url 'ver_clientes' %}" name="btnRegistrate" id="btnRegistrate"
+                            aria-expanded="false">Lista Clientes</a>
+                        <a href="{% url 'ver_productos' %}" name="btnRegistrate" id="btnRegistrate"
+                            aria-expanded="false">Lista Productos</a>
+                        <a href="{% url 'ver_medios_pago' %}" name="btnRegistrate" id="btnRegistrate"
+                            aria-expanded="false">
+                            Lista Medios de Pago</a>
+                    </ul>
+                        {% endif %}
         </nav>
-
         <!-- Contenido  -->
         <div id="content">
             <div class="container">
@@ -85,7 +110,7 @@
                             <tr>
                                 <th scope="row"> {{x.id}}</th>
                                 <td>{{x.tipo_pago}}</td>
-                                <td><a class="btn btn-warning" style="margin-left:4px;"><i class="fa fa-pen"></i></i></a></td>
+                                <td><a class="btn btn-warning" style="margin-left:4px;" href="{% url 'modificarmedioPago' x.id %}"><i class="fa fa-pen"></i></i></a></td>
                                 <td><a class="btn btn-danger" style="margin-left:13px;" href="{% url 'eliminarMedioPago' x.id %}"><i class="fa-regular fa-trash-can"></i></a></td>                             
                             </tr>
                             {% endfor %}

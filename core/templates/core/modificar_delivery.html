@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ma're'os Web</title>
+    {% load static %}
+    <!-- cargamos css bootstrap 5.1.3 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+    <!-- cargamos style.css -->
+    <link rel="stylesheet" href="{% static 'core/css/style-pago.css' %}" type="text/css">
+    <!-- font awesome -->
+    <script src="https://kit.fontawesome.com/84cef5c1c7.js" crossorigin="anonymous"></script>
+
+</head>
+
+<body>
+    <div class="wrapper">
+        <!-- Sidebar  -->
+        <nav id="sidebar">
+            <div class="sidebar-header">
+                <h3>Menú</h3>
+            </div>
+            {% if user.is_authenticated %}
+            <ul class="list-unstyled components">
+                <p>
+                    Hola {{ user.username }} ¿Que deseas comer hoy? :)
+                </p>
+                <hr class="mt-2 mb-3" />
+                <li class="active">
+                    <a href="{% url 'catalogo' %}" name="btnRegistrate" id="btnRegistrate"
+                        aria-expanded="false">Catalogo</a>
+                    <a href="{% url 'carrito' %}" name="btnRegistrate" id="btnRegistrate"
+                        aria-expanded="false">Carrito</a>
+                    <a href="{% url 'ventas' %}" name="btnRegistrate" id="btnRegistrate" aria-expanded="false">Lista
+                        Ventas</a>
+                    <a href="{% url 'ver_vendedores' %}" name="btnRegistrate" id="btnRegistrate"
+                        aria-expanded="false">Lista Vendedores</a>
+                    <a href="{% url 'ver_clientes' %}" name="btnRegistrate" id="btnRegistrate"
+                        aria-expanded="false">Lista Clientes</a>
+                    <a href="{% url 'ver_productos' %}" name="btnRegistrate" id="btnRegistrate"
+                        aria-expanded="false">Lista Productos</a>
+                    <a href="{% url 'ver_medios_pago' %}" name="btnRegistrate" id="btnRegistrate" aria-expanded="false">
+                        Lista Medios de Pago</a>
+                    <a href="{% url 'logout' %}" name="btnRegistrate" id="btnRegistrate" aria-expanded="false">Cerrar
+                        Sesión</a>
+            </ul>
+            </li>
+            {% else %}
+            <ul class="list-unstyled components">
+                <p>
+                    inicia sesion para que puedas ordenar algo hoy :)
+                </p>
+                <li class="active">
+                    <a href="{% url 'login' %}" name="btnInicioSesion" id="btnInicioSesion"
+                        aria-expanded="false">Iniciar Sesion</a>
+                    <a href="{% url 'registro' %}" name="btnRegistrate" id="btnRegistrate" aria-expanded="false">o
+                        registrate aqui</a>
+                    <hr class="mt-2 mb-3" />
+                    <a href="{% url 'catalogo' %}" name="btnRegistrate" id="btnRegistrate"
+                        aria-expanded="false">Catalogo</a>
+                    <a href="{% url 'carrito' %}" name="btnRegistrate" id="btnRegistrate"
+                        aria-expanded="false">Carrito</a>
+                    <a href="{% url 'ventas' %}" name="btnRegistrate" id="btnRegistrate" aria-expanded="false">Lista
+                        Ventas</a>
+                    <a href="{% url 'ver_vendedores' %}" name="btnRegistrate" id="btnRegistrate"
+                        aria-expanded="false">Lista Vendedores</a>
+                    <a href="{% url 'ver_clientes' %}" name="btnRegistrate" id="btnRegistrate"
+                        aria-expanded="false">Lista Clientes</a>
+                    <a href="{% url 'ver_productos' %}" name="btnRegistrate" id="btnRegistrate"
+                        aria-expanded="false">Lista Productos</a>
+                    <a href="{% url 'ver_medios_pago' %}" name="btnRegistrate" id="btnRegistrate" aria-expanded="false">
+                        Lista Medios de Pago</a>
+            </ul>
+            {% endif %}
+        </nav>
+
+        <!-- Contenido  -->
+        <div id="content">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-1">
+                        <button type="button" id="sidebarCollapse">
+
+                            <span class="navbar-toggler-icon"><i class="fa fa-bars"></i></span>
+                        </button>
+                    </div>
+                    <div class="col-md-1">
+                        <img src="{% static 'core/img/Mareos.png' %}" style="margin-top: 2%;" width="50" height="50">
+                    </div>
+                    <div class="col-md-8" id="titulo" name="titulo">
+                        <h3 class="text-black mt-3">Pago</h3>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="text-center col-md-12 mt-3" style="margin-left: 10%;">
+                        <h5>Ya casi! solo te falta pagar :)</h5>
+                        <br>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="col-md-12">
+                            <label for="radioMedioPago" class="col-md-12">Selecciona tu medio de pago</label>
+                            <div class="btn-group col-md-12 pt-2" role="group"
+                                -aria-label="Basic radio toggle button group">
+                                <input type="radio" class="btn-check" name="radioMedioPago" id="radioEfectivo"
+                                    autocomplete="off" disabled>
+                                <label class="btn btn-outline-warning" style="color: black;" for="radioEfectivo"><i
+                                        class="fa-solid fa-money-bill-wave"></i> Efectivo</label>
+
+                                <input type="radio" class="btn-check" name="radioMedioPago" id="radioDebito"
+                                    autocomplete="off" disabled>
+                                <label class="btn btn-outline-warning" style="color: black;" for="radioDebito"><i
+                                        class="fa-solid fa-credit-card"></i> Debito</label>
+
+                                <input type="radio" class="btn-check" name="radioMedioPago" id="radioCredito"
+                                    autocomplete="off" disabled>
+                                <label class="btn btn-outline-warning" style="color: black;" for="radioCredito"><i
+                                        class="fa-brands fa-cc-mastercard"></i> Credito</label>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="col-md-12">
+                            <label for="medioEntrega" class="col-md-12">Selecciona medio de entrega</label>
+                            <div class="btn-group col-md-12 pt-2" role="group"
+                                aria-label="Basic radio toggle button group">
+                                <input type="radio" class="btn-check" name="btnradio" id="btnradio1" value="delivery"
+                                    autocomplete="off" disabled>
+                                <label class="btn btn-outline-warning" style="color: black;" for="btnradio1"><i
+                                        class="fa-solid fa-motorcycle"></i> Delivery</label>
+
+                                <input type="radio" class="btn-check" name="btnradio" id="btnradio2" value="local"
+                                    autocomplete="off" disabled>
+                                <label class="btn btn-outline-warning" style="color: black;" for="btnradio2"><i
+                                        class="fa-solid fa-shop"></i> Retiro en Local</label>
+                            </div>
+                        </div>
+                        <br>
+                        <div id="contenidoDelivery" name="contenidoDelivery">
+                            <div>
+                                <p>
+                                    <a class="btn btn-warning" data-bs-toggle="collapse" href="#collapseExample"
+                                        role="button" aria-expanded="false" aria-controls="collapseExample">
+                                        Mis Datos de Delivery Guardados
+                                    </a>
+                                </p>
+                            </div>
+                            <div class="" id="">
+                                <div class="">
+                                    <div class="col-md-6">
+                                        <div class="card" style="border-radius: 20px;">
+                                            <div class="m-3">
+                                                <form method="POST">
+                                                    {% csrf_token %}
+                                                    <div class="col m-2">
+                                                        <label for="direccionDelivery">Dirección:</label>
+                                                        <div style="display:none;">
+                                                            <p name="coordenadas" id="coordenadas"></p>
+                                                        </div>
+                                                        <input type="text" style="width: 95%" name="direccionDelivery"
+                                                            id="direccionDelivery" value="{{delivery.direccion}}">
+                                                        <button type="button" class="btn btn-warning m-2"
+                                                            id="buscarDireccion" name="buscarDirecicon">Buscar</button>
+                                                        <button type="button" class="btn btn-success m-2"
+                                                            style="display:none;" id="confirmarDireccion"
+                                                            name="confirmarDirecicon">Confirmar
+                                                            Dirección</button>
+                                                    </div>
+                                                    <div class="col mt-2">
+                                                        <div name="map" id="map" style="display: none;" class="m-1">
+                                                        </div>
+
+                                                    </div>
+                                                    <div class="col m-2">
+                                                        <label for="telefonoDelivery">Telefono:</label>
+                                                        <input type="number" name="telefonoDelivery"
+                                                            id="telefonoDelivery" value="{{delivery.telefono}}">
+                                                    </div>
+                                                    <div class="col m-2">
+                                                        <label
+                                                            for="valorDelivery">Valor:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                        </label>
+                                                        <input type="number" name="valorDelivery" id="valorDelivery"
+                                                            readonly value="{{delivery.valor}}">
+                                                    </div>
+                                                    <div class="col mt-2">
+                                                        <input type="submit" style="width: 100%;"
+                                                            class="btn btn-success mt-2" id="btnAgregarDelivery"
+                                                            name="btnAgregarDelivery" value="Confirmar Cambio">
+                                                            <a style="width:100%;" href="{% url 'pago' %}" class="btn btn-warning mt-2">Continuar</a>
+                                                    </div>
+                                                </form>
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mt-3">
+                                <p>
+                                    <button class="btn btn-success" role="button" aria-expanded="false"
+                                        aria-controls="agregarDelivery" disabled>
+                                        Confirmar
+                                    </button>
+                                </p>
+                            </div>
+                        </div>
+                        <a href="{% url 'home' %}" class="btn btn-danger">Cancelar</a>
+                        <a href="{% url 'boleta' %}" class="btn btn-success" style="display: none;" id="btnPedir"
+                            name="btnPedir">Pedir</a>
+                    </div>
+
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+    <!-- Pie de pagina  -->
+    <footer>
+        <div class="footer-copyright text-center py-3 ">© 2022 Copyright:
+            <a href="#"> www.Ma're'os.com</a>
+            <p>Correo: mareosweb@mareos.com</p>
+            <div class="dropdown-divider"></div>
+            <p>Telefono: 226977279</p>
+        </div>
+
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.js"
+        integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
+
+    <script
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBpmFm34mI8fRZz1wp2hrViuE9NFpodrzs&callback=iniciarMap"></script>
+    <script src="{% static 'core/js/pago.js' %}"></script>
+</body>
+
+</html>

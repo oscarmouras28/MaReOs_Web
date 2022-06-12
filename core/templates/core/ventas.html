@@ -23,34 +23,58 @@
             <div class="sidebar-header">
                 <h3>Menú</h3>
             </div>
+            {% if user.is_authenticated %}
             <ul class="list-unstyled components">
                 <p>
-                    Inicia sesión y podras hacer tu pedido :
+                    Hola {{ user.username }} ¿Que deseas comer hoy? :)
+                </p>
+                <hr class="mt-2 mb-3" />
+                <li class="active">
+                    <a href="{% url 'catalogo' %}" name="btnRegistrate" id="btnRegistrate"
+                        aria-expanded="false">Catalogo</a>
+                    <a href="{% url 'carrito' %}" name="btnRegistrate" id="btnRegistrate"
+                        aria-expanded="false">Carrito</a>
+                    <a href="{% url 'ventas' %}" name="btnRegistrate" id="btnRegistrate" aria-expanded="false">Lista
+                        Ventas</a>
+                    <a href="{% url 'ver_vendedores' %}" name="btnRegistrate" id="btnRegistrate"
+                        aria-expanded="false">Lista Vendedores</a>
+                    <a href="{% url 'ver_clientes' %}" name="btnRegistrate" id="btnRegistrate"
+                        aria-expanded="false">Lista Clientes</a>
+                    <a href="{% url 'ver_productos' %}" name="btnRegistrate" id="btnRegistrate"
+                        aria-expanded="false">Lista Productos</a>
+                    <a href="{% url 'ver_medios_pago' %}" name="btnRegistrate" id="btnRegistrate" aria-expanded="false">
+                        Lista Medios de Pago</a>
+                    <a href="{% url 'logout' %}" name="btnRegistrate" id="btnRegistrate" aria-expanded="false">Cerrar
+                        Sesión</a>
+            </ul>
+            </li>
+            {% else %}
+            <ul class="list-unstyled components">
+                <p>
+                    inicia sesion para que puedas ordenar algo hoy :)
                 </p>
                 <li class="active">
-                    <a href="http://127.0.0.1:8000/login/" name="btnInicioSesion" id="btnInicioSesion"
+                    <a href="{% url 'login' %}" name="btnInicioSesion" id="btnInicioSesion"
                         aria-expanded="false">Iniciar Sesion</a>
                     <a href="{% url 'registro' %}" name="btnRegistrate" id="btnRegistrate" aria-expanded="false">o
                         registrate aqui</a>
-                    <a href="{% url 'registro' %}" name="btnRegistrate" id="btnRegistrate" aria-expanded="false">
-                        Cerrar Sesión</a>
                     <hr class="mt-2 mb-3" />
-                    <a href="{% url 'catalogo' %}" name="btnRegistrate" id="btnRegistrate" aria-expanded="false">
-                        Catalogo</a>
-                    <a href="{% url 'carrito' %}" name="btnRegistrate" id="btnRegistrate" aria-expanded="false">
-                        Carrito</a>
-                    <a href="{% url 'ventas' %}" name="btnRegistrate" id="btnRegistrate" aria-expanded="false">
-                        Lista Ventas</a>
-                    <a href="{% url 'ver_vendedores' %}" name="btnRegistrate" id="btnRegistrate" aria-expanded="false">
-                        Lista Vendedores</a>
-                    <a href="{% url 'ver_clientes' %}" name="btnRegistrate" id="btnRegistrate" aria-expanded="false">
-                        Lista Clientes</a>
-                    <a href="{% url 'ver_productos' %}" name="btnRegistrate" id="btnRegistrate" aria-expanded="false">
-                        Lista Productos</a>
+                    <a href="{% url 'catalogo' %}" name="btnRegistrate" id="btnRegistrate"
+                        aria-expanded="false">Catalogo</a>
+                    <a href="{% url 'carrito' %}" name="btnRegistrate" id="btnRegistrate"
+                        aria-expanded="false">Carrito</a>
+                    <a href="{% url 'ventas' %}" name="btnRegistrate" id="btnRegistrate" aria-expanded="false">Lista
+                        Ventas</a>
+                    <a href="{% url 'ver_vendedores' %}" name="btnRegistrate" id="btnRegistrate"
+                        aria-expanded="false">Lista Vendedores</a>
+                    <a href="{% url 'ver_clientes' %}" name="btnRegistrate" id="btnRegistrate"
+                        aria-expanded="false">Lista Clientes</a>
+                    <a href="{% url 'ver_productos' %}" name="btnRegistrate" id="btnRegistrate"
+                        aria-expanded="false">Lista Productos</a>
                     <a href="{% url 'ver_medios_pago' %}" name="btnRegistrate" id="btnRegistrate" aria-expanded="false">
                         Lista Medios de Pago</a>
-
-                </li>
+            </ul>
+            {% endif %}
         </nav>
         <!-- Contenido  -->
         <div id="content">
@@ -114,28 +138,18 @@
 
                                     <p class="card-text">Tipo de Pago: {{x.pago_id.tipo_pago}}</p>
 
+                                    <p class="card-text">Pedido: {{x.pedido}}</p>
 
-                                    <div>
-                                        <label for="selectPedido">Pedido: </label>
-                                        <select name="selectPedido" id="selectPedido" disabled>
-                                            <option value="En Preparación">En Preparación</option>
-                                            <option value="Entregado">Entregado</option>
-                                            <option value="Cancelado">Cancelado</option>
-                                        </select>
-                                    </div>
                                     <div class="mt-2" style="float: right;">
-                                        <a class="btn btn-primary" style="display: none;" id="btnGuardarVenta"
-                                            name="btnGuardarVenta">
-                                            <i class="fa fa-save"></i></i>
-                                        </a>
-                                        <a class="btn btn-warning" style="display: inline;" id="btnEditarVenta"
-                                            name="btnEditarVenta">
-                                            <i class="fa fa-pen"></i></i>
-                                        </a>
-                                        <a class="btn btn-danger m-3"  href="{% url 'eliminarVenta' x.id %}" id="btnEliminarVenta" name="btnEliminarVenta">
-                                            <i class="fa-regular fa-trash-can"></i>
-                                        </a>
-                                        </p>
+                                            <a class="btn btn-warning"  href="{% url 'modificarVenta' x.id %}" style="display: inline;" id="btnEditarVenta"
+                                                name="btnEditarVenta">
+                                                <i class="fa fa-pen"></i></i>
+                                            </a>
+                                            <a class="btn btn-danger m-3" href="{% url 'eliminarVenta' x.id %}"
+                                                id="btnEliminarVenta" name="btnEliminarVenta">
+                                                <i class="fa-regular fa-trash-can"></i>
+                                            </a>
+                                            </p>
                                     </div>
                                 </div>
                             </div>
