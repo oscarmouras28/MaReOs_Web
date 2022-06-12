@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import eliminarVenta, home,boleta,catalogo,pago,recuperar_contrasena,registro_cliente,registro_vendedor,ventas,carrito,ver_vendedores,ver_clientes, ver_productos, eliminarCli, eliminarVen, eliminarProd, ver_pagos, eliminarMedioPago,eliminarMiDelivery, agregar_vendedor, agregarProducto, agregarmedioPago,modificarVendedor,modificarCliente, modificarProducto, modificarVenta, modificarDelivery, modificarmedioPago
+from .views import eliminarVenta, home,boleta,catalogo,pago,registro,recuperar_contrasena,registro_cliente,registro_vendedor,ventas,carrito,ver_vendedores,ver_clientes, ver_productos, eliminarCli, eliminarVen, eliminarProd, ver_pagos, eliminarMedioPago,eliminarMiDelivery, agregar_vendedor, agregarProducto, agregarmedioPago,modificarVendedor,modificarCliente, modificarProducto, modificarVenta, modificarDelivery, modificarmedioPago
 
 urlpatterns = [
     path('', home),
@@ -8,11 +8,12 @@ urlpatterns = [
     path('catalogo/', catalogo, name= "catalogo"),
     path('pago/', pago, name= "pago"),
     path('recuperar/', recuperar_contrasena, name= "recuperar"),
-    path('registro/', registro_cliente, name="registro"),
+    path('registro_clientes/', registro_cliente, name="registro_clientes"),
     path('ventas/', ventas, name="ventas"),
     path('carrito/', carrito, name="carrito"),
     path('ver_vendedores/', ver_vendedores, name="ver_vendedores"),
     path('registrovendedor/', registro_vendedor, name="registrovendedor"),
+    path('registro/', registro, name="registro"),
     path('ver_clientes/', ver_clientes, name="ver_clientes"),
     path('ver_productos/', ver_productos, name="ver_productos"),
     path('ver_medios_pago/', ver_pagos, name="ver_medios_pago"),
