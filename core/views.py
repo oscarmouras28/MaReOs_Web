@@ -231,7 +231,7 @@ def modificarProducto(request, id):
     if request.POST:
         producto.nombre = request.POST.get("prodNombre")
         producto.precio = request.POST.get("precioProd")
-        producto.img = request.POST.get("txtImagen")
+        producto.img = request.FILES.get("txtImagen")
         producto.desc = request.POST.get("descProd")
         producto.tip_producto = request.POST.get("tipoProd")
 
@@ -260,7 +260,7 @@ def agregarProducto(request):
         producto = Producto()
         producto.nombre = request.POST.get("prodNombre")
         producto.precio = request.POST.get("precioProd")
-        producto.img = request.POST.get("txtImagen")
+        producto.img = request.FILES.get("txtImagen")
         producto.desc = request.POST.get("descProd")
         producto.tip_producto = request.POST.get("tipoProd")
         try:
@@ -308,23 +308,6 @@ def agregar_vendedor(request):
             messages.error(request, mensaje)
 
     return render(request, 'core/agregar_vendedor.html')
-
-def agregarProducto(request):
-    if request.POST:
-        producto = Producto()
-        producto.nombre = request.POST.get("prodNombre")
-        producto.precio = request.POST.get("precioProd")
-        producto.img = request.POST.get("txtImagen")
-        producto.desc = request.POST.get("descProd")
-        producto.tip_producto = request.POST.get("tipoProd")
-        try:
-            producto.save()
-            mensaje = "Producto agregado"
-            messages.success(request, mensaje)
-        except:
-            mensaje = "No se pudo agregar el Producto"
-            messages.error(request, mensaje)
-    return render(request, 'core/agregar_producto.html')
 
 def agregarmedioPago(request):
     if request.POST:
