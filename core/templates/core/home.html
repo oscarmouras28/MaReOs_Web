@@ -21,6 +21,7 @@
     <body>
         <div class="wrapper">
             <!-- Sidebar  -->
+                <!-- Contenido  -->
             <nav id="sidebar">
                 <div class="sidebar-header">
                     <h3>Menú</h3>
@@ -28,7 +29,7 @@
                 {% if user.is_authenticated %}
                     <ul class="list-unstyled components">
                         <p>
-                            Hola {{ user.username }} �Que deseas comer hoy? :)
+                            Hola {{ user.username }} ¿Que deseas comer hoy? :)
                         </p>
                         <hr class="mt-2 mb-3" />
                         <li class="active">
@@ -65,7 +66,7 @@
                             <a href="{% url 'logout' %}"
                                name="btnRegistrate"
                                id="btnRegistrate"
-                               aria-expanded="false">Cerrar Sesi�n</a>
+                               aria-expanded="false">Cerrar Sesión</a>
                         </ul>
                     </li>
                 {% else %}
@@ -117,7 +118,6 @@
                         </ul>
                     {% endif %}
                 </nav>
-                <!-- Contenido  -->
                 <div id="content">
                     <div class="container">
                         <div class="row">

@@ -21,71 +21,108 @@
 <body>
     <div class="wrapper">
         <!-- Sidebar  -->
-               <nav id="sidebar">
-            <div class="sidebar-header">
-                <h3>Menú</h3>
-            </div>
-            {% if user.is_authenticated %}
-            <ul class="list-unstyled components">
-                <p>
-                    Hola {{ user.username }} ¿Que deseas comer hoy? :)
-                </p>
-                <hr class="mt-2 mb-3" />
-                <li class="active">
-                    <a href="{% url 'catalogo' %}" name="btnRegistrate" id="btnRegistrate"
-                        aria-expanded="false">Catalogo</a>
-                    <a href="{% url 'carrito' %}" name="btnRegistrate" id="btnRegistrate"
-                        aria-expanded="false">Carrito</a>
-                    <a href="{% url 'ventas' %}" name="btnRegistrate" id="btnRegistrate" aria-expanded="false">Lista
-                        Ventas</a>
-                    <a href="{% url 'ver_vendedores' %}" name="btnRegistrate" id="btnRegistrate"
-                        aria-expanded="false">Lista Vendedores</a>
-                    <a href="{% url 'ver_clientes' %}" name="btnRegistrate" id="btnRegistrate"
-                        aria-expanded="false">Lista Clientes</a>
-                    <a href="{% url 'ver_productos' %}" name="btnRegistrate" id="btnRegistrate"
-                        aria-expanded="false">Lista Productos</a>
-                    <a href="{% url 'ver_medios_pago' %}" name="btnRegistrate" id="btnRegistrate" aria-expanded="false">
-                        Lista Medios de Pago</a>
-                    <a href="{% url 'logout' %}" name="btnRegistrate" id="btnRegistrate"
-                        aria-expanded="false">Cerrar Sesión</a>
-                    </ul>
-                </li>
-                {% else %}
-                <ul class="list-unstyled components">
-                    <p>
-                        inicia sesion para que puedas ordenar algo hoy :)
-                    </p>
-                    <li class="active">
-                        <a href="{% url 'login' %}" name="btnInicioSesion" id="btnInicioSesion"
-                            aria-expanded="false">Iniciar Sesion</a>
-                        <a href="{% url 'registro' %}" name="btnRegistrate" id="btnRegistrate" aria-expanded="false">o
-                            registrate aqui</a>
+              <nav id="sidebar">
+                <div class="sidebar-header">
+                    <h3>Menú</h3>
+                </div>
+                {% if user.is_authenticated %}
+                    <ul class="list-unstyled components">
+                        <p>
+                            Hola {{ user.username }} ¿Que deseas comer hoy? :)
+                        </p>
                         <hr class="mt-2 mb-3" />
-                        <a href="{% url 'catalogo' %}" name="btnRegistrate" id="btnRegistrate"
-                            aria-expanded="false">Catalogo</a>
-                        <a href="{% url 'carrito' %}" name="btnRegistrate" id="btnRegistrate"
-                            aria-expanded="false">Carrito</a>
-                        <a href="{% url 'ventas' %}" name="btnRegistrate" id="btnRegistrate" aria-expanded="false">Lista
+                        <li class="active">
+                            <a href="{% url 'catalogo' %}"
+                               name="btnRegistrate"
+                               id="btnRegistrate"
+                               aria-expanded="false">Catalogo</a>
+                            <a href="{% url 'carrito' %}"
+                               name="btnRegistrate"
+                               id="btnRegistrate"
+                               aria-expanded="false">Carrito</a>
+                            <a href="{% url 'ventas' %}"
+                               name="btnRegistrate"
+                               id="btnRegistrate"
+                               aria-expanded="false">Lista
                             Ventas</a>
-                        <a href="{% url 'ver_vendedores' %}" name="btnRegistrate" id="btnRegistrate"
-                            aria-expanded="false">Lista Vendedores</a>
-                        <a href="{% url 'ver_clientes' %}" name="btnRegistrate" id="btnRegistrate"
-                            aria-expanded="false">Lista Clientes</a>
-                        <a href="{% url 'ver_productos' %}" name="btnRegistrate" id="btnRegistrate"
-                            aria-expanded="false">Lista Productos</a>
-                        <a href="{% url 'ver_medios_pago' %}" name="btnRegistrate" id="btnRegistrate"
-                            aria-expanded="false">
+                            <a href="{% url 'ver_vendedores' %}"
+                               name="btnRegistrate"
+                               id="btnRegistrate"
+                               aria-expanded="false">Lista Vendedores</a>
+                            <a href="{% url 'ver_clientes' %}"
+                               name="btnRegistrate"
+                               id="btnRegistrate"
+                               aria-expanded="false">Lista Clientes</a>
+                            <a href="{% url 'ver_productos' %}"
+                               name="btnRegistrate"
+                               id="btnRegistrate"
+                               aria-expanded="false">Lista Productos</a>
+                            <a href="{% url 'ver_medios_pago' %}"
+                               name="btnRegistrate"
+                               id="btnRegistrate"
+                               aria-expanded="false">
                             Lista Medios de Pago</a>
-                    </ul>
-                        {% endif %}
-        </nav>
-
+                            <a href="{% url 'logout' %}"
+                               name="btnRegistrate"
+                               id="btnRegistrate"
+                               aria-expanded="false">Cerrar Sesión</a>
+                        </ul>
+                    </li>
+                {% else %}
+                    <ul class="list-unstyled components">
+                        <p>
+                            inicia sesion para que puedas ordenar algo hoy :)
+                        </p>
+                        <li class="active">
+                            <a href="{% url 'login' %}"
+                               name="btnInicioSesion"
+                               id="btnInicioSesion"
+                               aria-expanded="false">Iniciar Sesion</a>
+                            <a href="{% url 'registro' %}"
+                               name="btnRegistrate"
+                               id="btnRegistrate"
+                               aria-expanded="false">o
+                            registrate aqui</a>
+                            <hr class="mt-2 mb-3" />
+                            <a href="{% url 'catalogo' %}"
+                               name="btnRegistrate"
+                               id="btnRegistrate"
+                               aria-expanded="false">Catalogo</a>
+                            <a href="{% url 'carrito' %}"
+                               name="btnRegistrate"
+                               id="btnRegistrate"
+                               aria-expanded="false">Carrito</a>
+                            <a href="{% url 'ventas' %}"
+                               name="btnRegistrate"
+                               id="btnRegistrate"
+                               aria-expanded="false">Lista
+                            Ventas</a>
+                            <a href="{% url 'ver_vendedores' %}"
+                               name="btnRegistrate"
+                               id="btnRegistrate"
+                               aria-expanded="false">Lista Vendedores</a>
+                            <a href="{% url 'ver_clientes' %}"
+                               name="btnRegistrate"
+                               id="btnRegistrate"
+                               aria-expanded="false">Lista Clientes</a>
+                            <a href="{% url 'ver_productos' %}"
+                               name="btnRegistrate"
+                               id="btnRegistrate"
+                               aria-expanded="false">Lista Productos</a>
+                            <a href="{% url 'ver_medios_pago' %}"
+                               name="btnRegistrate"
+                               id="btnRegistrate"
+                               aria-expanded="false">
+                            Lista Medios de Pago</a>
+                        </ul>
+                    {% endif %}
+                </nav>
         <!-- Contenido  -->
         <div id="content">
             <div class="container">
                 <div class="row">
                     <div class="col-md-1">
-                        <button type="button" id="sidebarCollapse">
+                        <button type="button" class="btn btn-warning" id="sidebarCollapse">
 
                             <span class="navbar-toggler-icon"><i class="fa fa-bars"></i></span>
                         </button>

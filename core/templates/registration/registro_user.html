@@ -20,14 +20,14 @@
     </head>
     <body>
         <div class="wrapper">
-            <nav id="sidebar">
+   <nav id="sidebar">
                 <div class="sidebar-header">
-                    <h3>Men�</h3>
+                    <h3>Menú</h3>
                 </div>
                 {% if user.is_authenticated %}
                     <ul class="list-unstyled components">
                         <p>
-                            Hola {{ user.username }} �Que deseas comer hoy? :)
+                            Hola {{ user.username }} ¿Que deseas comer hoy? :)
                         </p>
                         <hr class="mt-2 mb-3" />
                         <li class="active">
@@ -47,18 +47,15 @@
                             <a href="{% url 'ver_vendedores' %}"
                                name="btnRegistrate"
                                id="btnRegistrate"
-                               aria-expanded="false">Lista
-                            Vendedores</a>
+                               aria-expanded="false">Lista Vendedores</a>
                             <a href="{% url 'ver_clientes' %}"
                                name="btnRegistrate"
                                id="btnRegistrate"
-                               aria-expanded="false">Lista
-                            Clientes</a>
+                               aria-expanded="false">Lista Clientes</a>
                             <a href="{% url 'ver_productos' %}"
                                name="btnRegistrate"
                                id="btnRegistrate"
-                               aria-expanded="false">Lista
-                            Productos</a>
+                               aria-expanded="false">Lista Productos</a>
                             <a href="{% url 'ver_medios_pago' %}"
                                name="btnRegistrate"
                                id="btnRegistrate"
@@ -67,10 +64,9 @@
                             <a href="{% url 'logout' %}"
                                name="btnRegistrate"
                                id="btnRegistrate"
-                               aria-expanded="false">Cerrar
-                            Sesi�n</a>
-                        </li>
-                    </ul>
+                               aria-expanded="false">Cerrar Sesión</a>
+                        </ul>
+                    </li>
                 {% else %}
                     <ul class="list-unstyled components">
                         <p>
@@ -80,8 +76,7 @@
                             <a href="{% url 'login' %}"
                                name="btnInicioSesion"
                                id="btnInicioSesion"
-                               aria-expanded="false">Iniciar
-                            Sesion</a>
+                               aria-expanded="false">Iniciar Sesion</a>
                             <a href="{% url 'registro' %}"
                                name="btnRegistrate"
                                id="btnRegistrate"
@@ -104,32 +99,29 @@
                             <a href="{% url 'ver_vendedores' %}"
                                name="btnRegistrate"
                                id="btnRegistrate"
-                               aria-expanded="false">Lista
-                            Vendedores</a>
+                               aria-expanded="false">Lista Vendedores</a>
                             <a href="{% url 'ver_clientes' %}"
                                name="btnRegistrate"
                                id="btnRegistrate"
-                               aria-expanded="false">Lista
-                            Clientes</a>
+                               aria-expanded="false">Lista Clientes</a>
                             <a href="{% url 'ver_productos' %}"
                                name="btnRegistrate"
                                id="btnRegistrate"
-                               aria-expanded="false">Lista
-                            Productos</a>
+                               aria-expanded="false">Lista Productos</a>
                             <a href="{% url 'ver_medios_pago' %}"
                                name="btnRegistrate"
                                id="btnRegistrate"
                                aria-expanded="false">
                             Lista Medios de Pago</a>
-                        </li>
-                    </ul>
-                {% endif %}
-            </nav>
+                        </ul>
+                    {% endif %}
+                </nav>
             <div id="content" class="m-3">
                 <div class="container-fluid">
                     <div class="row">
                         <button style="width: 50px;
                                        margin-left: 6%;"
+                                class="btn btn-warning"
                                 type="button"
                                 id="sidebarCollapse">
                             <span class="navbar-toggler-icon"><i class="fa fa-bars"></i></span>

@@ -4,6 +4,55 @@ from django.contrib.auth import login, authenticate
 from .models import Producto, Venta, Vendedor, Cliente, Delivery, Medio_pago, Carrito
 from .forms import CustomUserCreationForm
 
+class Cart:
+    def __init__(self, request):
+        self.request = request
+        self.session = request.session
+        cart = self.session.get("cart")
+        if not cart:
+            cart = self.session["cart"]={}
+        self.cart = cart
+
+        def add(self, product):
+            if str(product.id) not in self.cart.keys():
+                self.cart[product.id] = {
+                    "product_id": product.id,
+                    "name": product.name,
+                    "quantity" : 1,
+                    "price" : product.price
+                }
+            else:
+                for key, value in self.cart.items():
+                    if key == str(product.id):
+                        value["quantity"] = value["quantity"] + 1
+                        break
+            self.save()
+        
+        def save(self): 
+            self.session["cart"] = self.cart
+            self.session.modified = True
+        
+        def remove(self, product):
+            product_id = str(product.id)
+            if product_id in self.cart:
+                del self.cart[product.id]
+                self.save()
+        
+        def decrement(self,product):
+            for key, value in self.cart.items():
+                    if key == str(product.id):
+                        value["quantity"] = value["quantity"] - 1
+                        if value["quantity"] < 1:
+                            self.remove(product)
+                        break
+                    else:
+                        print("no existe producto en el carrito")
+        
+        def clear(self):
+            self.session["cart"]={}
+            self.session.modified =True
+
+
 def home(request):
     return render(request, 'core/home.html')
 
@@ -100,8 +149,6 @@ def registro_vendedor(request):
         vendedor.a_paterno = request.POST.get("apPaterno")
         vendedor.a_materno = request.POST.get("apMaterno")
         vendedor.rut = request.POST.get("txtRut")
-        vendedor.username = formulario.cleaned_data["username"]
-
         try:
             vendedor.save()
             mensaje = "Vendedor agregado"
