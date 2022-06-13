@@ -11,8 +11,6 @@ class Cliente (models.Model):
     a_paterno = models.CharField(max_length=20)
     num_contac = models.IntegerField()
     rut = models.CharField(max_length=20)
-    username = models.CharField(max_length=150)
-    password = models.CharField(max_length=30)
     def __str__(self)-> str:
         return self.p_nombre + " " + self.a_paterno 
 
@@ -24,8 +22,6 @@ class Vendedor (models.Model):
     a_paterno = models.CharField(max_length=20)
     a_materno = models.CharField(max_length=20)
     rut = models.CharField(max_length=20)
-    username = models.CharField(max_length=150)
-    password = models.CharField(max_length=30)
 
     class Meta:
         verbose_name_plural = "Vendedores"
