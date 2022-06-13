@@ -133,6 +133,7 @@ p {
     padding: 20px;
     min-height: 100vh;
     transition: all 0.3s;
+
 }
 
 #centrard {
@@ -156,5 +157,28 @@ p {
 
     #sidebarCollapse span {
         display: none;
+    }
+}
+
+@media (max-width: 450px) {
+    #sidebar {
+        margin-left: -250px;
+    }
+
+        #sidebar.active {
+            margin-left: 0;
+        }
+
+    #sidebarCollapse span {
+        display: none;
+    }
+
+    #content {
+        width: 100%;
+        padding: 60px;
+        min-height: 100vh;
+        transition: all 0.3s;
+        display: flex;
+        
     }
 }
