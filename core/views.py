@@ -54,6 +54,24 @@ def pago(request):
 def recuperar_contrasena(request):
     return render(request, 'core/recuperar_contrasena.html')
 
+def registro(request): 
+    data ={
+        'form': CustomUserCreationForm
+    }
+
+    if request.POST:
+        formulario=CustomUserCreationForm(data=request.POST)
+
+        if formulario.is_valid():
+            formulario.save()
+            user = authenticate(username=formulario.cleaned_data["username"],
+                                password=formulario.cleaned_data["password1"])
+            login(request, user)
+            return redirect("home")
+        
+        data["form"] = formulario
+    return render(request, 'registration/registro_user.html', data)
+
 def registro_cliente(request):
     if request.POST:
         cliente = Cliente()
@@ -70,25 +88,11 @@ def registro_cliente(request):
             messages.error(request, mensaje)
     return render(request, 'core/registro.html')
 
-def registro(request): 
+
+def registro_vendedor(request):
     data ={
         'form': CustomUserCreationForm
     }
-
-    if request.POST:
-        formulario=CustomUserCreationForm(data=request.POST)
-
-        if formulario.is_valid():
-            formulario.save()
-            user = authenticate(username=formulario.cleaned_data["username"],
-                                password = formulario.cleaned_data["password1"])
-            login(request, user)
-            return redirect("home")
-        
-        data["form"] = formulario
-    return render(request, 'registration/registro_user.html', data)
-
-def registro_vendedor(request):
     if request.POST:
         vendedor = Vendedor()
         vendedor.p_nombre = request.POST.get("primNombre")
@@ -96,6 +100,7 @@ def registro_vendedor(request):
         vendedor.a_paterno = request.POST.get("apPaterno")
         vendedor.a_materno = request.POST.get("apMaterno")
         vendedor.rut = request.POST.get("txtRut")
+        vendedor.username = formulario.cleaned_data["username"]
 
         try:
             vendedor.save()
@@ -104,7 +109,7 @@ def registro_vendedor(request):
         except:
             mensaje = "No se pudo agregar al vendedor"
             messages.error(request, mensaje)
-    return render(request, 'core/registro_vendedor.html')
+    return render(request, 'core/registro_vendedor.html', data)
 
 def ventas(request):
     listado_ventas = Venta.objects.all()
@@ -282,7 +287,6 @@ def ver_pagos(request):
     data = {"listaMediosPagos": listaPagos}
     return render(request, 'core/ver_tipos_pago.html', data)
 
-
 def agregar_vendedor(request):
     # guardar
     if request.POST:
@@ -303,7 +307,6 @@ def agregar_vendedor(request):
 
     return render(request, 'core/agregar_vendedor.html')
 
-
 def agregarProducto(request):
     if request.POST:
         producto = Producto()
@@ -321,7 +324,6 @@ def agregarProducto(request):
             messages.error(request, mensaje)
     return render(request, 'core/agregar_producto.html')
 
-
 def agregarmedioPago(request):
     if request.POST:
         medio_pago = Medio_pago()
@@ -335,7 +337,6 @@ def agregarmedioPago(request):
             mensaje = "No se pudo agregar el Medio de pago"
             messages.error(request, mensaje)
     return render(request, 'core/agregar_medioPago.html')
-
 
 def modificarVendedor(request, id):
 
@@ -363,7 +364,6 @@ def modificarVendedor(request, id):
 
     return render(request, 'core/modificar_vendedor.html', data)
 
-
 def modificarVenta(request, id):
 
     venta = Venta.objects.get(id=id)
@@ -384,7 +384,6 @@ def modificarVenta(request, id):
             messages.error(request, mensaje)
 
     return render(request, 'core/modificar_venta.html', data)
-
 
 def modificarCliente(request, id):
 
@@ -410,7 +409,6 @@ def modificarCliente(request, id):
             messages.error(request, mensaje)
 
     return render(request, 'core/modificar_clientes.html', data)
-
 
 def modificarDelivery(request, id):
 
@@ -482,7 +480,6 @@ def modificarmedioPago(request, id):
             messages.error(request, mensaje)
 
     return render(request, 'core/modificar_medioPago.html', data)
-
 
 def eliminarCli(request, id):
     cliente = Cliente.objects.get(id=id)
