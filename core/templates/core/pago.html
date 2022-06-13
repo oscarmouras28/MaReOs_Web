@@ -111,18 +111,12 @@
                                 -aria-label="Basic radio toggle button group">
                                 <input type="radio" class="btn-check" name="radioMedioPago" id="radioEfectivo"
                                     autocomplete="off">
+                                
+                                {% for p in listaPagos %}                             
                                 <label class="btn btn-outline-warning" style="color: black;" for="radioEfectivo"><i
-                                        class="fa-solid fa-money-bill-wave"></i> Efectivo</label>
-
-                                <input type="radio" class="btn-check" name="radioMedioPago" id="radioDebito"
-                                    autocomplete="off">
-                                <label class="btn btn-outline-warning" style="color: black;" for="radioDebito"><i
-                                        class="fa-solid fa-credit-card"></i> Debito</label>
-
-                                <input type="radio" class="btn-check" name="radioMedioPago" id="radioCredito"
-                                    autocomplete="off">
-                                <label class="btn btn-outline-warning" style="color: black;" for="radioCredito"><i
-                                        class="fa-brands fa-cc-mastercard"></i> Credito</label>
+                                        class="fa-solid fa-money-bill-wave"></i> {{p.tipo_pago}}</label>
+                                
+                                {% endfor %}
                             </div>
                         </div>
 

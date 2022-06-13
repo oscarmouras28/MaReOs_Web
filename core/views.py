@@ -29,7 +29,9 @@ def catalogo(request):
 
 def pago(request):
     delivery = Delivery.objects.all()
-    data = {"listaDelivery": delivery}
+    pagos = Medio_pago.objects.all()
+    data = {"listaDelivery": delivery,
+            "listaPagos" : pagos}
 
     if request.POST:
         deliveryAdd = Delivery()
