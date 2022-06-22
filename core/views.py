@@ -52,7 +52,6 @@ class Cart:
             self.session["cart"]={}
             self.session.modified =True
 
-
 def home(request):
     return render(request, 'core/home.html')
 
@@ -123,6 +122,11 @@ def registro(request):
         data["form"] = formulario
     return render(request, 'registration/registro_user.html', data)
 
+def carrito(request):
+    lista_carrito = Carrito.objects.all()
+    data = {"listaCarrito": lista_carrito}
+    return render(request, 'core/carrito.html', data)
+    
 def registro_cliente(request):
     if request.POST:
         cliente = Cliente()
@@ -138,8 +142,9 @@ def registro_cliente(request):
             mensaje = "No se pudo agregar al Cliente"
             messages.error(request, mensaje)
     return render(request, 'core/registro.html')
-
-
+# Parabajao
+# solo vendedor
+# De aqui
 def registro_vendedor(request):
     data ={
         'form': CustomUserCreationForm
@@ -169,10 +174,6 @@ def ventas(request):
             "medioPago": medioPago}
     return render(request, 'core/ventas.html', data)
 
-def carrito(request):
-    lista_carrito = Carrito.objects.all()
-    data = {"listaCarrito": lista_carrito}
-    return render(request, 'core/carrito.html', data)
 
 def agregar_vendedor(request):
     # guardar
