@@ -55,7 +55,6 @@ class Delivery (models.Model):
     direccion = models.CharField(max_length=30)
     telefono = models.IntegerField()
     valor = models.IntegerField()
-    cliente_id = models.ForeignKey(Cliente, on_delete=models.CASCADE)
     
     def __str__(self)-> str:
         return self.direccion

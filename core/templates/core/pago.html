@@ -195,7 +195,6 @@
                                                 <p>Direccion: {{x.direccion}}</p>
                                                 <p>Telefono Delivery: {{x.telefono}}</p>
                                                 <p>Valor: ${{x.valor}}</p>
-                                                <p>Cliente: {{x.cliente_id.p_nombre}} {{x.cliente_id.a_paterno}}</p>
                                                 <a class="btn btn-warning m-1" style="display: inline;" href="{% url 'modificarDelivery' x.id %}"><i
                                                         class="fa fa-pen"></i></i></a>
                                                 <a class="btn btn-danger m-1"
@@ -251,11 +250,11 @@
                                                         <input type="number" name="telefonoDelivery"
                                                             id="telefonoDelivery">
                                                     </div>
-                                                    <div class="col m-2">
+                                                    <!-- <div class="col m-2">
                                                         <label
                                                             for="idCli">Id:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
                                                         <input type="text" name="idCli" id="idCli">
-                                                    </div>
+                                                    </div> -->
                                                     <div class="col m-2">
                                                         <label
                                                             for="valorDelivery">Valor:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;

@@ -96,10 +96,10 @@ def pago(request):
         deliveryAdd.telefono = request.POST.get("telefonoDelivery")
         deliveryAdd.valor = request.POST.get("valorDelivery")
 
-        cliente = Cliente()
-        cliente.id = request.POST.get("idCli")
+        #cliente = Cliente()
+        #cliente.id = request.POST.get("idCli")
 
-        deliveryAdd.cliente_id = cliente
+        #deliveryAdd.cliente_id = cliente
         try:
             deliveryAdd.save()
             mensaje = "Delivery agregado"
