@@ -16,8 +16,8 @@ urlpatterns = [
     # Registro dividido en 2 Cliente|Vendedor
     path('registro/', registro, name="registro"),
     path('registro_clientes/', registro_cliente, name="registro_clientes"),
-    path('registrovendedor/', registro_vendedor, name="registrovendedor"),
     # Deberiamos dejar solo el vendedor registre vendedores, en cambio, de que se registre asi mismo  
+    path('registrovendedor/', registro_vendedor, name="registrovendedor"),
     path('agregarVendedor/', agregar_vendedor, name="agregarVendedor"),
     # Ventas
     path('ventas/', ventas, name="ventas"),
