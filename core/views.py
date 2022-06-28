@@ -523,34 +523,6 @@ def modificarDelivery(request, id):
     return render(request, 'core/modificar_delivery.html', data)
 
 @login_required
-@permission_required('core.change_producto')
-def modificarProducto(request, id):
-
-    producto = Producto.objects.get(id=id)
-
-    data = {
-        "producto": producto
-    }
-
-    # modificar
-    if request.POST:
-        producto.nombre = request.POST.get("prodNombre")
-        producto.precio = request.POST.get("precioProd")
-        producto.img = request.POST.get("txtImagen")
-        producto.desc = request.POST.get("descProd")
-        producto.tip_producto = request.POST.get("tipoProd")
-
-        try:
-            producto.save()
-            mensaje = "Producto modificado"
-            messages.success(request, mensaje)
-        except:
-            mensaje = "No se pudo modificar al Producto"
-            messages.error(request, mensaje)
-
-    return render(request, 'core/modificar_producto.html', data)
-
-@login_required
 @permission_required('core.change_medio_pago')
 def modificarmedioPago(request, id):
 
