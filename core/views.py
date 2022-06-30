@@ -649,7 +649,7 @@ def eliminarMedioPago(request, id):
     return redirect('ver_medios_pago')
 
 @login_required
-@permission_required('core.delete_medio_pago')
+@permission_required('core.delete_delivery')
 def eliminarMiDelivery(request, id):
     miDelivery = Delivery.objects.get(id=id)
 
