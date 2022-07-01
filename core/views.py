@@ -327,7 +327,7 @@ def modificarProducto(request, id):
     return render(request, 'core/modificar_producto.html', data)
 
 @login_required
-@permission_required('core.view_vendedores')
+@permission_required('core.view_vendedor')
 def ver_vendedores(request):
     listado_Vendedores = Vendedor.objects.all()
     data = {"listaVendedores": listado_Vendedores}
