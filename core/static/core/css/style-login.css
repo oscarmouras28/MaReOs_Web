@@ -1,5 +1,6 @@
-
-
+.seccion{
+    border: 50px solid red;
+}
 .bg-image-vertical {
 position: relative;
 overflow: hidden;

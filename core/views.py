@@ -115,6 +115,14 @@ def recuperar_contrasena(request):
     return render(request, 'core/recuperar_contrasena.html')
 
 
+
+@login_required
+def carrito(request):
+    lista_carrito = Carrito.objects.all()
+    data = {"listaCarrito": lista_carrito}
+    return render(request, 'core/carrito.html', data)
+
+
 def registro(request):
     data = {
         'form': CustomUserCreationForm
@@ -132,14 +140,6 @@ def registro(request):
 
         data["form"] = formulario
     return render(request, 'registration/registro_user.html', data)
-
-
-@login_required
-def carrito(request):
-    lista_carrito = Carrito.objects.all()
-    data = {"listaCarrito": lista_carrito}
-    return render(request, 'core/carrito.html', data)
-
 
 def registro_cliente(request):
     if request.POST:

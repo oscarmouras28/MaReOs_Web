@@ -20,7 +20,7 @@ urlpatterns = [
     path('registrovendedor/', registro_vendedor, name="registrovendedor"),
     path('agregarVendedor/', agregar_vendedor, name="agregarVendedor"),
     # Ventas
-    path('ventas/', ventas, name="ventas"),
+    path('ventas/', ventas, name="ventas"),      
     # Debe ser antes del pago y verse el conteo fuera de el
     path('carrito/', carrito, name="carrito"),
     # Visualizacion de datos (vendedor)
