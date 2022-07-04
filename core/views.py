@@ -1,3 +1,5 @@
+from email.headerregistry import Group
+from tokenize import group
 import django
 from django.contrib import messages
 from django.shortcuts import render, redirect
@@ -122,40 +124,39 @@ def carrito(request):
     data = {"listaCarrito": lista_carrito}
     return render(request, 'core/carrito.html', data)
 
-
 def registro(request):
     data = {
         'form': CustomUserCreationForm
     }
 
     if request.POST:
-        formulario = CustomUserCreationForm(data=request.POST)
-
-        if formulario.is_valid():
-            formulario.save()
-            user = authenticate(username=formulario.cleaned_data["username"],
-                                password=formulario.cleaned_data["password1"])
-            login(request, user)
-            return redirect("home")
-
-        data["form"] = formulario
-    return render(request, 'registration/registro_user.html', data)
-
-def registro_cliente(request):
-    if request.POST:
         cliente = Cliente()
         cliente.p_nombre = request.POST.get("nombreCli")
         cliente.a_paterno = request.POST.get("apellidoCli")
         cliente.num_contac = request.POST.get("inputTelefono")
         cliente.rut = request.POST.get("rutCli")
+        formulario = CustomUserCreationForm(data=request.POST)
         try:
+            if formulario.is_valid():
+                formulario.save()
+                # usuario=formulario.save()
+                # group=Group.object.get(name='Cliente')
+                # usuario.groups.add(group)
+                user = authenticate(username=formulario.cleaned_data["username"],
+                                    password=formulario.cleaned_data["password1"])
+                login(request, user)
+                return redirect("home")
             cliente.save()
             mensaje = "Cliente agregado"
             messages.success(request, mensaje)
         except:
             mensaje = "No se pudo agregar al Cliente"
             messages.error(request, mensaje)
-    return render(request, 'core/registro.html')
+
+        data["form"] = formulario
+        
+    return render(request, 'registration/registro_user.html', data)
+
 # Parabajao
 # solo vendedor
 # De aqui
@@ -163,7 +164,7 @@ def registro_cliente(request):
 
 @login_required
 @permission_required('auth.add_user')
-@permission_required('auth.add_vendedor')
+@permission_required('core.add_vendedor')
 def registro_vendedor(request):
     data = {
         'form': CustomUserCreationForm
