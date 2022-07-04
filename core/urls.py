@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import eliminarVenta, home,boleta,catalogo,pago,registro,recuperar_contrasena,registro_cliente,registro_vendedor,ventas,carrito,ver_vendedores,ver_clientes, ver_productos, eliminarCli, eliminarVen, eliminarProd, ver_pagos, eliminarMedioPago,eliminarMiDelivery, agregar_vendedor, agregarProducto, agregarmedioPago,modificarVendedor,modificarCliente, modificarProducto, modificarVenta, modificarDelivery, modificarmedioPago
+from .views import eliminarVenta,home,boleta,catalogo,pago,registro,recuperar_contrasena,registro_vendedor,ventas,carrito,ver_vendedores,ver_clientes, ver_productos, eliminarCli, eliminarVen, eliminarProd, ver_pagos, eliminarMedioPago,eliminarMiDelivery, agregar_vendedor, agregarProducto, agregarmedioPago,modificarVendedor,modificarCliente, modificarProducto, modificarVenta, modificarDelivery, modificarmedioPago
 
 urlpatterns = [
     # Home
@@ -15,7 +15,7 @@ urlpatterns = [
     path('recuperar/', recuperar_contrasena, name= "recuperar"),
     # Registro dividido en 2 Cliente|Vendedor
     path('registro/', registro, name="registro"),
-    path('registro_clientes/', registro_cliente, name="registro_clientes"),
+
     # Deberiamos dejar solo el vendedor registre vendedores, en cambio, de que se registre asi mismo  
     path('registrovendedor/', registro_vendedor, name="registrovendedor"),
     path('agregarVendedor/', agregar_vendedor, name="agregarVendedor"),
