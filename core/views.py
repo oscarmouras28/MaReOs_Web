@@ -1,7 +1,23 @@
+from pdb import post_mortem
 from django.core.checks import messages
 from django.shortcuts import render, redirect
 from .models import Producto, Venta, Vendedor, Cliente, Delivery, Medio_pago, Carrito
 
+
+def carrito(request):
+    carro=Carrito
+    
+    data={'DatosCarrito':carro}
+    
+    lista=carro
+
+    for carro in lista:
+        data['total'] = carro.producto.id + data['total']
+
+    if request.POST:
+        carro.delete()
+
+    return render(request, 'carrito.html', data)
 
 def home(request):
     return render(request, 'core/home.html')
