@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ma're'os Web</title>
+    <title>Agregar Vendedor</title>
     {% load static %}
     <!-- cargamos css bootstrap 5.1.3 -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -15,57 +15,86 @@
     <link rel="stylesheet" href="{% static 'core/css/style-listar.css' %}" type="text/css">
     <!-- font awesome -->
     <script src="https://kit.fontawesome.com/84cef5c1c7.js" crossorigin="anonymous"></script>
+     <!-- alertify -->
+     <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
 
 </head>
 
 <body>
     <div class="wrapper">
         <!-- Sidebar  -->
-        <nav id="sidebar">
+       <nav id="sidebar">
             <div class="sidebar-header">
                 <h3>Menú</h3>
             </div>
-
+            {% if user.is_authenticated and perms.core.add_vendedor %}
+                    <ul class="list-unstyled components">
+                        <p>
+                            Hola {{ user.username }} Bienvenido al Trabajo :)
+                        </p>
+                        <hr class="mt-2 mb-3" />
+                        <li class="active">
+                            <a href="{% url 'catalogo' %}" name="btnRegistrate" id="btnRegistrate"
+                                aria-expanded="false">Catalogo</a>
+                            <a href="{% url 'ventas' %}" name="btnRegistrate" id="btnRegistrate" aria-expanded="false">Lista
+                                Ventas</a>
+                            <a href="{% url 'ver_vendedores' %}" name="btnRegistrate" id="btnRegistrate"
+                                aria-expanded="false">Lista Vendedores</a>
+                            <a href="{% url 'ver_clientes' %}" name="btnRegistrate" id="btnRegistrate"
+                                aria-expanded="false">Lista Clientes</a>
+                            <a href="{% url 'ver_productos' %}" name="btnRegistrate" id="btnRegistrate"
+                                aria-expanded="false">Lista Productos</a>
+                            <a href="{% url 'ver_medios_pago' %}" name="btnRegistrate" id="btnRegistrate" aria-expanded="false">
+                                Lista Medios de Pago</a>    
+                            <a href="{% url 'logout' %}" name="btnRegistrate" id="btnRegistrate" aria-expanded="false">Cerrar
+                                Sesión</a>
+                    </ul>
+                    </li>
+                {% elif user.is_authenticated and perms.core.view_carrito %}
+                    <ul class="list-unstyled components">
+                        <p>
+                            Hola {{ user.username }} ¿Que deseas comer hoy ? :)
+                        </p>
+                        <hr class="mt-2 mb-3" />
+                        <li class="active">
+                            <a href="{% url 'catalogo' %}" name="btnRegistrate" id="btnRegistrate"
+                                aria-expanded="false">Catalogo</a>
+                            <a href="{% url 'ver_medios_pago' %}" name="btnRegistrate" id="btnRegistrate" aria-expanded="false">
+                                Carrito</a>
+                            <a href="{% url 'logout' %}" name="btnRegistrate" id="btnRegistrate" aria-expanded="false">Cerrar
+                                Sesión</a>
+                    </ul>
+                    </li>
+            {% else %}
             <ul class="list-unstyled components">
-                <p>Inicia sesión y podras hacer tu pedido :)</p>
+                <p>
+                    inicia sesion para que puedas ordenar algo hoy :)
+                </p>
                 <li class="active">
-                    <a href="http://127.0.0.1:8000/login/" name="btnInicioSesion" id="btnInicioSesion"
+                    <a href="{% url 'login' %}" name="btnInicioSesion" id="btnInicioSesion"
                         aria-expanded="false">Iniciar Sesion</a>
                     <a href="{% url 'registro' %}" name="btnRegistrate" id="btnRegistrate" aria-expanded="false">o
                         registrate aqui</a>
-                    <a href="{% url 'registro' %}" name="btnRegistrate" id="btnRegistrate" aria-expanded="false">
-                        Cerrar Sesión</a>
                     <hr class="mt-2 mb-3" />
-                    <a href="{% url 'catalogo' %}" name="btnRegistrate" id="btnRegistrate" aria-expanded="false">
-                        Catalogo</a>
-                    <a href="{% url 'carrito' %}" name="btnRegistrate" id="btnRegistrate" aria-expanded="false">
-                        Carrito</a>
-                    <a href="{% url 'ventas' %}" name="btnRegistrate" id="btnRegistrate" aria-expanded="false">
-                        Lista Ventas</a>
-                    <a href="{% url 'ver_vendedores' %}" name="btnRegistrate" id="btnRegistrate" aria-expanded="false">
-                        Lista Vendedores</a>
-                    <a href="{% url 'ver_clientes' %}" name="btnRegistrate" id="btnRegistrate" aria-expanded="false">
-                        Lista Clientes</a>
-                    <a href="{% url 'ver_productos' %}" name="btnRegistrate" id="btnRegistrate" aria-expanded="false">
-                        Lista Productos</a>
-                    <a href="{% url 'ver_medios_pago' %}" name="btnRegistrate" id="btnRegistrate" aria-expanded="false">
-                        Lista Medios de Pago</a>
-
-                </li>
+                    <a href="{% url 'catalogo' %}" name="btnRegistrate" id="btnRegistrate"
+                        aria-expanded="false">Catalogo</a>
+            </ul>
+            {% endif %}
         </nav>
-
         <!-- Contenido  -->
         <div id="content">
             <div class="container">
                 <div class="row">
                     <div class="col-md-1">
-                        <button type="button" id="sidebarCollapse">
+                        <button type="button" class="btn btn-warning" id="sidebarCollapse">
 
                             <span class="navbar-toggler-icon"><i class="fa fa-bars"></i></span>
                         </button>
                     </div>
                     <div class="col-md-1">
-                        <img src="{% static 'core/img/Mareos.png' %}" style="margin-top: 2%;" width="50" height="50">
+                        <a href="../home" target="_self">
+                            <img src="{% static 'core/img/Mareos.png' %}" style="margin-top: 2%;" width="50" height="50">
+                        </a>
                     </div>
                     <div class="col-md-8" id="titulo" name="titulo">
                         <h3 class="text-black mt-3">Agregar Vendedor</h3>
@@ -75,38 +104,44 @@
                 <div class="row">
                     <div class="col-4"></div>
 
-                    <form class="col-4 pt-3" id="formulario-registroVendedor" method="POST"
+                    <form class="col-xs-12 col-sm-5  col-md-4 pt-3" id="formulario-registroVendedor" method="POST"
                         enctype="multipart/form-data">
                         {% csrf_token %}
 
-                        <div class="col-8 py-2">
-                            <label class="col-md-12" style="font-weight: bold;" for="primNombre">Primer Nombre</label>
-                            <input type="text" id="primNombre" name="primNombre" placeholder="Ingrese primer nombre">
-                        </div>
-                        <div class="col-8 py-2">
-                            <label class="col-md-12" style="font-weight: bold;" for="segNombre">Segundo Nombre</label>
-                            <input type="text" id="segNombre" name="segNombre" placeholder="Ingrese segundo nombre">
-                        </div>
-                        <div class="col-8 py-2">
-                            <label class="col-md-12" style="font-weight: bold;" for="apPaterno">Apellido Paterno</label>
-                            <input type="text" id="apPaterno" name="apPaterno" placeholder="Ingrese apellido paterno">
-                        </div>
-                        <div class="col-8 py-2">
-                            <label class="col-md-12" style="font-weight: bold;" for="primNombre">Apellido
-                                Materno</label>
-                            <input type="text" id="apMaterno" name="apMaterno" placeholder="Ingrese apellido materno">
-                        </div>
-                        <div class="col-8 py-2">
+                        <div class="col-xs-12 col-sm-6  col-md-4 py-2">
                             <label class="col-md-12" style="font-weight: bold;" for="txtRut">Rut</label>
                             <input type="text" id="txtRut" name="txtRut" placeholder="Ingrese Rut">
+                            <span><small id="sprutVend"></small></span>
                         </div>
+                        <div class="col-xs-12 col-sm-6  col-md-4 py-2">
+                            <label class="col-md-12" style="font-weight: bold;" for="primNombre">Primer Nombre</label>
+                            <input type="text" id="primNombre" name="primNombre" placeholder="Ingrese primer nombre" onkeypress="return soloLetras(event)">
+                            <span><small id="spprinomVend"></small></span>
+                        </div>
+                        <div class="col-xs-12 col-sm-6  col-md-4 py-2">
+                            <label class="col-md-12" style="font-weight: bold;" for="segNombre">Segundo Nombre</label>
+                            <input type="text" id="segNombre" name="segNombre" placeholder="Ingrese segundo nombre" onkeypress="return soloLetras(event)">
+                            <span><small id="spsegnomVend"></small></span>
+                        </div>
+                        <div class="col-xs-12 col-sm-6  col-md-4 py-2">
+                            <label class="col-md-12" style="font-weight: bold;" for="apPaterno">Apellido Paterno</label>
+                            <input type="text" id="apPaterno" name="apPaterno" placeholder="Ingrese apellido paterno" onkeypress="return soloLetras(event)">
+                            <span><small id="spappaterVend"></small></span>
+                        </div>
+                        <div class="col-xs-12 col-sm-6  col-md-4 py-2">
+                            <label class="col-md-12" style="font-weight: bold;" for="primNombre">Apellido
+                                Materno</label>
+                                <input type="text" id="apMaterno" name="apMaterno" placeholder="Ingrese apellido materno" onkeypress="return soloLetras(event)">
+                                <span><small id="spapmatVend"></small></span>
+                        </div>
+                        
 
-                        <div class="col-8 ">
-                            <input type="submit" style="width: 90%;" class="btn btn-success mt-2"
-                                id="btnAgregarVendedor" name="btnAgregarVendedor" value="Agregegar Vendedor">
+                        <div class="col-xs-12 col-sm-6  col-md-4 ">
+                            <input type="button" style="width: 90%;" class="btn btn-success mt-2"
+                                id="btnAgregarVendedor" name="btnAgregarVendedor" value="Agregar">
                         </div>
-                        <div class="col-8 mt-3">
-                            <a href="{% url 'ver_vendedores' %}" class="btn btn-warning">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Lista Vendedores&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+                        <div class="col-xs-12 col-sm-12  col-md-12 mt-3">
+                            <a href="{% url 'ver_vendedores' %}" class="btn btn-warning">Lista Vendedores</a>
                         </div>
                     </form>
 
@@ -146,6 +181,15 @@
         crossorigin="anonymous"></script>
 
     <script src="{% static 'core/js/listar.js' %}"></script>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css"/>
+    <!-- Default theme -->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/default.min.css"/>
+    <!-- Semantic UI theme -->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/semantic.min.css"/>
+    <!-- Bootstrap theme -->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/bootstrap.min.css"/>
 </body>
 
 </html>

@@ -21,16 +21,11 @@ const Test = (request) => {
 function editarVenta() {
     $('#btnEditarVenta').on('click', function () {
         $('#selectPedido').prop("disabled", false);
-        $('#btnEditarVenta').css("display", "none");
-        $('#btnGuardarVenta').css("display", "inline");
-
     });
 }
 
 function guardarVenta() {
     $('#btnGuardarVenta').on('click', function () {
         $('#selectPedido').prop("disabled", true);
-        $('#btnGuardarVenta').css("display", "none");
-        $('#btnEditarVenta').css("display", "inline");
     });
 }
