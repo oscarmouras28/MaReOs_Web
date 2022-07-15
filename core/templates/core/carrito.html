@@ -102,34 +102,38 @@
                         <h3 class="text-black mt-3">Carrito</h3>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-6">
-                        {% for x in listaCarrito %}
-                        <div class="col-12 mt-3">
-                            {{x.producto_id.nombre}}
-                            <input type="number" value="{{x.producto_id.precio}}">
-                            <a class="btn btn-warning"><i class="fa-solid fa-plus"></i></a>
-                            <a class="btn btn-danger"><i class="fa-solid fa-minus"></i></i></a>
+                    <div class="row">
+                        <div class="col-8">
+                            {% for x in DatosCarrito %}
+                            <div>
+                                <div class="list-group py-2">
+                                    <a href="#"
+                                    class="list-group-item list-group-item-action"
+                                    aria-current="true">
+                                        <div class="d-flex w-100 justify-content-between">
+                                            <h5 class="mb-1">{{ x.producto_id.nombre }}</h5>
+                                            <b><h5>{{ x.producto_id.precio }}</h5></b>
+                                        </div>
+                                        <p class="mb-1">
+                                            {{ x.producto_id.desc }}
+                                        </p>
+                                    </a>
+                                </div>
+                            </div>
+                        {% endfor %}
                         </div>
-                        <div class="col-12 mt-3">
-                            <button style="width: 100%;" type="button" class="btn btn-warning m-2" id="calcularTotal"
-                                name="CalcularTotal">Confirmar</button>
-                        </div>
-                    </div>
-
-                    {% endfor %}
                     <div class="col-xs-12 col-sm-6  col-md-4 mt-3">
-                        <div class="col-12 m-3">
-                            <label for="subTotal">Sub Total</label>
-                            <input type="text" id="subTotal" name="subTotal" readonly>
+                        <div class="col-xs-12 col-sm-6 col-md-4 m-6" >
+                            <h1>{{total}}</h1>
                         </div>
-                        <div class="col-12 m-3">
-                            <label for="Total">Total &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-                            <input type="text" id="Total" name="Total" readonly>
-                        </div>
-                        <div class="col-xs-12 col-sm-6  col-md-6 m-3 ">
-                            <a style="width: 100%;" href="{% url 'pago' %}" class="btn btn-success">Pedir</a>
-                        </div>
+                        
+                        <form action="" method="POST">
+                        {% csrf_token %}
+                        <input type="hidden" name="codigo" id="codigo" value="{{total}}">
+                            <div class="col-xs-12 col-sm-6  col-md-6 m-3 ">
+                                <a style="width: 100%;" type="submit" href="{% url 'boleta' %}" class="btn btn-success">Pagar</a>
+                            </div>
+                        </form>
 
                     </div>
 
