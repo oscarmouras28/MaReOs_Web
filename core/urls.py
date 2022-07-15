@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import eliminarVenta,home,boleta,catalogo,pago,registro,recuperar_contrasena,registro_vendedor,ventas,carrito,ver_vendedores,ver_clientes, ver_productos, eliminarCli, eliminarVen, eliminarProd, ver_pagos, eliminarMedioPago,eliminarMiDelivery, agregar_vendedor, agregarProducto, agregarmedioPago,modificarVendedor,modificarCliente, modificarProducto, modificarVenta, modificarDelivery, modificarmedioPago
+from .views import eliminarVenta,home,boleta,catalogo,pago,registro,recuperar_contrasena,registro_vendedor,ventas,carrito,ver_vendedores,ver_clientes, ver_productos, eliminarCli, eliminarVen, eliminarProd, ver_pagos, eliminarMedioPago,eliminarMiDelivery, agregarProducto, agregarmedioPago,modificarVendedor,modificarCliente, modificarProducto, modificarVenta, modificarDelivery, modificarmedioPago
 
 urlpatterns = [
     # Home
@@ -18,7 +18,6 @@ urlpatterns = [
 
     # Deberiamos dejar solo el vendedor registre vendedores, en cambio, de que se registre asi mismo  
     path('registrovendedor/', registro_vendedor, name="registrovendedor"),
-    path('agregarVendedor/', agregar_vendedor, name="agregarVendedor"),
     # Ventas
     path('ventas/', ventas, name="ventas"),      
     # Debe ser antes del pago y verse el conteo fuera de el

@@ -124,7 +124,12 @@
                                             <br>
                                             <h3 class="card-title">${{x.precio}}</h3>
                                             <p class="card-text">{{x.desc}}</p>
-                                            <a href="{% url 'carrito' %}" class="btn btn-primary">Añadir al Carrito</a>
+                                        <form action="" method="POST">
+                                        {% csrf_token %}
+                                            <input type="hidden" name="codigo" id="codigo" value="{{x.id}}">
+                                            <br>
+                                            <button type="submit" class="btn btn-warning" value="carrito">Añadir al Carrito</button>
+                                        </form>
                                         </div>
                                     </div>
                                 </div>
@@ -155,7 +160,12 @@
                                             <br>
                                             <h3 class="card-title">${{x.precio}}</h3>
                                             <p class="card-text">{{x.desc}}</p>
-                                            <a href="{% url 'carrito' %}" class="btn btn-primary">Añadir al Carrito</a>
+                                            <form action="" method="POST">
+                                            {% csrf_token %}
+                                                <input type="hidden" name="codigo" id="codigo" value="{{x.id}}">
+                                                <br>
+                                                <button type="submit" class="btn btn-warning" value="carrito">Añadir al Carrito</button>
+                                            </form>                                        
                                         </div>
                                     </div>
                                 </div>
@@ -186,7 +196,12 @@
                                             <br>
                                             <h3 class="card-title">${{x.precio}}</h3>
                                             <p class="card-text">{{x.desc}}</p>
-                                            <a href="{% url 'carrito' %}" class="btn btn-primary">Añadir al Carrito</a>
+                                            <form action="" method="POST">
+                                            {% csrf_token %}
+                                                <input type="hidden" name="codigo" id="codigo" value="{{x.id}}">
+                                                <br>
+                                            <button type="submit" class="btn btn-warning" value="carrito">Añadir al Carrito</button>
+                                        </form>
                                         </div>
                                     </div>
                                 </div>
@@ -219,7 +234,12 @@
                                             <br>
                                             <h3 class="card-title">${{x.precio}}</h3>
                                             <p class="card-text"> {{x.desc}} </p>
-                                            <a href="{% url 'carrito' %}" class="btn btn-primary">Añadir al Carrito</a>
+                                            <form action="" method="POST">
+                                            {% csrf_token %}
+                                            <input type="hidden" name="codigo" id="codigo" value="{{x.id}}">
+                                            <br>
+                                            <button type="submit" class="btn btn-warning" value="carrito">Añadir al Carrito</button>
+                                        </form>
                                         </div>
                                     </div>
                                 </div>

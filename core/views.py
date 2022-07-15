@@ -1,6 +1,5 @@
+from django.core.checks import messages
 from email.headerregistry import Group
-from tokenize import group
-import django
 from django.contrib import messages
 from django.shortcuts import render, redirect
 from django.contrib.auth import login, authenticate
@@ -10,58 +9,27 @@ from django.contrib.auth.decorators import login_required, permission_required
 from django.db import connection
 
 
-class Cart:
-    def __init__(self, request):
-        self.request = request
-        self.session = request.session
-        cart = self.session.get("cart")
-        if not cart:
-            cart = self.session["cart"] = {}
-        self.cart = cart
-
-        def add(self, product):
-            if str(product.id) not in self.cart.keys():
-                self.cart[product.id] = {
-                    "product_id": product.id,
-                    "name": product.name,
-                    "quantity": 1,
-                    "price": product.price
-                }
-            else:
-                for key, value in self.cart.items():
-                    if key == str(product.id):
-                        value["quantity"] = value["quantity"] + 1
-                        break
-            self.save()
-
-        def save(self):
-            self.session["cart"] = self.cart
-            self.session.modified = True
-
-        def remove(self, product):
-            product_id = str(product.id)
-            if product_id in self.cart:
-                del self.cart[product.id]
-                self.save()
-
-        def decrement(self, product):
-            for key, value in self.cart.items():
-                if key == str(product.id):
-                    value["quantity"] = value["quantity"] - 1
-                    if value["quantity"] < 1:
-                        self.remove(product)
-                    break
-                else:
-                    print("no existe producto en el carrito")
-
-        def clear(self):
-            self.session["cart"] = {}
-            self.session.modified = True
-
 def home(request):
     return render(request, 'core/home.html')
 
 
+@login_required
+def carrito(request):
+
+    carro=Carrito.objects.all()
+    
+    data={'DatosCarrito':carro,
+          'total':0}
+    
+    lista=carro
+
+    for carro in lista:
+        data['total'] = carro.producto_id.precio + data['total']
+
+    if request.POST:
+        Carrito.objects.all().delete()
+
+    return render(request, 'core/carrito.html', data)
 @login_required
 @permission_required('core.view_venta')
 def boleta(request):
@@ -92,7 +60,7 @@ def boleta(request):
             "delivery": listado_delivery1}
     return render(request, 'core/boleta.html', data)
 
-
+###########################################
 def catalogo(request):
     listado_sandwich = Producto.objects.filter(tip_producto='1')
     listado_para_picar = Producto.objects.filter(tip_producto='2')
@@ -104,7 +72,13 @@ def catalogo(request):
             "listaCompleto": listado_completo,
             "listaAgregados": listado_agregados}
 
+    if request.POST:
+        carrito = Carrito()
+        carrito.producto_id_id=request.POST.get('codigo')
+        carrito.save()
+
     return render(request, 'core/catalogo.html', data)
+###########################################
 
 
 @login_required
@@ -140,12 +114,6 @@ def recuperar_contrasena(request):
 
 
 
-@login_required
-def carrito(request):
-    lista_carrito = Carrito.objects.all()
-    data = {"listaCarrito": lista_carrito}
-    return render(request, 'core/carrito.html', data)
-
 def registro(request):
     data = {
         'form': CustomUserCreationForm
@@ -159,6 +127,9 @@ def registro(request):
         cliente.rut = request.POST.get("rutCli")
         formulario = CustomUserCreationForm(data=request.POST)
         try:
+            cliente.save()
+            mensaje = "Cliente agregado"
+            messages.success(request, mensaje)
             if formulario.is_valid():
                 formulario.save()
                 # usuario=formulario.save()
@@ -168,9 +139,6 @@ def registro(request):
                                     password=formulario.cleaned_data["password1"])
                 login(request, user)
                 return redirect("home")
-            cliente.save()
-            mensaje = "Cliente agregado"
-            messages.success(request, mensaje)
         except:
             mensaje = "No se pudo agregar al Cliente"
             messages.error(request, mensaje)
@@ -191,6 +159,7 @@ def registro_vendedor(request):
     data = {
         'form': CustomUserCreationForm
     }
+
     if request.POST:
         vendedor = Vendedor()
         vendedor.p_nombre = request.POST.get("primNombre")
@@ -198,10 +167,20 @@ def registro_vendedor(request):
         vendedor.a_paterno = request.POST.get("apPaterno")
         vendedor.a_materno = request.POST.get("apMaterno")
         vendedor.rut = request.POST.get("txtRut")
+        formulario = CustomUserCreationForm(data=request.POST)
         try:
             vendedor.save()
             mensaje = "Vendedor agregado"
             messages.success(request, mensaje)
+            if formulario.is_valid():
+                formulario.save()
+                # usuario=formulario.save()
+                # group=Group.object.get(name='Cliente')
+                # usuario.groups.add(group)
+                user = authenticate(username=formulario.cleaned_data["username"],
+                                    password=formulario.cleaned_data["password1"])
+                login(request, user)
+                return redirect("home")
         except:
             mensaje = "No se pudo agregar al vendedor"
             messages.error(request, mensaje)
