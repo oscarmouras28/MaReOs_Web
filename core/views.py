@@ -7,6 +7,7 @@ from django.contrib.auth import login, authenticate
 from .models import Producto, Venta, Vendedor, Cliente, Delivery, Medio_pago, Carrito
 from .forms import CustomUserCreationForm
 from django.contrib.auth.decorators import login_required, permission_required
+from django.db import connection
 
 
 class Cart:
@@ -64,10 +65,31 @@ def home(request):
 @login_required
 @permission_required('core.view_venta')
 def boleta(request):
-    listado_ventas = Venta.objects.all()
-    delivery = Delivery.objects.all()
-    data = {"listaVentas": listado_ventas,
-            "delivery": delivery}
+    django_cursor = connection.cursor()
+    cursor = django_cursor.connection.cursor()
+    out_cur = django_cursor.connection.cursor()
+
+    cursor.callproc("LISTAR_VENTA",[out_cur])
+
+    listado_ventas = []
+    listado_ventas1 = list(listado_ventas)
+
+    for x in out_cur:
+        listado_ventas1.append(x)
+
+    django_cursor2 = connection.cursor()
+    cursor2 = django_cursor2.connection.cursor()
+    out_cur2 = django_cursor2.connection.cursor()
+
+    cursor2.callproc("LISTAR_DELIVERY",[out_cur2])
+
+    listado_delivery = []
+    listado_delivery1 = list(listado_delivery) 
+    for n in out_cur2:
+        listado_delivery1.append(n)
+
+    data = {"listaVentas": listado_ventas1,
+            "delivery": listado_delivery1}
     return render(request, 'core/boleta.html', data)
 
 
@@ -330,16 +352,47 @@ def modificarProducto(request, id):
 @login_required
 @permission_required('core.view_vendedor')
 def ver_vendedores(request):
+    
     listado_Vendedores = Vendedor.objects.all()
-    data = {"listaVendedores": listado_Vendedores}
+    data = {"listaVendedores": listado_Vendedores,
+            "listaVend": listado_vendedores()}
     return render(request, 'core/ver_vendedores.html', data)
+
+def listado_vendedores():
+    django_cursor = connection.cursor()
+    cursor = django_cursor.connection.cursor()
+    out_cur = django_cursor.connection.cursor()
+
+    cursor.callproc("LISTAR_VENDEDOR",[out_cur])
+
+    lista = []
+
+    for fila in out_cur:
+        lista.append(fila)
+    
+    return lista
 
 @login_required
 @permission_required('core.view_cliente')
 def ver_clientes(request):
     listado_clientes = Cliente.objects.all()
-    data = {"listaClientes": listado_clientes}
+    data = {"listaClientes": listado_clientes,
+            "listadoClientes" :lista_clientes()}
     return render(request, 'core/ver_clientes.html', data)
+
+def lista_clientes():
+    django_cursor = connection.cursor()
+    cursor = django_cursor.connection.cursor()
+    out_cur = django_cursor.connection.cursor()
+
+    cursor.callproc("LISTAR_CLIENTE",[out_cur])
+
+    lista = []
+
+    for fila in out_cur:
+        lista.append(fila)
+    
+    return lista
 
 @login_required
 @permission_required('core.add_producto')
